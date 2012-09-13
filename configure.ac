@@ -8,5 +8,8 @@ AC_INIT(
 )
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
+
 AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([t/001_help-option.t], [chmod +x t/001_help-option.t])
+
 AC_OUTPUT
