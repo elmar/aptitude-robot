@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use 5.010;
+use English qw( -no_match_vars );
+
+use Test::More;
+
+require_ok( '@srcdir@/t/../aptitude-robot' );
+
+# non-config-dir: /dev/null
+my $aptitude_command = Aptitude::Robot::Command->new(config_dir => '/dev/null');
+is( ref $aptitude_command, 'Aptitude::Robot::Command',
+    'generate new object');
+is_deeply( [ $aptitude_command->command() ], [],
+    'non-directory config dir should give empty command array');
+is( $aptitude_command->error_msg(), 'Error: config_dir is not a directory',
+    'check for error string');
+
+done_testing();

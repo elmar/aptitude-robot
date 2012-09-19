@@ -11,5 +11,8 @@ EXTRA_DIST = aptitude-robot
 aptitude-robot.1: aptitude-robot
 	pod2man -c 'User Commands' -r "$(VERSION)" $< $@
 
+clean-local:
+	rm -f t/t
+
 check-local:
 	prove t

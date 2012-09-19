@@ -21,6 +21,39 @@ sub main {
     pod2usage() if @ARGV;
 }
 
+package Aptitude::Robot::Command;
+use Any::Moose;
+
+has( 'config_dir' => (
+        isa => 'Str',
+        is => 'ro',
+        required => 1,
+    )
+);
+has( 'error_msg'  => (
+        isa      => 'Str',
+        is       => 'ro',
+        init_arg => undef,
+        default  => sub {
+            my $self = shift;
+            if ( -d $self->config_dir() . '/pkglist.d/.' ) {
+                return undef;
+            }
+            else {
+                return 'Error: config_dir is not a directory';
+            }
+        },
+    )
+);
+
+sub command {
+    my $self = shift;
+
+    return () if $self->error_msg();
+}
+
+1;
+
 __END__
 
 =head1 NAME
