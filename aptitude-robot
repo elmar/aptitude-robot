@@ -37,7 +37,7 @@ has( 'error_msg'  => (
         default  => sub {
             my $self = shift;
             if ( -d $self->config_dir() . '/pkglist.d/.' ) {
-                return undef;
+                return '';
             }
             else {
                 return 'Error: config_dir is not a directory';
@@ -50,6 +50,8 @@ sub command {
     my $self = shift;
 
     return () if $self->error_msg();
+
+    return ('aptitude', '-y', 'full-upgrade');
 }
 
 1;
