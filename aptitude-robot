@@ -36,6 +36,7 @@ sub main {
 BEGIN{
 package Aptitude::Robot::Command;
 use Any::Moose;
+use File::Slurp;
 
 has( 'config_dir' => (
         isa      => 'Str',
@@ -61,7 +62,6 @@ has( 'error_msg'  => (
 
 sub command {
     my $self = shift;
-
     return () if $self->error_msg();
 
     return ('aptitude', '-y', 'full-upgrade');
@@ -69,11 +69,23 @@ sub command {
 
 sub pkglist_files {
     my $self = shift;
-
     return () if $self->error_msg();
 
     my $cmd = '/bin/run-parts --list ' . $self->config_dir() . '/pkglist.d';
     return split("\n", `$cmd`);
+}
+
+sub pkglist_lines {
+    my $self = shift;
+    return () if $self->error_msg();
+
+    my @files = $self->pkglist_files();
+    my @lines = ();
+    for my $file (@files) {
+        push(@lines, read_file($file));
+    }
+    chomp @lines;
+    return @lines;
 }
 
 no Any::Moose;
