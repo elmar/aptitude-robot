@@ -64,7 +64,16 @@ sub command {
     my $self = shift;
     return () if $self->error_msg();
 
-    return ('aptitude', '-y', 'full-upgrade');
+    my %pkg_action = ();
+    for my $line ($self->pkglist_lines()) {
+        my ($action, $pkg) = split(/\s+/, $line, 2);
+        $pkg_action{$pkg} = $action;
+    }
+    my @cmd = qw( aptitude -y full-upgrade );
+    for my $pkg (sort keys %pkg_action) {
+        push(@cmd, $pkg . $pkg_action{$pkg});
+    }
+    return @cmd;
 }
 
 sub pkglist_files {
