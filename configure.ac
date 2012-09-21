@@ -18,5 +18,6 @@ AC_DEFUN([AX_CONFIG_FILE_EXEC],
 AC_CONFIG_FILES([Makefile])
 AX_CONFIG_FILE_EXEC([t/001_help-option.t])
 AX_CONFIG_FILE_EXEC([t/010_simple-calls.t])
+AX_CONFIG_FILE_EXEC([t/011_simple-calls-from-cli.t])
 
 AC_OUTPUT

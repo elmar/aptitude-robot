@@ -14,19 +14,32 @@ sub main {
     use Getopt::Long qw( :config auto_help pass_through );
 
     my $help;
+    my $show_cmdline;
+    my $config_dir = '/etc/aptitude-robot';
     GetOptions(
-        'help' => \$help,
+        'help'         => \$help,
+        'show-cmdline' => \$show_cmdline,
+        'config-dir=s' => \$config_dir,
     );
     pod2usage('-verbose' => 2, '-exit_status' => 0) if $help;
     pod2usage() if @ARGV;
+
+    my $aptitude_robot = Aptitude::Robot::Command->new(config_dir => $config_dir);
+    die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
+
+    my @command = ();
+    push @command, 'echo' if $show_cmdline;
+    push @command, $aptitude_robot->command();
+    system(@command);
 }
 
+BEGIN{
 package Aptitude::Robot::Command;
 use Any::Moose;
 
 has( 'config_dir' => (
-        isa => 'Str',
-        is => 'ro',
+        isa      => 'Str',
+        is       => 'ro',
         required => 1,
     )
 );
@@ -40,7 +53,7 @@ has( 'error_msg'  => (
                 return '';
             }
             else {
-                return 'Error: config_dir is not a directory';
+                return 'Error: ' . $self->config_dir . ' is not a aptitude-robot config directory';
             }
         },
     )
@@ -54,7 +67,10 @@ sub command {
     return ('aptitude', '-y', 'full-upgrade');
 }
 
+no Any::Moose;
+
 1;
+}
 
 __END__
 

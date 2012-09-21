@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use 5.010;
+use English qw( -no_match_vars );
+
+use Test::More;
+
+use IPC::Run qw( run );
+
+my $in = '';
+my $out;
+my $err;
+my $cmd;
+
+$cmd = [
+    '@srcdir@/t/../aptitude-robot',
+    '--config-dir=/dev/null',
+    '--show-cmdline',
+];
+ok(
+    not(run( $cmd, \$in, \$out, \$err )),
+    'should complain about non-existant config dir'
+);
+
+$cmd = [
+    '@srcdir@/t/../aptitude-robot',
+    '--config-dir=@srcdir@/t/testdata/empty-config',
+    '--show-cmdline',
+];
+ok(
+    run( $cmd, \$in, \$out, \$err ),
+    'empty config dir should give only full-upgrade'
+);
+
+is( $out, "aptitude -y full-upgrade\n",
+    'command line should be "aptitude -y full-upgrade"');
+
+done_testing();

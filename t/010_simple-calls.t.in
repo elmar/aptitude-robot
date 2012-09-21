@@ -16,7 +16,7 @@ is( ref $aptitude_command, 'Aptitude::Robot::Command',
     'generate new object');
 is_deeply( [ $aptitude_command->command() ], [],
     'non-directory config dir should give empty command array');
-is( $aptitude_command->error_msg(), 'Error: config_dir is not a directory',
+is( $aptitude_command->error_msg(), 'Error: /dev/null is not a aptitude-robot config directory',
     'check for error string');
 
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => '@srcdir@/t/testdata/empty-config');
