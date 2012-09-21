@@ -118,6 +118,14 @@ removed as indicated.
 
 =over 4
 
+=item B<--config-dir F</path/to/config/dir>>
+
+specify an alternate configuration directory.  Defaults to /etc/aptitude-robot
+
+=item B<--show-cmdline>
+
+only show the command that would be executed
+
 =item B<--help>
 
 Prints this page.
