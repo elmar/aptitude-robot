@@ -19,5 +19,6 @@ AC_CONFIG_FILES([Makefile])
 AX_CONFIG_FILE_EXEC([t/001_help-option.t])
 AX_CONFIG_FILE_EXEC([t/010_simple-calls.t])
 AX_CONFIG_FILE_EXEC([t/011_simple-calls-from-cli.t])
+AX_CONFIG_FILE_EXEC([t/020_runparts.t])
 
 AC_OUTPUT

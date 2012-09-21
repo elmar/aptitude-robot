@@ -67,6 +67,15 @@ sub command {
     return ('aptitude', '-y', 'full-upgrade');
 }
 
+sub pkglist_files {
+    my $self = shift;
+
+    return () if $self->error_msg();
+
+    my $cmd = '/bin/run-parts --list ' . $self->config_dir() . '/pkglist.d';
+    return split("\n", `$cmd`);
+}
+
 no Any::Moose;
 
 1;
