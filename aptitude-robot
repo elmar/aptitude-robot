@@ -93,8 +93,11 @@ sub pkglist_lines {
     for my $file (@files) {
         push(@lines, read_file($file));
     }
-    chomp @lines;
-    return @lines;
+    for my $line (@lines) {
+        $line =~ s{\A \s+}{}xms; # remove leading space
+        $line =~ s{\s+ \Z}{}xms; # remove trailing space
+    }
+    return grep { $_ } @lines; # non-empty lines only
 }
 
 no Any::Moose;

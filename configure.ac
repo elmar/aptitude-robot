@@ -22,5 +22,6 @@ AX_CONFIG_FILE_EXEC([t/011_simple-calls-from-cli.t])
 AX_CONFIG_FILE_EXEC([t/020_runparts.t])
 AX_CONFIG_FILE_EXEC([t/021_file-slurp.t])
 AX_CONFIG_FILE_EXEC([t/030_parser.t])
+AX_CONFIG_FILE_EXEC([t/031_extra-space.t])
 
 AC_OUTPUT
