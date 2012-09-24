@@ -94,6 +94,7 @@ sub pkglist_lines {
         push(@lines, read_file($file));
     }
     for my $line (@lines) {
+        $line =~ s{\# .+ \Z}{}xms; # remove comments
         $line =~ s{\A \s+}{}xms; # remove leading space
         $line =~ s{\s+ \Z}{}xms; # remove trailing space
     }

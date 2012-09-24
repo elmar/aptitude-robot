@@ -1,0 +1,4 @@
+# the hash make is the comment character
+
++ foo # trailing comments are supported
+- bar
