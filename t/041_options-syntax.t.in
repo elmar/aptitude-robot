@@ -1,0 +1,26 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use 5.010;
+use English qw( -no_match_vars );
+
+use Test::More;
+
+require_ok( '@srcdir@/t/../aptitude-robot' );
+
+my $aptitude_command;
+
+$aptitude_command = Aptitude::Robot::Command->new(
+    config_dir => '@srcdir@/t/testdata/option-with-parameter'
+);
+is_deeply(
+    [ $aptitude_command->options() ],
+    [
+        '-o', 'Aptitude::Log=/tmp/my-log',
+        '-o', 'Aptitude::Foo=bar quux',
+        '--display-format', 'foo bar',
+    ],
+    'options with parameters and spaces'
+);
+
+done_testing();

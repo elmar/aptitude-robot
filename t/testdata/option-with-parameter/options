@@ -1,0 +1,3 @@
+-o Aptitude::Log=/tmp/my-log
+-o Aptitude::Foo=bar quux
+--display-format=foo bar

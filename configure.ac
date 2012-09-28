@@ -25,5 +25,6 @@ AX_CONFIG_FILE_EXEC([t/030_parser.t])
 AX_CONFIG_FILE_EXEC([t/031_extra-space.t])
 AX_CONFIG_FILE_EXEC([t/032_comments.t])
 AX_CONFIG_FILE_EXEC([t/040_extra-options.t])
+AX_CONFIG_FILE_EXEC([t/041_options-syntax.t])
 
 AC_OUTPUT

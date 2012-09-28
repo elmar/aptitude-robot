@@ -93,6 +93,7 @@ sub options {
 
     my @options = read_file($self->config_dir() . '/options');
     @options = _normalize_lines( @options );
+    return _split_parameters( @options );
 }
 
 sub pkglist_files {
@@ -124,6 +125,16 @@ sub _normalize_lines {
         $line =~ s{\s+ \Z}{}xms; # remove trailing space
     }
     return grep { $_ } @lines; # non-empty lines only
+}
+
+sub _split_parameters {
+    my (@lines) = @_;
+
+    my @parameters = ();
+    for my $line (@lines) {
+        push(@parameters, split(qr(=|\s+), $line, 2));
+    }
+    return @parameters;
 }
 
 no Any::Moose;
