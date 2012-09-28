@@ -24,5 +24,6 @@ AX_CONFIG_FILE_EXEC([t/021_file-slurp.t])
 AX_CONFIG_FILE_EXEC([t/030_parser.t])
 AX_CONFIG_FILE_EXEC([t/031_extra-space.t])
 AX_CONFIG_FILE_EXEC([t/032_comments.t])
+AX_CONFIG_FILE_EXEC([t/040_extra-options.t])
 
 AC_OUTPUT

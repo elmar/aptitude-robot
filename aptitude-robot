@@ -77,11 +77,22 @@ sub command {
         my ($action, $pkg) = split(/\s+/, $line, 2);
         $pkg_action{$pkg} = $action;
     }
-    my @cmd = qw( aptitude -y full-upgrade );
+    my @cmd = ( 'aptitude', '-y', $self->options(), 'full-upgrade' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
     }
     return @cmd;
+}
+
+sub options {
+    my $self = shift;
+    return () if $self->error_msg();
+
+    my $options_file = $self->config_dir() . '/options';
+    return () unless -f $options_file;
+
+    my @options = read_file($self->config_dir() . '/options');
+    @options = _normalize_lines( @options );
 }
 
 sub pkglist_files {
@@ -101,6 +112,12 @@ sub pkglist_lines {
     for my $file (@files) {
         push(@lines, read_file($file));
     }
+    return _normalize_lines( @lines );
+}
+
+sub _normalize_lines {
+    my (@lines) = @_;
+
     for my $line (@lines) {
         $line =~ s{\# .+ \Z}{}xms; # remove comments
         $line =~ s{\A \s+}{}xms; # remove leading space
