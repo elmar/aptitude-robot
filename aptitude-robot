@@ -31,6 +31,14 @@ sub main {
     push @command, 'echo' if $show_cmdline;
     push @command, $aptitude_robot->command();
     system(@command);
+    if ($CHILD_ERROR == -1) {
+        die "aptitude failed to execute: $OS_ERROR\n";
+    }
+    else {
+        my $exit_code = ($CHILD_ERROR >> 8);
+        printf STDERR "aptitude exited with value %d\n", $exit_code;
+        exit $exit_code;
+    }
 }
 
 BEGIN{
