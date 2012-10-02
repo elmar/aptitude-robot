@@ -29,5 +29,6 @@ AX_CONFIG_FILE_EXEC([t/041_options-syntax.t])
 AX_CONFIG_FILE_EXEC([t/050_force-install.t])
 AX_CONFIG_FILE_EXEC([t/051_force-install.t])
 AX_CONFIG_FILE_EXEC([t/052_force-install.t])
+AX_CONFIG_FILE_EXEC([t/059_force-install-cli.t])
 
 AC_OUTPUT

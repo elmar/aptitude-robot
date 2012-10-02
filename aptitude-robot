@@ -15,16 +15,21 @@ sub main {
 
     my $help;
     my $show_cmdline;
+    my $force_install;
     my $config_dir = '/etc/aptitude-robot';
     GetOptions(
-        'help'         => \$help,
-        'show-cmdline' => \$show_cmdline,
-        'config-dir=s' => \$config_dir,
+        'help'          => \$help,
+        'show-cmdline'  => \$show_cmdline,
+        'force-install' => \$force_install,
+        'config-dir=s'  => \$config_dir,
     );
     pod2usage('-verbose' => 2, '-exit_status' => 0) if $help;
     pod2usage() if @ARGV;
 
-    my $aptitude_robot = Aptitude::Robot::Command->new(config_dir => $config_dir);
+    my $aptitude_robot = Aptitude::Robot::Command->new(
+        config_dir => $config_dir,
+        force_install => $force_install
+    );
     die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
 
     my @command = ();
