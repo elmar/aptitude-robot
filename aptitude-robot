@@ -93,7 +93,7 @@ sub options {
 
     return
         _split_parameters(
-            _normalize_lines(
+            _clean_comments_and_whitespace(
                 read_file($options_file)));
 }
 
@@ -114,10 +114,10 @@ sub pkglist_lines {
     for my $file (@files) {
         push(@lines, read_file($file));
     }
-    return _normalize_lines( @lines );
+    return _clean_comments_and_whitespace( @lines );
 }
 
-sub _normalize_lines {
+sub _clean_comments_and_whitespace {
     my (@lines) = @_;
 
     for my $line (@lines) {
@@ -125,7 +125,7 @@ sub _normalize_lines {
         $line =~ s{\A \s+}{}xms; # remove leading space
         $line =~ s{\s+ \Z}{}xms; # remove trailing space
     }
-    return grep { $_ } @lines; # non-empty lines only
+    return grep { $_ ne '' } @lines; # non-empty lines only
 }
 
 sub _split_parameters {
