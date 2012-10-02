@@ -26,5 +26,8 @@ AX_CONFIG_FILE_EXEC([t/031_extra-space.t])
 AX_CONFIG_FILE_EXEC([t/032_comments.t])
 AX_CONFIG_FILE_EXEC([t/040_extra-options.t])
 AX_CONFIG_FILE_EXEC([t/041_options-syntax.t])
+AX_CONFIG_FILE_EXEC([t/050_force-install.t])
+AX_CONFIG_FILE_EXEC([t/051_force-install.t])
+AX_CONFIG_FILE_EXEC([t/052_force-install.t])
 
 AC_OUTPUT

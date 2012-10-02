@@ -52,6 +52,12 @@ has( 'config_dir' => (
         required => 1,
     )
 );
+has( 'force_install' => (
+        isa      => 'Bool',
+        is       => 'rw',
+        default  => 0,
+    )
+);
 has( 'error_msg'  => (
         isa      => 'Str',
         is       => 'ro',
@@ -75,6 +81,13 @@ sub command {
     my %pkg_action = ();
     for my $line ($self->pkglist_lines()) {
         my ($action, $pkg) = split(/\s+/, $line, 2);
+
+        # ignore extra ':' and '=' entries on force-install
+        next if
+            $self->force_install()        and
+            defined($pkg_action{$pkg})    and
+            ($action eq ':' or $action eq '=');
+
         $pkg_action{$pkg} = $action;
     }
     my @cmd = ( 'aptitude', '-y', $self->options(), 'full-upgrade' );
