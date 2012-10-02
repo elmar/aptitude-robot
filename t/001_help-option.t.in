@@ -6,7 +6,7 @@ use English qw( -no_match_vars );
 
 use Test::More;
 
-ok( system('perl', "@top_srcdir@/aptitude-robot", '--help') == 0,
+ok( system('perl', "@srcdir@/t/../aptitude-robot", '--help') == 0,
     'option --help should be allowed' );
 
 done_testing();
