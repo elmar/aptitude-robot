@@ -6,12 +6,12 @@ use English qw( -no_match_vars );
 
 use Test::More;
 
-require_ok( '@srcdir@/t/../aptitude-robot' );
+require_ok( '@abs_top_srcdir@/aptitude-robot' );
 
 my $aptitude_command;
 
 $aptitude_command = Aptitude::Robot::Command->new(
-    config_dir => '@srcdir@/t/testdata/force-install-1',
+    config_dir => '@abs_top_srcdir@/t/testdata/force-install-1',
     force_install => 1,
 );
 is_deeply(

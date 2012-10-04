@@ -6,7 +6,7 @@ use English qw( -no_match_vars );
 
 use Test::More;
 
-require_ok( '@srcdir@/t/../aptitude-robot' );
+require_ok( '@abs_top_srcdir@/aptitude-robot' );
 
 my $aptitude_command;
 
@@ -19,7 +19,9 @@ is_deeply( [ $aptitude_command->command() ], [],
 is( $aptitude_command->error_msg(), 'Error: /dev/null is not a aptitude-robot config directory',
     'check for error string');
 
-$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@srcdir@/t/testdata/empty-config');
+$aptitude_command = Aptitude::Robot::Command->new(
+    config_dir => '@abs_top_srcdir@/t/testdata/empty-config'
+);
 is( ref $aptitude_command, 'Aptitude::Robot::Command',
     'generate new object');
 is_deeply( [ $aptitude_command->command() ], ['aptitude', '-y', 'full-upgrade'],

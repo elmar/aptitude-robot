@@ -14,7 +14,7 @@ my $err;
 my $cmd;
 
 $cmd = [
-    '@srcdir@/t/../aptitude-robot',
+    '@abs_top_srcdir@/aptitude-robot',
     '--config-dir=/dev/null',
     '--show-cmdline',
 ];
@@ -24,8 +24,8 @@ ok(
 );
 
 $cmd = [
-    '@srcdir@/t/../aptitude-robot',
-    '--config-dir=@srcdir@/t/testdata/empty-config',
+    '@abs_top_srcdir@/aptitude-robot',
+    '--config-dir=@abs_top_srcdir@/t/testdata/empty-config',
     '--show-cmdline',
 ];
 ok(

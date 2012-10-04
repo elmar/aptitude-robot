@@ -14,8 +14,8 @@ my $err;
 my $cmd;
 
 $cmd = [
-    '@srcdir@/t/../aptitude-robot',
-    '--config-dir=@srcdir@/t/testdata/force-install-1',
+    '@abs_top_srcdir@/aptitude-robot',
+    '--config-dir=@abs_top_srcdir@/t/testdata/force-install-1',
     '--force-install',
     '--show-cmdline',
 ];

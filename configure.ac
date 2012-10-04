@@ -9,8 +9,6 @@ AC_INIT(
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 
-[test -L t/t || ln -sf . t/t]
-
 AC_DEFUN([AX_CONFIG_FILE_EXEC],
          [AC_CONFIG_FILES($1, [chmod +x ]$1)]
 )

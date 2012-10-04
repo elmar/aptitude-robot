@@ -6,25 +6,25 @@ use English qw( -no_match_vars );
 
 use Test::More;
 
-require_ok( '@srcdir@/t/../aptitude-robot' );
+require_ok( '@abs_top_srcdir@/aptitude-robot' );
 
 my $aptitude_command;
 
-$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@srcdir@/t/testdata/empty-config');
+$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@abs_top_srcdir@/t/testdata/empty-config');
 is_deeply(
     [ $aptitude_command->command() ],
     ['aptitude', '-y', 'full-upgrade'],
     'empty config dir should result in empty file list'
 );
 
-$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@srcdir@/t/testdata/single-file');
+$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@abs_top_srcdir@/t/testdata/single-file');
 is_deeply(
     [ $aptitude_command->command() ],
     ['aptitude', '-y', 'full-upgrade', 'bar-', 'foo+'],
     'single file case',
 );
 
-$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@srcdir@/t/testdata/multiple-files');
+$aptitude_command = Aptitude::Robot::Command->new(config_dir => '@abs_top_srcdir@/t/testdata/multiple-files');
 is_deeply(
     [ $aptitude_command->command() ],
     ['aptitude', '-y', 'full-upgrade', 'bar-', 'fnord=', 'foo-', 'quux:'],
