@@ -32,6 +32,8 @@ sub main {
     );
     die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
 
+    _run_triggers("$config_dir/triggers.pre", $show_cmdline);
+
     my @command = ();
     push @command, 'echo' if $show_cmdline;
     push @command, $aptitude_robot->command();
@@ -39,11 +41,26 @@ sub main {
     if ($CHILD_ERROR == -1) {
         die "aptitude failed to execute: $OS_ERROR\n";
     }
-    else {
+    elsif ($CHILD_ERROR) {
         my $exit_code = ($CHILD_ERROR >> 8);
         printf STDERR "aptitude exited with value %d\n", $exit_code;
         exit $exit_code;
     }
+
+    _run_triggers("$config_dir/triggers.post", $show_cmdline);
+}
+
+sub _run_triggers {
+    return unless @_;
+    my ($triggers, $show_cmdline) = @_;
+
+    my @runparts = qw( /bin/run-parts );
+    push(@runparts, '--test') if $show_cmdline;
+    if ( -d $triggers ) {
+        system(@runparts, $triggers) == 0
+            or die "could not execute trigger scripts in $triggers: $OS_ERROR\n";
+    }
+    return;
 }
 
 BEGIN{
