@@ -203,9 +203,13 @@ removed as indicated.
 
 =over 4
 
+=item B<--force-install>
+
+give priority to install(+), remove(-), and purge(_) actions over keep(:) and hold(=)
+
 =item B<--config-dir F</path/to/config/dir>>
 
-specify an alternate configuration directory.  Defaults to /etc/aptitude-robot
+specify an alternate configuration directory.  Defaults to F</etc/aptitude-robot>
 
 =item B<--show-cmdline>
 
@@ -216,6 +220,45 @@ only show the command that would be executed
 Prints this page.
 
 =back
+
+=head1 CONFIGURATION
+
+The configuration directory given by the C<--config-dir> (or
+F</etc/aptitude-robot> by default) must contain a directory named F<pkglist.d>.
+This directory may have several package list files that are chosen according to
+the criteria of L<run-parts(8)>.  They are concatenated in the order given by
+L<run-parts(8)>.
+
+Each line shall contain an action and a package name separated by white space.
+The actions are those used by the C<aptitude> command line interface (see
+aptitude documentation).  Typically they are:
+
+I<+  package  # install package>
+
+I<+M package  # install package and mark it as automatically installed>
+
+I<-  package  # remove package>
+
+I<_  package  # purge package>
+
+I<:  package  # keep package at current version>
+
+I<=  package  # mark a package as "hold", i.e., prevent automatic updates>
+
+If a package is mentioned several times the last entry will determine the
+action.  If the C<--force-install> option is given the keep(:) and hold(=)
+actions are given lower priority, i.e., the appear only when no other action
+for the package is specified.
+
+A C<#> character starts a comment extending to the end of line.  Empty lines or
+extra white space at the beginning or end of line is ignored.
+
+Optionally the configuration directory may contain a file name F<options>
+containing extra options given to aptitude in the form of one option per line.
+
+Optionally the configuration directory may contain two directories
+F<triggers.pre> and F<triggers.post> with scripts that are executed by
+L<run-parts(8)> before and after aptitude respectively.
 
 =head1 AUTHOR
 
