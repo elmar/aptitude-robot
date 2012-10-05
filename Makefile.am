@@ -2,8 +2,8 @@
 ## Process this file with automake to produce Makefile.in
 ##
 
-dist_bin_SCRIPTS = aptitude-robot
-man_MANS         = aptitude-robot.1
+dist_sbin_SCRIPTS = aptitude-robot
+man_MANS          = aptitude-robot.1
 
 pkgconfdir             = $(sysconfdir)/aptitude-robot
 pkglistdir             = $(pkgconfdir)/pkglist.d
