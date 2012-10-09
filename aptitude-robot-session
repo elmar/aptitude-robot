@@ -1,0 +1,41 @@
+#!/bin/sh
+[ -f /etc/defaults/aptitude-robot ] && . /etc/defaults/aptitude-robot
+
+if [ "$RUN_DAILY" = "no" ]; then
+    exit
+fi
+
+if [ ! -x /usr/sbin/aptitude-robot ]; then
+    exit   # aptitude-robot has been deinstalled but not purged
+fi
+
+if [ -n "$LOG_SESSION" ] ; then
+    LOG_SESSION="$LOG_SESSION".$$
+    touch "$LOG_SESSION"
+    if [ -f "$LOG_SESSION" ]; then
+        exec 1>"$LOG_SESSION"
+    fi
+fi
+
+cleanup () {
+    echo "aptitude-robot ended at" `date --rfc-3339=seconds`
+    if [ -n "$LOG_SESSION" -a -f "$LOG_SESSION" ]; then
+        if [ -n "$LOGFILE" ]; then
+            touch "$LOGFILE"   # create the log file if necessary
+            if [ -f "$LOGFILE" ]; then
+                cat "$LOG_SESSION" >> "$LOGFILE"
+            fi
+        fi
+        if [ -n "$MAIL_TO" ]; then
+            mail -s "aptitude-robot report on `hostname`" $MAIL_TO < "$LOG_SESSION"
+        fi
+        rm "$LOG_SESSION"
+    fi
+}
+trap cleanup INT TERM QUIT HUP EXIT
+set -e
+
+echo "aptitude-robot started at" `date --rfc-3339=seconds`
+
+/usr/bin/aptitude update
+/usr/sbin/aptitude-robot
