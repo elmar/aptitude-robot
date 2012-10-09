@@ -1,9 +1,5 @@
 #!/bin/sh
-[ -f /etc/defaults/aptitude-robot ] && . /etc/defaults/aptitude-robot
-
-if [ "$RUN_DAILY" = "no" ]; then
-    exit
-fi
+[ -f /etc/default/aptitude-robot ] && . /etc/default/aptitude-robot
 
 if [ ! -x /usr/sbin/aptitude-robot ]; then
     exit   # aptitude-robot has been deinstalled but not purged
