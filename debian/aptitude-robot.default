@@ -1,0 +1,13 @@
+# Defaults for aptitude-robot initscript
+# sourced by /etc/init.d/aptitude-robot
+# installed at /etc/default/aptitude-robot by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+RUN_DAILY=yes
+RUN_ON_BOOT=yes
+LOG_SESSION=/var/log/aptitude-robot.session.log
+LOGFILE=/var/log/aptitude-robot.log
+MAIL_TO=

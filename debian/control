@@ -1,0 +1,30 @@
+Source: aptitude-robot
+Section: admin
+Priority: extra
+Maintainer: Elmar S. Heeb <elmar@heebs.ch>
+Build-Depends:
+	autotools-dev,
+	debhelper (>= 7.0.50~),
+	libany-moose-perl,
+	libfile-slurp-perl,
+	perl,
+	perl-doc
+Standards-Version: 3.9.3
+Homepage: https://github.com/elmar/aptitude-robot
+Vcs-Git: git://github.com/elmar/aptitude-robot.git
+Vcs-Browser: https://github.com/elmar/aptitude-robot
+
+Package: aptitude-robot
+Architecture: all
+Depends: ${misc:Depends},
+	aptitude,
+	libany-moose-perl,
+	libfile-slurp-perl,
+	perl,
+	perl-doc,
+	psmisc
+Enhances: aptitude
+Description: Automate package choice management
+ Framework to use aptitude for automated package management including upgrade,
+ installation, removal, hold, etc.  Allows you to automate what you would
+ manually do with aptitude.

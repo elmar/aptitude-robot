@@ -15,6 +15,7 @@ fi
 
 cleanup () {
     echo "aptitude-robot ended at" `date --rfc-3339=seconds`
+    echo ""
     if [ -n "$LOG_SESSION" -a -f "$LOG_SESSION" ]; then
         if [ -n "$LOGFILE" ]; then
             touch "$LOGFILE"   # create the log file if necessary
