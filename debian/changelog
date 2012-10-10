@@ -1,5 +1,5 @@
 aptitude-robot (1.0-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release (Closes: #690157)
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 05 Oct 2012 09:22:10 -0400
