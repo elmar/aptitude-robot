@@ -6,8 +6,13 @@
 # This is a POSIX shell fragment
 #
 
+# set to "no" to prevent the daily cron run
 RUN_DAILY=yes
+# set to "no" to prevent the init run at boot time
 RUN_ON_BOOT=yes
+# location for the session log (will be deleted after aptitude-robot has ended)
 LOG_SESSION=/var/log/aptitude-robot.session.log
+# log file to keep the output of aptitude-robot
 LOGFILE=/var/log/aptitude-robot.log
+# (optional) mail address to send the session log to
 MAIL_TO=

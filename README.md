@@ -46,7 +46,7 @@ are specified with the characters used by aptitude, i.e., `+` for install, `-`
 for removal, etc.  Read the aptitude(8) man page under "override specifier" for
 a complete list.  Comments starting with `#` are allowed.
 
-If you have more than one package list file the are concatenated according to
+If you have more than one package list file they are concatenated according to
 the rules of run-parts(8).  If a package appears more than once the last action
 mentioned applies.
 
@@ -92,11 +92,17 @@ the package would be the right place.
 In `/etc/default/aptitude-robot` you can control the execution of
 aptitude-robot by setting some variables.
 
-* *RUN_DAILY*   if set to "no", aptitude-robot will not run via the daily cron
-* *RUN_ON_BOOT* if set to "no", aptitude-robot will not run at boot time
-* *LOG_SESSION* specify an alternative location for the (temporary) session log
-* *LOGFILE*     specify the file where the logs are accumulated
-* *MAIL_TO*     (optional) mail address where the session log is sent to
+    # set to "no" to prevent the daily cron run
+    RUN_DAILY=yes
+    # set to "no" to prevent the init run at boot time
+    RUN_ON_BOOT=yes
+    # location for the session log (will be deleted after aptitude-robot has ended)
+    LOG_SESSION=/var/log/aptitude-robot.session.log
+    # log file to keep the output of aptitude-robot
+    LOGFILE=/var/log/aptitude-robot.log
+    # (optional) mail address to send the session log to
+    MAIL_TO=
+
 
 ## Running and Deployment
 
@@ -156,7 +162,7 @@ During the initial deployment you would run `aptitude-robot` with the
 
 You can build `aptitude-robot` from the GIT repository as follows:
 
-    sudo aptitude -y install autoconf autotools-dev build-essential git
+    sudo aptitude -y install autoconf autotools-dev build-essential devscripts git
     sudo aptitude -y install libany-moose-perl libfile-slurp-perl perl-doc
     git clone https://github.com/elmar/aptitude-robot.git
     cd aptitude-robot
@@ -170,6 +176,6 @@ You can build `aptitude-robot` from the GIT repository as follows:
     cd ..
     ls -l *.deb
 
-This will generate a Debian package that you can install with dpkg
+This will generate a Debian package that you can install with dpkg:
 
     sudo dpkg -i *.deb
