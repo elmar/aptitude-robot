@@ -34,5 +34,8 @@ set -e
 
 echo "aptitude-robot started at" `date --rfc-3339=seconds`
 
+DEBCONF_FRONTEND=noninteractive
+export DEBCONF_FRONTEND
 /usr/bin/aptitude update
-/usr/sbin/aptitude-robot
+# yes "" forces the default answer to any configuration question
+nice yes "" | /usr/sbin/aptitude-robot
