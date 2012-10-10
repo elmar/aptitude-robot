@@ -13,12 +13,12 @@ only tedious but error prone.
 
 The solution is to write some scripts that automate the installation/removal of
 packages.  Either apt-get or the command line interface of aptitude allow you
-to do this.  <code>aptitude-robot</code> is a thin layer that reads in some
-configuration files and calls aptitude via the command line interface with the
-appropriate parameters.  The configuration files allow you to separate out
-common packages from host specific ones.  This way you can keep the list
-packages simple to read rather than having to write custom versions of the
-script for each host.
+to do this.  <code>aptitude-robot</code> is such a configurable script.  It is
+a thin layer that reads in some configuration files and calls aptitude via the
+command line interface with the appropriate parameters.  The configuration
+files allow you to separate out common packages from host specific ones.  This
+way you can keep the list packages simple to read rather than having to write
+custom versions of the script for each host.
 
 ## Installation
 
@@ -40,7 +40,7 @@ configuration files are in the directory <code>/etc/aptitude-robot</code>.
 ### Package Lists
 
 In <code>/etc/aptitude-robot/pkglist.d/</code> you can add one or more package
-lists.  Their names should conform to the run-parts(8) conventions (like a dot
+lists.  Their names should conform to the run-parts(8) conventions (e.g., a dot
 in the file name will disable it).  These files should contain one package name
 per line preceded by an action you want to perform with this package.  The
 actions are specified with the characters used by aptitude, i.e.,
@@ -48,9 +48,9 @@ actions are specified with the characters used by aptitude, i.e.,
 aptitude(8) man page under "override specifier" for a complete list.  Comments
 starting with <code>#</code> are allowed.
 
-If you have more than one package list file the are concatenated (according to
-run-parts(8)).  If a package appears more than once the last action mentioned
-applies.
+If you have more than one package list file the are concatenated according to
+the rules of run-parts(8).  If a package appears more than once the last action
+mentioned applies.
 
 Example
 
@@ -84,10 +84,10 @@ run by aptitude-robot before and after aptitude, respectively.  They are run by
 <code>run-parts(8)</code>.
 
 By default there are no trigger scripts.  Be careful placing scripts in these
-directories as they are always run unconditionally of the actions that aptitude
-may or may not perform.  For scripts that should only run upon installation,
-removal, or upgrade of a specific package the relevant preinst, postinst, etc.
-scripts of the package would be the right place.
+directories as they are always run whether or not aptitude performs some
+action.  For scripts that should only run upon installation, removal, or
+upgrade of a specific package the relevant preinst, postinst, etc. scripts of
+the package would be the right place.
 
 ### Cron and Init Defaults
 
@@ -103,13 +103,17 @@ aptitude-robot by setting some variables.
 ## Running and Deployment
 
 Out of the box aptitude-robot will run daily and at each boot.  You can call
-<code>aptitude-robot</code> manually whenever you need.
+<code>aptitude-robot</code> manually whenever you need.  You may also call
+<code>/usr/share/aptitude-robot/aptitude-robot-session</code> which in addition
+deals with writing to the log file and performing the installations
+non-interactively.
 
 If you want to run <code>aptitude-robot</code> periodically more often than
 daily you can write your own crontab entry, e.g., in
-<code>/etc/cron.d/aptitude-robot</code>.  You may then want to disable the
-daily cron jobs by setting <code>RUN_DAILY=no</code> in
-<code>/etc/default/aptitude-robot</code>.
+<code>/etc/cron.d/aptitude-robot</code>.  In your own cron job you most likely
+want to call <code>/usr/share/aptitude-robot/aptitude-robot-session</code>.
+You may then want to disable the daily cron jobs by setting
+<code>RUN_DAILY=no</code> in <code>/etc/default/aptitude-robot</code>.
 
 ## Scenarios
 
@@ -129,6 +133,7 @@ with a complex configuration you may add a package list in
     : apache2.2-bin
     : apache2.2-common
     : libapache2-mod-php5
+    #etc.
 
 You can then concentrate on the security announcement for apache and its
 plugins.  All other security announcement you can read at you leisure for
@@ -138,11 +143,11 @@ educational purposes only.
 
 On a development host you can build up and test package lists.  You can then
 use these lists to deploy (and maintain) hosts with a standard set of packages.
-By splitting up the package list into several file according to usage patterns
+By splitting up the package list into several files according to usage patterns
 you can arrange for optional installs too.
 
-If you want to prevent automatic upgrade of certain packages but have them
-still installed on initial deployment you can specify both actions, as follows:
+If you want to prevent automatic upgrade of certain packages but still have
+them installed on initial deployment you can specify both actions, as follows:
 
     + foo
     : foo
