@@ -52,7 +52,7 @@ mentioned applies.
 
 Example
 
-    #example: /etc/aptitude-robot/10_mypackages
+    #example: /etc/aptitude-robot/pkglist.d/10_mypackages
     + less
     + htop
     + build-essential
