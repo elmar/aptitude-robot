@@ -1,0 +1,11 @@
+# TODO
+
+* catch error cases in pkglist.d files
+
+* maybe generate a package list from an installed system
+
+* deal with non-interactive configuration of packages
+  i.e., set options so that debconf does not call dialog
+
+* aptitude clean at the end of aptitude-robot-session with a
+  flag to switch this off

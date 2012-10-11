@@ -8,6 +8,9 @@
 
 # set to "no" to prevent the daily cron run
 RUN_DAILY=yes
+# if set, delay daily cron by a random number of seconds
+# where MAX_RANDOM_DELAY_SECONDS is the maximum delay
+MAX_RANDOM_DELAY_SECONDS=900
 # set to "no" to prevent the init run at boot time
 RUN_ON_BOOT=yes
 # location for the session log (will be deleted after aptitude-robot has ended)

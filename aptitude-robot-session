@@ -1,6 +1,19 @@
 #!/bin/sh
 [ -f /etc/default/aptitude-robot ] && . /etc/default/aptitude-robot
 
+# delay execution for a random number of seconds
+# analogous to the daily cron of apt and cron-apt
+if [ "$1" = "--random-delay" ]; then
+    if [ "$MAX_RANDOM_DELAY_SECONDS" -gt 0 ] ; then
+        if [ -z "$RANDOM" ] ; then
+            # A fix for shells that do not have this bash feature.
+            RANDOM=$(dd if=/dev/urandom count=1 2> /dev/null | cksum | cut -c"1-5")
+        fi
+        DELAY=$(($RANDOM % $MAX_RANDOM_DELAY_SECONDS))
+        sleep $DELAY
+    fi
+fi
+
 if [ ! -x /usr/sbin/aptitude-robot ]; then
     exit   # aptitude-robot has been deinstalled but not purged
 fi

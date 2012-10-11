@@ -6,4 +6,4 @@ if [ "$RUN_DAILY" = "no" ]; then
 fi
 
 SESSION_SCRIPT=/usr/share/aptitude-robot/aptitude-robot-session
-[ -x $SESSION_SCRIPT ] && $SESSION_SCRIPT
+[ -x $SESSION_SCRIPT ] && $SESSION_SCRIPT --random-delay
