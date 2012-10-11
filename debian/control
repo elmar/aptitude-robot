@@ -25,6 +25,6 @@ Depends: ${misc:Depends},
 	psmisc
 Enhances: aptitude
 Description: Automate package choice management
- Framework to use aptitude for automated package management including upgrade,
- installation, removal, hold, etc.  Allows you to automate what you would
- manually do with aptitude.
+ Framework to use aptitude for automated package management including
+ unattended upgrade, installation, removal, hold, etc.  Allows you to automate
+ what you would manually do with aptitude.
