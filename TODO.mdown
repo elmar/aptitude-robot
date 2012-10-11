@@ -1,11 +1,12 @@
 # TODO
 
-* catch error cases in pkglist.d files
+* catch error cases in pkglist.d files, i.e. write test cases
+  (this will come once we have more experience with different
+  scenarios)
 
-* maybe generate a package list from an installed system
-
-* deal with non-interactive configuration of packages
-  i.e., set options so that debconf does not call dialog
+* maybe generate a package list from an installed system with
+  the aim to clone a development system into production
 
 * aptitude clean at the end of aptitude-robot-session with a
   flag to switch this off
+  maybe APT::Periodic::AutocleanInterval of apt is enough
