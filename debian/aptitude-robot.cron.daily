@@ -5,5 +5,9 @@ if [ "$RUN_DAILY" = "no" ]; then
     exit
 fi
 
-SESSION_SCRIPT=/usr/share/aptitude-robot/aptitude-robot-session
-[ -x $SESSION_SCRIPT ] && $SESSION_SCRIPT --random-delay
+run_if_executable () {
+    [ -x "$1" ] && "$@"
+}
+
+run_if_executable /usr/share/aptitude-robot/random-delay $MAX_RANDOM_DELAY_SECONDS
+run_if_executable /usr/share/aptitude-robot/aptitude-robot-session

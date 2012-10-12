@@ -3,7 +3,7 @@
 ##
 
 dist_sbin_SCRIPTS    = aptitude-robot
-dist_pkgdata_SCRIPTS = aptitude-robot-session
+dist_pkgdata_SCRIPTS = aptitude-robot-session random-delay
 man_MANS             = aptitude-robot.1
 
 pkgconfdir             = $(sysconfdir)/aptitude-robot

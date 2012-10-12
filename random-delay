@@ -1,0 +1,15 @@
+#!/bin/sh
+
+[ -n "$1" ] || exit
+MAX_DELAY=$1
+
+# delay execution for a random number of seconds
+# analogous to the daily cron of apt and cron-apt
+if [ "$MAX_DELAY" -gt 0 ] ; then
+    if [ -z "$RANDOM" ] ; then
+        # A fix for shells that do not have this bash feature.
+        RANDOM=$(dd if=/dev/urandom count=1 2> /dev/null | cksum | cut -c"1-5")
+    fi
+    DELAY=$(($RANDOM % $MAX_DELAY))
+    sleep $DELAY
+fi
