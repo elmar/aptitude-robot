@@ -22,7 +22,7 @@ if [ -n "$LOG_SESSION" ] ; then
     LOG_SESSION="$LOG_SESSION".$$
     touch "$LOG_SESSION"
     if [ -f "$LOG_SESSION" ]; then
-        exec 1>"$LOG_SESSION"
+        exec 1>"$LOG_SESSION" 2>&1
     fi
 fi
 
