@@ -1,7 +1,8 @@
 #!/bin/sh
 
-[ -n "$1" ] || exit
-MAX_DELAY=$1
+# convert first argument to a number
+MAX_DELAY=$(( $1 + 0 ))
+[ $MAX_DELAY -gt 0 ] || exit
 
 # delay execution for a random number of seconds
 # analogous to the daily cron of apt and cron-apt
