@@ -4,7 +4,7 @@
 # Required-Start:    $network $local_fs $remote_fs
 # Required-Stop:
 # Default-Start:     2 3 4 5
-# Default-Stop:
+# Default-Stop:      0 1 6
 # Short-Description: performs upgrades/installs/removes of software packages
 # Description:       calls aptitude full-upgrade with additional
 #                    parameters indicating software packages to be
