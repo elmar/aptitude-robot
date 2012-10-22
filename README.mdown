@@ -103,7 +103,6 @@ aptitude-robot by setting some variables.
     # (optional) mail address to send the session log to
     MAIL_TO=
 
-
 ## Running and Deployment
 
 A default installation of aptitude-robot will run `aptitude full-upgrade` each
@@ -158,6 +157,20 @@ them installed on initial deployment you can specify both actions, as follows:
 
 During the initial deployment you would run `aptitude-robot` with the
 `--force-install` option to ignore the keep action.
+
+## Related Packages
+
+If you are just interested in automatic security upgrades you should look into
+[unattended-upgrades](http://packages.debian.org/sid/unattended-upgrades).
+
+After the upgrade you may need to restart some processes.  Look into
+`checkrestart` in the
+[debian-goodies](http://packages.debian.org/sid/debian-goodies) package.  An
+example for a post-trigger script would be
+[restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services).
+See also the [wishlist bug
+#676509](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=676509) of
+debian-goodies.
 
 ## Building from Source
 
