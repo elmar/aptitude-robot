@@ -160,8 +160,10 @@ During the initial deployment you would run `aptitude-robot` with the
 
 ## Related Packages
 
-If you are just interested in automatic security upgrades you should look into
-[unattended-upgrades](http://packages.debian.org/sid/unattended-upgrades).
+If you are just interested in automatic upgrades you should look into
+[unattended-upgrades](http://packages.debian.org/unattended-upgrades),
+[cron-apt](http://packages.debian.org/cron-apt), or
+[apticron](http://packages.debian.org/apticron).
 
 After the upgrade you may need to restart some processes.  Look into
 `checkrestart` in the
@@ -193,3 +195,15 @@ You can build `aptitude-robot` from the GIT repository as follows:
 This will generate a Debian package that you can install with dpkg:
 
     sudo dpkg -i *.deb
+
+## Thanks
+
+aptitude-robot was created as a more general version of a local maintenance
+script called dphys-admin.  As such various people contributed in various
+forms.
+
+- Axel Beckert <abe@debian.org> (co-maintainer)
+- Neil Franklin <neil@franklin.ch.remove> (original author of dphys-admin)
+- Gürkan Sengün <sengun@phys.ethz.ch>
+- Claude Becker <becker@phys.ethz.ch>
+- Tomas Pospisek <tpo@sourcepole.ch>
