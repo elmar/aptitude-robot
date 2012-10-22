@@ -170,7 +170,7 @@ After the upgrade you may need to restart some processes.  Look into
 [debian-goodies](http://packages.debian.org/sid/debian-goodies) package.  An
 example for a post-trigger script would be
 [restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services).
-See also the [wishlist bug #676509](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=676509) of
+See also the [wishlist bug #676509](http://bugs.debian.org/676509) of
 debian-goodies.
 
 ## Building from Source
