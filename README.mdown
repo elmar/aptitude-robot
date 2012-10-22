@@ -198,10 +198,10 @@ This will generate a Debian package that you can install with dpkg:
 ## Thanks
 
 aptitude-robot was created as a more general version of a local maintenance
-script called dphys-admin.  As such various people contributed in various
-forms.
+script called [dphys-admin](http://nic.phys.ethz.ch/projects/dphys-admin/).
+As such various people contributed in various forms.
 
-- Axel Beckert <abe@debian.org> (co-maintainer)
+- Axel Beckert <abe@debian.org> (co-maintainer of aptitude-robot, last maintainer of dphys-admin)
 - Neil Franklin <neil@franklin.ch.remove> (original author of dphys-admin)
 - Gürkan Sengün <sengun@phys.ethz.ch>
 - Claude Becker <becker@phys.ethz.ch>
