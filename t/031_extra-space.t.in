@@ -13,7 +13,7 @@ my $aptitude_command;
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => '@abs_top_srcdir@/t/testdata/extra-space');
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'full-upgrade', 'bar-', 'foo+'],
+    ['aptitude', '-y', 'install', '~U', 'bar-', 'foo+'],
     'single file case',
 );
 

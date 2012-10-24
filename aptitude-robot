@@ -112,7 +112,7 @@ sub command {
 
         $pkg_action{$pkg} = $action;
     }
-    my @cmd = ( 'aptitude', '-y', $self->options(), 'full-upgrade' );
+    my @cmd = ( 'aptitude', '-y', $self->options(), 'install', '~U' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
     }

@@ -16,7 +16,7 @@ $aptitude_command = Aptitude::Robot::Command->new(
 );
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'full-upgrade', 'bar-', 'baz:', 'foo+', 'quux='],
+    ['aptitude', '-y', 'install', '~U', 'bar-', 'baz:', 'foo+', 'quux='],
     'with force-install + and - override : and/or ='
 );
 

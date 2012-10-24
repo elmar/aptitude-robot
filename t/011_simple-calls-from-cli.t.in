@@ -30,10 +30,10 @@ $cmd = [
 ];
 ok(
     run( $cmd, \$in, \$out, \$err ),
-    'empty config dir should give only full-upgrade'
+    'empty config dir should give only `aptitude install ~U`'
 );
 
-is( $out, "aptitude -y full-upgrade\n",
-    'command line should be "aptitude -y full-upgrade"');
+is( $out, "aptitude -y install ~U\n",
+    'command line should be `aptitude -y install ~U`');
 
 done_testing();

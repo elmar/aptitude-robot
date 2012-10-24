@@ -105,7 +105,7 @@ aptitude-robot by setting some variables.
 
 ## Running and Deployment
 
-A default installation of aptitude-robot will run `aptitude full-upgrade` each
+A default installation of aptitude-robot will run `aptitude install ~U` each
 time it is run.  Out of the box aptitude-robot will run daily and at each boot.
 You can call `aptitude-robot` manually whenever you need.  You may also call
 `/usr/share/aptitude-robot/aptitude-robot-session` which in addition deals with
