@@ -5,6 +5,9 @@ use 5.010;
 use English qw( -no_match_vars );
 
 use Test::More;
+use File::Basename;
+my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
+my $testdatadir = "$topdir/t/testdata";
 
 use IPC::Run qw( run );
 
@@ -14,9 +17,9 @@ my $err;
 my $cmd;
 my $config_dir;
 
-$config_dir = '@abs_top_srcdir@/t/testdata/triggers-empty';
+$config_dir = "$testdatadir/triggers-empty";
 $cmd = [
-    '@abs_top_srcdir@/aptitude-robot',
+    "$topdir/aptitude-robot",
     "--config-dir=$config_dir",
     '--show-cmdline',
 ];
@@ -30,9 +33,9 @@ is(
     'should only show install ~U with empty trigger dirs',
 );
 
-$config_dir = '@abs_top_srcdir@/t/testdata/triggers';
+$config_dir = "$testdatadir/triggers";
 $cmd = [
-    '@abs_top_srcdir@/aptitude-robot',
+    "$topdir/aptitude-robot",
     "--config-dir=$config_dir",
     '--show-cmdline',
 ];

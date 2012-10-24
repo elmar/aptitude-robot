@@ -5,6 +5,9 @@ use 5.010;
 use English qw( -no_match_vars );
 
 use Test::More;
+use File::Basename;
+my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
+my $testdatadir = "$topdir/t/testdata";
 
 use IPC::Run qw( run );
 
@@ -14,7 +17,7 @@ my $err;
 my $cmd;
 
 $cmd = [
-    '@abs_top_srcdir@/aptitude-robot',
+    "$topdir/aptitude-robot",
     '--config-dir=/dev/null',
     '--show-cmdline',
 ];
@@ -24,8 +27,8 @@ ok(
 );
 
 $cmd = [
-    '@abs_top_srcdir@/aptitude-robot',
-    '--config-dir=@abs_top_srcdir@/t/testdata/empty-config',
+    "$topdir/aptitude-robot",
+    "--config-dir=$testdatadir/empty-config",
     '--show-cmdline',
 ];
 ok(

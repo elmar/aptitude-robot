@@ -5,19 +5,22 @@ use 5.010;
 use English qw( -no_match_vars );
 
 use Test::More;
+use File::Basename;
+my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
+my $testdatadir = "$topdir/t/testdata";
 
-require_ok( '@abs_top_srcdir@/aptitude-robot' );
+require_ok( "$topdir/aptitude-robot" );
 
 my $aptitude_command;
 
 $aptitude_command = Aptitude::Robot::Command->new(
-    config_dir => '@abs_top_srcdir@/t/testdata/empty-config'
+    config_dir => "$testdatadir/empty-config"
 );
 is_deeply( [ $aptitude_command->pkglist_lines() ], [],
     'empty config dir should result in empty lines list' );
 
 $aptitude_command = Aptitude::Robot::Command->new(
-    config_dir => '@abs_top_srcdir@/t/testdata/single-file'
+    config_dir => "$testdatadir/single-file"
 );
 is_deeply(
     [ $aptitude_command->pkglist_lines() ],
@@ -26,7 +29,7 @@ is_deeply(
 );
 
 $aptitude_command = Aptitude::Robot::Command->new(
-    config_dir => '@abs_top_srcdir@/t/testdata/multiple-files'
+    config_dir => "$testdatadir/multiple-files"
 );
 is_deeply(
     [ $aptitude_command->pkglist_lines() ],

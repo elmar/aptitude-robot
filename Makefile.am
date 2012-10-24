@@ -16,10 +16,10 @@ dist_triggerspre_DATA  = etc/aptitude-robot/triggers.pre/README.txt
 dist_triggerspost_DATA = etc/aptitude-robot/triggers.post/README.txt
 
 CLEANFILES = $(man_MANS)
-EXTRA_DIST = t/testdata README.mdown TODO.mdown
+EXTRA_DIST = README.mdown TODO.mdown t
 
 aptitude-robot.1: aptitude-robot
 	pod2man -c 'User Commands' -r "$(VERSION)" $< $@
 
 check-local:
-	prove t
+	TOPDIR=$(abs_top_srcdir) prove -I$(abs_top_srcdir) $(abs_top_srcdir)/t
