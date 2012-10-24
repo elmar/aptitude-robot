@@ -10,3 +10,6 @@
 * aptitude clean at the end of aptitude-robot-session with a
   flag to switch this off
   maybe APT::Periodic::AutocleanInterval of apt is enough
+
+* replace session mail by a generic command that gets the
+  session log as stdin
