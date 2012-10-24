@@ -1,4 +1,4 @@
-aptitude-robot (1.1) unstable; urgency=low
+aptitude-robot (1.1-1) unstable; urgency=low
 
   * new version
   * replace `full-upgrade` with `install ~U`
@@ -7,6 +7,7 @@ aptitude-robot (1.1) unstable; urgency=low
   * mention cron-apt and apticron in README
   * added section 'Thanks' in README
   * use default rc.d levels for stop (they do nothing)
+  * lintian-overrides: no required-stop necessary in init.d
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Wed, 24 Oct 2012 16:05:26 +0200
 
