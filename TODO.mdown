@@ -11,8 +11,5 @@
   flag to switch this off
   maybe APT::Periodic::AutocleanInterval of apt is enough
 
-* replace session mail by a generic command that gets the
-  session log as stdin
-
 * option --dry-run for aptitude-robot to hand over directly
   to aptitude (real life testing)

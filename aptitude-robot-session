@@ -23,8 +23,8 @@ cleanup () {
                 cat "$LOG_SESSION" >> "$LOGFILE"
             fi
         fi
-        if [ -n "$MAIL_TO" ]; then
-            mail -s "aptitude-robot report on `hostname`" $MAIL_TO < "$LOG_SESSION"
+        if [ -x "$SESSION_REPORT_COMMAND" ]; then
+            "$SESSION_REPORT_COMMAND" "$LOG_SESSION"
         fi
         rm "$LOG_SESSION"
     fi

@@ -1,0 +1,59 @@
+#!/bin/sh
+
+REPORT_MAIL=false
+REPORT_FILE=`mktemp aptitude-run-mailreport.XXXXXXXXXX`
+REPORT_RCPT=root
+
+cat >> $REPORT_FILE << EOF
+Aptitude-Robot Report
+=====================
+EOF
+
+#
+# check for remaining upgrades
+#
+UPGRADES_FILE=`mktemp aptitude-upgrades.XXXXXXXXX`
+aptitude search '~U' > $UPGRADES_FILE
+if [ -s $UPGRADES_FILE ]; then
+    REPORT_MAIL=true
+    cat >> $REPORT_FILE << EOF
+
+Remaining Upgrades
+------------------
+Some upgrades need to be looked into manually
+
+EOF
+    cat $UPGRADES_FILE >> $REPORT_FILE
+fi
+rm $UPGRADES_FILE
+
+#
+# check for errors in log file
+#
+LOGFILE=$1
+if [ -f $LOGFILE ]; then
+    if egrep -q -i 'Err|E:' $LOGFILE ; then
+        REPORT_MAIL=true
+        cat >> $REPORT_FILE << EOF
+
+Log File Errors
+---------------
+Please investigate the errors mentioned in the log file
+
+EOF
+    cat $LOGFILE >> $REPORT_FILE
+    fi
+else
+    REPORT_MAIL=true
+    cat >> $REPORT_FILE << EOF
+
+Missing Log File
+----------------
+aptitude-robot produces no log file.  Please investigate.
+EOF
+fi
+
+if [ $REPORT_MAIL = true ]; then
+    mail -s "aptitude-robot report on $(hostname)" $REPORT_RCPT < $REPORT_FILE
+fi
+rm $REPORT_FILE
