@@ -14,11 +14,13 @@ sub main {
     use Getopt::Long qw( :config auto_help pass_through );
 
     my $help;
+    my $simulate;
     my $show_cmdline;
     my $force_install;
     my $config_dir = '/etc/aptitude-robot';
     GetOptions(
         'help'          => \$help,
+        'simulate|s'    => \$simulate,
         'show-cmdline'  => \$show_cmdline,
         'force-install' => \$force_install,
         'config-dir=s'  => \$config_dir,
@@ -27,8 +29,9 @@ sub main {
     pod2usage() if @ARGV;
 
     my $aptitude_robot = Aptitude::Robot::Command->new(
-        config_dir => $config_dir,
-        force_install => $force_install
+        config_dir    => $config_dir,
+        force_install => $force_install,
+        simulate      => $simulate,
     );
     die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
 
@@ -74,6 +77,12 @@ has( 'config_dir' => (
         required => 1,
     )
 );
+has( 'simulate' => (
+        isa      => 'Bool',
+        is       => 'rw',
+        default  => 0,
+    )
+);
 has( 'force_install' => (
         isa      => 'Bool',
         is       => 'rw',
@@ -112,7 +121,9 @@ sub command {
 
         $pkg_action{$pkg} = $action;
     }
-    my @cmd = ( 'aptitude', '-y', $self->options(), 'install', '~U' );
+    my @cmd = ( 'aptitude', '-y' );
+    push(@cmd, '-s') if $self->simulate();
+    push(@cmd, $self->options(), 'install', '~U' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
     }

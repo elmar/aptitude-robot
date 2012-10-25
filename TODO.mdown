@@ -10,6 +10,3 @@
 * aptitude clean at the end of aptitude-robot-session with a
   flag to switch this off
   maybe APT::Periodic::AutocleanInterval of apt is enough
-
-* option --dry-run for aptitude-robot to hand over directly
-  to aptitude (real life testing)
