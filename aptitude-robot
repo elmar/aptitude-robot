@@ -226,6 +226,10 @@ specify an alternate configuration directory.  Defaults to F</etc/aptitude-robot
 
 only show the command that would be executed
 
+=item B<-s>, B<--simulate>
+
+run aptitude with the B<-s> option
+
 =item B<--help>
 
 Prints this page.
