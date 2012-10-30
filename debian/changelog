@@ -1,3 +1,10 @@
+aptitude-robot (1.2.2-1) unstable; urgency=low
+
+  * make non-interactive sessions more robust
+  * mention co-author Axel in help text/man page
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Tue, 30 Oct 2012 15:39:55 +0100
+
 aptitude-robot (1.2.1-1) unstable; urgency=low
 
   * added -s|--simulate option in man page
