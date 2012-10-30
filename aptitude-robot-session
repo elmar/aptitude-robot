@@ -34,8 +34,14 @@ set -e
 
 echo "aptitude-robot started at" `date --rfc-3339=seconds`
 
+# prevent endless loops by limiting log file sizes
+MAX_LOGFILES_SIZE_BLOCKS=$(($MAX_LOGFILES_SIZE_BLOCKS + 0))  # force number
+[ $MAX_LOGFILES_SIZE_BLOCKS -gt 0 ] && ulimit -f $MAX_LOGFILES_SIZE_BLOCKS
+
 DEBCONF_FRONTEND=noninteractive
 export DEBCONF_FRONTEND
+DEBIAN_PRIORITY=low
+export DEBIAN_PRIORITY
 /usr/bin/aptitude update
 # yes "" forces the default answer to any configuration question
 nice yes "" | /usr/sbin/aptitude-robot

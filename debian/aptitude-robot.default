@@ -18,6 +18,8 @@ LOG_SESSION=/var/log/aptitude-robot.session.log
 # log file to keep the output of aptitude-robot
 # this should be kept in sync with /etc/logrotate.d/aptitude-robot
 LOGFILE=/var/log/aptitude-robot.log
+# limit the size of files written to stop endless loops
+MAX_LOGFILES_SIZE_BLOCKS=10000
 # (optional) command to process the session log
 #SESSION_REPORT_COMMAND=/usr/share/aptitude-robot/mail-log-on-error
 SESSION_REPORT_COMMAND=
