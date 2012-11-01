@@ -34,7 +34,7 @@ set -e
 
 echo "aptitude-robot started at" `date --rfc-3339=seconds`
 
-# prevent endless loops by limiting log file sizes
+# prevent infinite loops by limiting log file sizes
 MAX_LOGFILES_SIZE_BLOCKS=$(($MAX_LOGFILES_SIZE_BLOCKS + 0))  # force number
 [ $MAX_LOGFILES_SIZE_BLOCKS -gt 0 ] && ulimit -f $MAX_LOGFILES_SIZE_BLOCKS
 
