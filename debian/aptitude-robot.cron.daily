@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 [ -f /etc/default/aptitude-robot ] && . /etc/default/aptitude-robot
 
 if [ "$RUN_DAILY" = "no" ]; then
@@ -6,7 +8,11 @@ if [ "$RUN_DAILY" = "no" ]; then
 fi
 
 run_if_executable () {
-    [ -x "$1" ] && "$@"
+    if [ -x "$1" ] ; then
+        "$@"
+    else
+        :
+    fi
 }
 
 run_if_executable /usr/share/aptitude-robot/random-delay $MAX_RANDOM_DELAY_SECONDS
