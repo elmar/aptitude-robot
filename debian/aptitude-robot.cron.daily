@@ -1,7 +1,11 @@
 #!/bin/sh
 set -e
 
-[ -f /etc/default/aptitude-robot ] && . /etc/default/aptitude-robot
+if [ -f /etc/default/aptitude-robot ] ; then
+    . /etc/default/aptitude-robot
+else
+    :
+fi
 
 if [ "$RUN_DAILY" = "no" ]; then
     exit
