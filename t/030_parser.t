@@ -16,21 +16,21 @@ my $aptitude_command;
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => "$testdatadir/empty-config");
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'install', '~U'],
+    ['aptitude', '-y', 'install', '~U !~ahold'],
     'empty config dir should result in empty file list'
 );
 
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => "$testdatadir/single-file");
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'install', '~U', 'bar-', 'foo+'],
+    ['aptitude', '-y', 'install', '~U !~ahold', 'bar-', 'foo+'],
     'single file case',
 );
 
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => "$testdatadir/multiple-files");
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'install', '~U', 'bar-', 'fnord=', 'foo-', 'quux:'],
+    ['aptitude', '-y', 'install', '~U !~ahold', 'bar-', 'fnord=', 'foo-', 'quux:'],
     'multiple file case',
 );
 done_testing();

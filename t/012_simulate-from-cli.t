@@ -27,8 +27,8 @@ ok(
     'simulate switch'
 );
 
-is( $out, "'aptitude' '-y' '-s' 'install' '~U'\n",
-    'command line with --simulate should be `aptitude -y -s install ~U`');
+is( $out, "'aptitude' '-y' '-s' 'install' '~U !~ahold'\n",
+    'command line with --simulate should be `aptitude -y -s install ~U !~ahold`');
 
 $cmd = [
     "$topdir/aptitude-robot",
@@ -41,7 +41,7 @@ ok(
     'simulate switch short option'
 );
 
-is( $out, "'aptitude' '-y' '-s' 'install' '~U'\n",
-    'command line with -s should be `aptitude -y -s install ~U`');
+is( $out, "'aptitude' '-y' '-s' 'install' '~U !~ahold'\n",
+    'command line with -s should be `aptitude -y -s install ~U !~ahold`');
 
 done_testing();

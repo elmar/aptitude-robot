@@ -25,7 +25,7 @@ ok( $aptitude_command = Aptitude::Robot::Command->new(
 is( $aptitude_command->force_install(), 1, 'force_install parameter should be set' );
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'install', '~U'],
+    ['aptitude', '-y', 'install', '~U !~ahold'],
     'even with --force-install the empty config dir should result in empty file list'
 );
 

@@ -16,7 +16,7 @@ my $aptitude_command;
 $aptitude_command = Aptitude::Robot::Command->new(config_dir => "$testdatadir/comments");
 is_deeply(
     [ $aptitude_command->command() ],
-    ['aptitude', '-y', 'install', '~U', 'bar-', 'foo+'],
+    ['aptitude', '-y', 'install', '~U !~ahold', 'bar-', 'foo+'],
     'single file case',
 );
 
