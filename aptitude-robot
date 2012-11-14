@@ -37,17 +37,20 @@ sub main {
 
     _run_triggers("$config_dir/triggers.pre", $show_cmdline);
 
-    my @command = ();
-    push @command, 'echo' if $show_cmdline;
-    push @command, $aptitude_robot->command();
-    system(@command);
-    if ($CHILD_ERROR == -1) {
-        die "aptitude failed to execute: $OS_ERROR\n";
+    my @command = $aptitude_robot->command();
+    if ($show_cmdline) {
+        say "'" . join("' '", @command) . "'";
     }
-    elsif ($CHILD_ERROR) {
-        my $exit_code = ($CHILD_ERROR >> 8);
-        printf STDERR "aptitude exited with value %d\n", $exit_code;
-        exit $exit_code;
+    else {
+        system(@command);
+        if ($CHILD_ERROR == -1) {
+            die "aptitude failed to execute: $OS_ERROR\n";
+        }
+        elsif ($CHILD_ERROR) {
+            my $exit_code = ($CHILD_ERROR >> 8);
+            printf STDERR "aptitude exited with value %d\n", $exit_code;
+            exit $exit_code;
+        }
     }
 
     _run_triggers("$config_dir/triggers.post", $show_cmdline);

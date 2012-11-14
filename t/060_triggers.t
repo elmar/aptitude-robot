@@ -29,7 +29,7 @@ ok(
 );
 is(
     $out,
-    "aptitude -y install ~U\n",
+    "'aptitude' '-y' 'install' '~U'\n",
     'should only show install ~U with empty trigger dirs',
 );
 
@@ -46,7 +46,7 @@ ok(
 is(
     $out,
     "$config_dir/triggers.pre/10_foo\n"
-    . "aptitude -y install ~U\n"
+    . "'aptitude' '-y' 'install' '~U'\n"
     . "$config_dir/triggers.post/10_bar\n",
     'should only show trigger commands',
 );

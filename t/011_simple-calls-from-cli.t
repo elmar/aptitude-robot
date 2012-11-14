@@ -36,7 +36,7 @@ ok(
     'empty config dir should give only `aptitude install ~U`'
 );
 
-is( $out, "aptitude -y install ~U\n",
+is( $out, "'aptitude' '-y' 'install' '~U'\n",
     'command line should be `aptitude -y install ~U`');
 
 done_testing();

@@ -27,7 +27,7 @@ ok(
     'simulate switch'
 );
 
-is( $out, "aptitude -y -s install ~U\n",
+is( $out, "'aptitude' '-y' '-s' 'install' '~U'\n",
     'command line with --simulate should be `aptitude -y -s install ~U`');
 
 $cmd = [
@@ -41,7 +41,7 @@ ok(
     'simulate switch short option'
 );
 
-is( $out, "aptitude -y -s install ~U\n",
+is( $out, "'aptitude' '-y' '-s' 'install' '~U'\n",
     'command line with -s should be `aptitude -y -s install ~U`');
 
 done_testing();
