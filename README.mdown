@@ -105,11 +105,12 @@ aptitude-robot by setting some variables.
 
 ## Running and Deployment
 
-A default installation of aptitude-robot will run `aptitude install ~U` each
-time it is run.  Out of the box aptitude-robot will run daily and at each boot.
-You can call `aptitude-robot` manually whenever you need.  You may also call
-`/usr/share/aptitude-robot/aptitude-robot-session` which in addition deals with
-writing to the log file and performing the installations non-interactively.
+A default installation of aptitude-robot will run `aptitude full-upgrade '~U
+!~ahold'` each time it is run.  Out of the box aptitude-robot will run daily
+and at each boot.  You can call `aptitude-robot` manually whenever you need.
+You may also call `/usr/share/aptitude-robot/aptitude-robot-session` which in
+addition deals with writing to the log file and performing the installations
+non-interactively.
 
 If you want to run `aptitude-robot` periodically more often than daily you can
 write your own crontab entry, e.g., in `/etc/cron.d/aptitude-robot`.  In your

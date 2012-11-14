@@ -28,7 +28,7 @@ is_deeply(
 );
 is_deeply(
     [ $aptitude_command->command() ],
-    [qw[ aptitude -y --download-only --without-recommends install ], '~U !~ahold'],
+    [qw[ aptitude -y --download-only --without-recommends full-upgrade ], '~U !~ahold'],
     'command with options'
 );
 done_testing();

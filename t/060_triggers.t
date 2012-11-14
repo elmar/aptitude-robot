@@ -29,8 +29,8 @@ ok(
 );
 is(
     $out,
-    "'aptitude' '-y' 'install' '~U !~ahold'\n",
-    'should only show install ~U !~ahold with empty trigger dirs',
+    "'aptitude' '-y' 'full-upgrade' '~U !~ahold'\n",
+    'should only show full-upgrade ~U !~ahold with empty trigger dirs',
 );
 
 $config_dir = "$testdatadir/triggers";
@@ -46,7 +46,7 @@ ok(
 is(
     $out,
     "$config_dir/triggers.pre/10_foo\n"
-    . "'aptitude' '-y' 'install' '~U !~ahold'\n"
+    . "'aptitude' '-y' 'full-upgrade' '~U !~ahold'\n"
     . "$config_dir/triggers.post/10_bar\n",
     'should only show trigger commands',
 );

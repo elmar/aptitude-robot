@@ -29,7 +29,7 @@ ok(
 );
 is(
     $out,
-    "'aptitude' '-y' 'install' '~U !~ahold' 'bar-' 'baz:' 'foo+' 'quux='\n",
+    "'aptitude' '-y' 'full-upgrade' '~U !~ahold' 'bar-' 'baz:' 'foo+' 'quux='\n",
     'command line should not show hold and keep entries',
 );
 

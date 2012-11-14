@@ -126,7 +126,7 @@ sub command {
     }
     my @cmd = ( 'aptitude', '-y' );
     push(@cmd, '-s') if $self->simulate();
-    push(@cmd, $self->options(), 'install', '~U !~ahold' );
+    push(@cmd, $self->options(), 'full-upgrade', '~U !~ahold' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
     }
