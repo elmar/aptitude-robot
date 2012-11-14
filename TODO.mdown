@@ -4,6 +4,15 @@
   (this will come once we have more experience with different
   scenarios)
 
+* check for allowed actions and report errors for bad ones
+
+* check for valid package names (but do not look up whether
+  the package exists; that is aptitudes task and we do not
+  want to duplicate it if only for performance reasons)
+
+* allow package+ and package&M (or &m) to be both specified
+  for the same package (currently the last one wins)
+
 * maybe generate a package list from an installed system with
   the aim to clone a development system into production
 
