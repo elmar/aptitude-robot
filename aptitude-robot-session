@@ -6,23 +6,29 @@ if [ ! -x /usr/sbin/aptitude-robot ]; then
 fi
 
 if [ -n "$LOG_SESSION" ] ; then
+    # the session log is made unique with a PID ending
+    # so as to not overwrite an old log of a crashed aptitude-robot process
     LOG_SESSION="$LOG_SESSION".$$
     touch "$LOG_SESSION"
+    # only redirect STDOUT+STDERR if session log is available
     if [ -f "$LOG_SESSION" ]; then
         exec 1>"$LOG_SESSION" 2>&1
     fi
 fi
 
 cleanup () {
+    # finish session log
     echo "aptitude-robot ended at" `date --rfc-3339=seconds`
     echo ""
     if [ -n "$LOG_SESSION" -a -f "$LOG_SESSION" ]; then
+        # append session log to permanent log file
         if [ -n "$LOGFILE" ]; then
             touch "$LOGFILE"   # create the log file if necessary
             if [ -f "$LOGFILE" ]; then
                 cat "$LOG_SESSION" >> "$LOGFILE"
             fi
         fi
+        # optionally process session log for reporting
         if [ -x "$SESSION_REPORT_COMMAND" ]; then
             "$SESSION_REPORT_COMMAND" "$LOG_SESSION"
         fi
@@ -38,6 +44,9 @@ echo "aptitude-robot started at" `date --rfc-3339=seconds`
 MAX_LOGFILES_SIZE_BLOCKS=$(($MAX_LOGFILES_SIZE_BLOCKS + 0))  # force number
 [ $MAX_LOGFILES_SIZE_BLOCKS -gt 0 ] && ulimit -f $MAX_LOGFILES_SIZE_BLOCKS
 
+# called from a script aptitude should as as few questions as possible
+# and just take the defaults.  We expect the configuration management
+# to have provided the necessary config options beforehand
 DEBIAN_FRONTEND=noninteractive
 export DEBIAN_FRONTEND
 DEBIAN_PRIORITY=low
