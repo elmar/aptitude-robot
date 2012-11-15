@@ -15,12 +15,14 @@ sub main {
 
     my $help;
     my $simulate;
+    my $quiet;
     my $show_cmdline;
     my $force_install;
     my $config_dir = '/etc/aptitude-robot';
     GetOptions(
         'help'          => \$help,
         'simulate|s'    => \$simulate,
+        'quiet|q'       => \$quiet,
         'show-cmdline'  => \$show_cmdline,
         'force-install' => \$force_install,
         'config-dir=s'  => \$config_dir,
@@ -32,6 +34,7 @@ sub main {
         config_dir    => $config_dir,
         force_install => $force_install,
         simulate      => $simulate,
+        quiet         => $quiet,
     );
     die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
 
@@ -86,6 +89,12 @@ has( 'simulate' => (
         default  => 0,
     )
 );
+has( 'quiet' => (
+        isa      => 'Bool',
+        is       => 'rw',
+        default  => 0,
+    )
+);
 has( 'force_install' => (
         isa      => 'Bool',
         is       => 'rw',
@@ -126,6 +135,7 @@ sub command {
     }
     my @cmd = ( 'aptitude', '-y' );
     push(@cmd, '-s') if $self->simulate();
+    push(@cmd, '-q') if $self->quiet();
     push(@cmd, $self->options(), 'full-upgrade', '~U !~ahold' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
@@ -232,6 +242,12 @@ only show the command that would be executed
 =item B<-s>, B<--simulate>
 
 run aptitude with the B<-s> option
+
+=item B<-q>, B<--quiet>
+
+run aptitude with the B<-q> option.  This is helpful for log files as mentioned
+in L<aptitude(8)>.  The B<-q> option does not suppress all output.  Different
+from L<aptitude(8)> aptitude-robot only supports a single level of B<-q>.
 
 =item B<--help>
 
