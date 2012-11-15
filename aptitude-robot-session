@@ -51,6 +51,9 @@ DEBIAN_FRONTEND=noninteractive
 export DEBIAN_FRONTEND
 DEBIAN_PRIORITY=low
 export DEBIAN_PRIORITY
-/usr/bin/aptitude update
+
+# -q (for --quiet) suppresses percentage reporting for downloads
+# but leaves most regular output to be collected in the log file
+/usr/bin/aptitude -q update
 # yes "" forces the default answer to any configuration question
-nice yes "" | /usr/sbin/aptitude-robot
+nice yes "" | /usr/sbin/aptitude-robot -q
