@@ -56,4 +56,6 @@ export DEBIAN_PRIORITY
 # but leaves most regular output to be collected in the log file
 /usr/bin/aptitude -q update
 # yes "" forces the default answer to any configuration question
-nice yes "" | /usr/sbin/aptitude-robot -q
+/usr/sbin/aptitude-robot -q \
+    -o DPkg::Options::=--force-confdef \
+    -o DPkg::Options::=--force-confold </dev/null

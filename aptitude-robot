@@ -11,30 +11,25 @@ main() unless caller(0);
 
 sub main {
     use Pod::Usage;
-    use Getopt::Long qw( :config auto_help pass_through );
+    use Getopt::Long qw( :config pass_through );
 
     my $help;
-    my $simulate;
-    my $quiet;
+    my $pass_through_options;
     my $show_cmdline;
     my $force_install;
     my $config_dir = '/etc/aptitude-robot';
     GetOptions(
         'help'          => \$help,
-        'simulate|s'    => \$simulate,
-        'quiet|q'       => \$quiet,
         'show-cmdline'  => \$show_cmdline,
         'force-install' => \$force_install,
         'config-dir=s'  => \$config_dir,
     );
     pod2usage('-verbose' => 2, '-exit_status' => 0) if $help;
-    pod2usage() if @ARGV;
 
     my $aptitude_robot = Aptitude::Robot::Command->new(
-        config_dir    => $config_dir,
-        force_install => $force_install,
-        simulate      => $simulate,
-        quiet         => $quiet,
+        config_dir           => $config_dir,
+        force_install        => $force_install,
+        pass_through_options => \@ARGV,
     );
     die $aptitude_robot->error_msg() . "\n" if $aptitude_robot->error_msg();
 
@@ -83,16 +78,10 @@ has( 'config_dir' => (
         required => 1,
     )
 );
-has( 'simulate' => (
-        isa      => 'Bool',
-        is       => 'rw',
-        default  => 0,
-    )
-);
-has( 'quiet' => (
-        isa      => 'Bool',
-        is       => 'rw',
-        default  => 0,
+has( 'pass_through_options' => (
+        isa      => 'ArrayRef[Str]',
+        is       => 'ro',
+        required => 0,
     )
 );
 has( 'force_install' => (
@@ -134,8 +123,7 @@ sub command {
         $pkg_action{$pkg} = $action;
     }
     my @cmd = ( 'aptitude', '-y' );
-    push(@cmd, '-s') if $self->simulate();
-    push(@cmd, '-q') if $self->quiet();
+    push(@cmd, @{$self->pass_through_options()}) if $self->pass_through_options();
     push(@cmd, $self->options(), 'full-upgrade', '~U !~ahold' );
     for my $pkg (sort keys %pkg_action) {
         push(@cmd, $pkg . $pkg_action{$pkg});
@@ -239,19 +227,15 @@ specify an alternate configuration directory.  Defaults to F</etc/aptitude-robot
 
 only show the command that would be executed
 
-=item B<-s>, B<--simulate>
-
-run aptitude with the B<-s> option
-
-=item B<-q>, B<--quiet>
-
-run aptitude with the B<-q> option.  This is helpful for log files as mentioned
-in L<aptitude(8)>.  The B<-q> option does not suppress all output.  Different
-from L<aptitude(8)> aptitude-robot only supports a single level of B<-q>.
-
 =item B<--help>
 
 Prints this page.
+
+=item I<other options>
+
+any option not recognized by aptitude-robot itself is passed through to
+aptitude.  The options B<-q> and B<-s> are likely to be used occasionally.  See
+L<aptitude(8)> for details.
 
 =back
 
