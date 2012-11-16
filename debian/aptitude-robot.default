@@ -22,4 +22,5 @@ LOGFILE=/var/log/aptitude-robot.log
 MAX_LOGFILES_SIZE_BLOCKS=1000000
 # (optional) command to process the session log
 #SESSION_REPORT_COMMAND=/usr/share/aptitude-robot/mail-log-on-error
+#SESSION_REPORT_COMMAND=/usr/share/aptitude-robot/xymon-report
 SESSION_REPORT_COMMAND=

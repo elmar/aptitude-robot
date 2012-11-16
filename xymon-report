@@ -1,0 +1,69 @@
+#!/bin/sh
+
+COLUMN=upd
+COLOR=green
+
+MSG="
+Aptitude-Robot Report
+=====================
+
+"
+
+#
+# check for remaining upgrades
+#
+UPGRADES_FILE=`mktemp aptitude-upgrades.XXXXXXXXX`
+aptitude search '~U' > $UPGRADES_FILE
+if [ -s $UPGRADES_FILE ]; then
+    COLOR=red
+    MSG="${MSG}
+Remaining Upgrades:
+
+`cat $UPGRADES_FILE`
+
+"
+fi
+rm $UPGRADES_FILE
+
+#
+# check for errors in log file
+#
+LOGFILE=$1
+if [ -f $LOGFILE ]; then
+    if egrep -q -i 'Warn|W:' $LOGFILE ; then
+        COLOR=yellow
+    fi
+    if egrep -q -i 'Err|E:' $LOGFILE ; then
+        COLOR=red
+    fi
+
+    MSG="${MSG}
+`cat $LOGFILE`
+
+"
+else
+    COLOR=red
+    MSG="${MSG}
+
+log file missing -- please investigate
+
+"
+fi
+
+BB=/bin/false
+if [ -x /usr/lib/hobbit/client/bin/bb ]; then
+    BB=/usr/lib/hobbit/client/bin/bb
+fi
+if [ -x /usr/lib/xymon/client/bin/xymon ]; then
+    BB=/usr/lib/xymon/client/bin/xymon
+fi
+
+if [ -f /etc/default/hobbit-client ]; then
+    . /etc/default/hobbit-client
+    $BB $HOBBITSERVERS "status+36h $CLIENTHOSTNAME.$COLUMN $COLOR `date`
+
+${MSG}
+"
+fi
+
+exit 0
