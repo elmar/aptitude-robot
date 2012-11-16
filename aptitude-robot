@@ -278,6 +278,10 @@ Optionally the configuration directory may contain two directories
 F<triggers.pre> and F<triggers.post> with scripts that are executed by
 L<run-parts(8)> before and after aptitude respectively.
 
+=head1 SEE ALSO
+
+L<aptitude(8)>, L<aptitude-robot-session(8)>
+
 =head1 AUTHORS
 
 Elmar S. Heeb <elmar@heebs.ch> and Axel Beckert <abe@debian.org>

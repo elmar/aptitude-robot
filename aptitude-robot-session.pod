@@ -53,6 +53,10 @@ use it for apt-get clean.
 The non-interactive nature of aptitude-robot-session may trigger the condition
 reported in https://bugs.launchpad.net/ubuntu/+source/aptitude/+bug/257279
 
+=head1 SEE ALSO
+
+L<aptitude-robot(8)>, L<aptitude(8)>
+
 =head1 AUTHORS
 
 Elmar S. Heeb <elmar@heebs.ch> and Axel Beckert <abe@debian.org>
