@@ -1,0 +1,55 @@
+=head1 NAME
+
+aptitude-robot-session - call aptitude-robot non-interactively
+
+=head1 SYNOPSIS
+
+aptitude-robot-session
+
+=head1 DESCRIPTION
+
+aptitude-robot-session is a helper script meant to be run from cron or init scripts.  It will call aptitude-robot with some options suitable for non-interactive use.  It will also redirect all output (STDERR and STDOUT) to LOGFILE defined in C</etc/default/aptitude-robot>.
+
+=head1 CONFIGURATION
+
+There are a few configuration options that can be defined in C</etc/default/aptitude-robot>.
+
+=over
+
+=item LOGFILE
+
+the name of the file where all the output of aptitude-robot is collected.
+Defaults to C</var/log/aptitude-robot.log>
+
+=item LOG_SESSION
+
+the name of the file where the session log is accumulated.
+aptitude-robot-session will append its PID to this file in order not to
+overwrite a log file left over from a crashed earlier invocation.  If
+aptitude-robot-session finishes properly it will append the session log to
+LOGFILE and delete the session log.
+
+=item SESSION_REPORT_COMMAND
+
+optional command invoked with the session log as the only argument at the end
+of an aptitude-robot-session run.  This can be used to file reports to
+monitoring systems or support mail addresses.
+
+=item MAX_LOGFILES_SIZE_BLOCKS
+
+file size limit in blocks for the session log.  This prevents endless loops if
+a package installation continues to ask the same question for which no terminal
+is available to provide an answer.
+
+=back
+
+=head1 BUGS
+
+The non-interactive nature of aptitude-robot-session may trigger the condition
+reported in https://bugs.launchpad.net/ubuntu/+source/aptitude/+bug/257279
+
+=head1 AUTHORS
+
+Elmar S. Heeb <elmar@heebs.ch> and Axel Beckert <abe@debian.org>
+
+=cut

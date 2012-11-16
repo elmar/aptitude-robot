@@ -3,11 +3,11 @@
 ##
 
 dist_sbin_SCRIPTS    = aptitude-robot
-dist_pkgdata_SCRIPTS = aptitude-robot-session
-dist_pkgdata_SCRIPTS += random-delay
+dist_sbin_SCRIPTS    += aptitude-robot-session
+dist_pkgdata_SCRIPTS = random-delay
 dist_pkgdata_SCRIPTS += mail-log-on-error
 dist_pkgdata_SCRIPTS += xymon-report
-man_MANS             = aptitude-robot.1
+man_MANS             = aptitude-robot.8 aptitude-robot-session.8
 
 pkgconfdir             = $(sysconfdir)/aptitude-robot
 pkglistdir             = $(pkgconfdir)/pkglist.d
@@ -21,8 +21,11 @@ dist_triggerspost_DATA = etc/aptitude-robot/triggers.post/README.txt
 CLEANFILES = $(man_MANS)
 EXTRA_DIST = README.mdown TODO.mdown build-all t
 
-aptitude-robot.1: aptitude-robot
-	pod2man -c 'User Commands' -r "$(VERSION)" $< $@
+aptitude-robot.8: aptitude-robot
+	pod2man -s 8 -c 'User Commands' -r "$(VERSION)" $< $@
+
+aptitude-robot-session.8: aptitude-robot-session.pod
+	pod2man -s 8 -c 'User Commands' -r "$(VERSION)" $< $@
 
 check-local:
 	TOPDIR=$(abs_top_srcdir) prove -I$(abs_top_srcdir) $(abs_top_srcdir)/t

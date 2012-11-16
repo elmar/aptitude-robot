@@ -17,7 +17,7 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC=aptitude-robot
 NAME=aptitude-robot
-SCRIPT=/usr/share/aptitude-robot/aptitude-robot-session
+SCRIPT=/usr/sbin/aptitude-robot-session
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Exit if the package is not installed

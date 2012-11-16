@@ -20,4 +20,4 @@ run_if_executable () {
 }
 
 run_if_executable /usr/share/aptitude-robot/random-delay $MAX_RANDOM_DELAY_SECONDS
-run_if_executable /usr/share/aptitude-robot/aptitude-robot-session
+run_if_executable /usr/sbin/aptitude-robot-session
