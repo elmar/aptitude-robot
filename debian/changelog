@@ -1,3 +1,10 @@
+aptitude-robot (1.2.5-1) unstable; urgency=low
+
+  * use -q (--quiet) with non-interactive aptitude
+  * added xymon-report script as example
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Thu, 15 Nov 2012 10:32:09 +0100
+
 aptitude-robot (1.2.4-1) unstable; urgency=low
 
   * honour hold state for upgradable packages
