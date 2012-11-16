@@ -206,3 +206,4 @@ to discussions.
 - Gürkan Sengün <sengun@phys.ethz.ch>
 - Claude Becker <becker@phys.ethz.ch>
 - Tomas Pospisek <tpo@sourcepole.ch>
+- Daniel Hartwig <mandyke@gmail.com>
