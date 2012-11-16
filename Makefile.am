@@ -20,6 +20,7 @@ dist_triggerspost_DATA = etc/aptitude-robot/triggers.post/README.txt
 
 CLEANFILES = $(man_MANS)
 EXTRA_DIST = README.mdown TODO.mdown build-all t
+EXTRA_DIST += aptitude-robot-session.pod
 
 aptitude-robot.8: aptitude-robot
 	pod2man -s 8 -c 'User Commands' -r "$(VERSION)" $< $@
