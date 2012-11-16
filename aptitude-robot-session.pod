@@ -41,6 +41,11 @@ file size limit in blocks for the session log.  This prevents endless loops if
 a package installation continues to ask the same question for which no terminal
 is available to provide an answer.
 
+=item POST_SESSION_HOOK
+
+a command that is run at the end of a successful aptitude-robot-session.  E.g.,
+use it for apt-get clean.
+
 =back
 
 =head1 BUGS
