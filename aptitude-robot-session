@@ -44,7 +44,7 @@ echo "aptitude-robot started at" `date --rfc-3339=seconds`
 MAX_LOGFILES_SIZE_BLOCKS=$(($MAX_LOGFILES_SIZE_BLOCKS + 0))  # force number
 [ $MAX_LOGFILES_SIZE_BLOCKS -gt 0 ] && ulimit -f $MAX_LOGFILES_SIZE_BLOCKS
 
-# called from a script aptitude should as as few questions as possible
+# called from a script aptitude should ask as few questions as possible
 # and just take the defaults.  We expect the configuration management
 # to have provided the necessary config options beforehand
 DEBIAN_FRONTEND=noninteractive
