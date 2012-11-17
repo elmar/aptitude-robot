@@ -1,3 +1,10 @@
+aptitude-robot (1.2.7-1) UNRELEASED; urgency=low
+
+  * added SEE ALSO section to man pages
+  * signal success on update with /var/lib/apt/update-success
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 16 Nov 2012 17:33:45 +0100
+
 aptitude-robot (1.2.6-1) unstable; urgency=low
 
   * pass arbitrary options through to aptitude
