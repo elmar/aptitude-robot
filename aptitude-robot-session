@@ -54,7 +54,7 @@ export DEBIAN_PRIORITY
 
 # -q (for --quiet) suppresses percentage reporting for downloads
 # but leaves most regular output to be collected in the log file
-/usr/bin/aptitude -q update && touch /var/lib/apt/update-success
+/usr/bin/aptitude -q update && touch /var/lib/apt/update_success
 
 /usr/sbin/aptitude-robot -q \
     -o DPkg::Options::=--force-confdef \
