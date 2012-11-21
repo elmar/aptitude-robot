@@ -30,10 +30,10 @@ rm $UPGRADES_FILE
 #
 LOGFILE=$1
 if [ -f $LOGFILE ]; then
-    if egrep -q -i 'Warn|W:' $LOGFILE >/dev/null 2>/dev/null ; then
+    if egrep -q -i '\bWarn|\bW:' $LOGFILE >/dev/null 2>/dev/null ; then
         COLOR=yellow
     fi
-    if egrep -q -i 'Err|E:' $LOGFILE  >/dev/null 2>/dev/null; then
+    if egrep -q -i '\bError\b|\bErr:|\bE:' $LOGFILE  >/dev/null 2>/dev/null; then
         COLOR=red
     fi
 

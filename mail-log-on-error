@@ -32,7 +32,7 @@ rm $UPGRADES_FILE
 #
 LOGFILE=$1
 if [ -f $LOGFILE ]; then
-    if egrep -q -i 'Err|E:' $LOGFILE ; then
+    if egrep -q -i '\bError\b|\bErr|\bE:' $LOGFILE ; then
         REPORT_MAIL=true
         cat >> $REPORT_FILE << EOF
 
