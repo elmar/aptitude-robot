@@ -36,6 +36,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 case "$1" in
   start)
     [ "$RUN_ON_BOOT" = "no" ] && exit 0
+    sleep 5  # wait for network to fully come up (Required-Start: $network seems not to be enough)
     [ "$VERBOSE" != no ] && log_daemon_msg "Running $DESC " "$NAME"
     if fuser /var/lib/dpkg/lock > /dev/null 2> /dev/null ; then
         if [ "$VERBOSE" != no ]; then
