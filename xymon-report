@@ -13,7 +13,7 @@ Aptitude-Robot Report
 # check for remaining upgrades
 #
 UPGRADES_FILE=`mktemp aptitude-upgrades.XXXXXXXXX`
-aptitude search '~U' > $UPGRADES_FILE
+aptitude search '~U !~ahold' > $UPGRADES_FILE
 if [ -s $UPGRADES_FILE ]; then
     COLOR=red
     MSG="${MSG}
