@@ -1,3 +1,9 @@
+aptitude-robot (1.2.11-1) unstable; urgency=low
+
+  * do not report packages on hold in mail
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Thu, 31 Jan 2013 16:55:11 +0100
+
 aptitude-robot (1.2.10-2) unstable; urgency=low
 
   * clean up of Depends and Build-Depends
