@@ -1,5 +1,5 @@
 # Defaults for aptitude-robot initscript
-# sourced by /etc/init.d/aptitude-robot
+# sourced by /etc/init.d/aptitude-robot and /usr/sbin/aptitude-robot-session
 # installed at /etc/default/aptitude-robot by the maintainer scripts
 
 #
