@@ -7,6 +7,8 @@ aptitude-robot (1.2.11-1) unstable; urgency=low
   * Update lintian override for init.d-script-missing-dependency-on-… to
     please newer lintian versions.
   * Add lintian override for init.d-script-does-not-implement-optional-option
+  * Use dh-autoreconf to (re)create Makefile to be able to build straight
+    from git repo, too.
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Thu, 31 Jan 2013 16:55:11 +0100
 
