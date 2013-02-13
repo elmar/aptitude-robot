@@ -1,1 +1,2 @@
 aptitude-robot: init.d-script-missing-dependency-on-remote_fs etc/init.d/aptitude-robot: required-stop
+aptitude-robot: init.d-script-does-not-implement-optional-option etc/init.d/aptitude-robot status
