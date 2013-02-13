@@ -23,3 +23,5 @@
 * in a managed environment it may make sense to purge all
   packages that have only been removed (so as not to leave
   cruft around)
+
+* Option --help for aptitude-robot-session
