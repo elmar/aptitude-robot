@@ -1,5 +1,7 @@
 aptitude-robot (1.2.11-1) unstable; urgency=low
 
+  Upload to Debian (Closes: #690157)
+
   [ Elmar S. Heeb ]
   * do not report packages on hold in mail
 
@@ -10,7 +12,7 @@ aptitude-robot (1.2.11-1) unstable; urgency=low
   * Use dh-autoreconf to (re)create Makefile to be able to build straight
     from git repo, too.
 
- -- Elmar S. Heeb <elmar@heebs.ch>  Thu, 31 Jan 2013 16:55:11 +0100
+ -- Elmar S. Heeb <elmar@heebs.ch>  Wed, 13 Feb 2013 15:05:54 +0100
 
 aptitude-robot (1.2.10-2) unstable; urgency=low
 
@@ -120,6 +122,6 @@ aptitude-robot (1.0.1-1) unstable; urgency=low
 
 aptitude-robot (1.0-1) unstable; urgency=low
 
-  * Initial release (Closes: #690157)
+  * Initial release
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 05 Oct 2012 09:22:10 -0400
