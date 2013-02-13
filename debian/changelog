@@ -1,6 +1,11 @@
 aptitude-robot (1.2.11-1) unstable; urgency=low
 
+  [ Elmar S. Heeb ]
   * do not report packages on hold in mail
+
+  [ Axel Beckert ]
+  * Update lintian override for init.d-script-missing-dependency-on-… to
+    please newer lintian versions.
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Thu, 31 Jan 2013 16:55:11 +0100
 
