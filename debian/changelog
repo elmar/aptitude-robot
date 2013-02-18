@@ -1,8 +1,12 @@
-aptitude-robot (1.2.12-1) UNRELEASED; urgency=low
+aptitude-robot (1.2.12-1) unstable; urgency=low
 
+  [ Axel Beckert ]
   * xymon-report: Support for Xymon >= 4.3.0 and multiple Xymon servers.
 
- -- Axel Beckert <abe@debian.org>  Wed, 13 Feb 2013 16:48:22 +0100
+  [ Elmar S. Heeb ]
+  * use stdin for xymon/hobbit message (allows larger messages)
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 18 Feb 2013 17:14:37 +0100
 
 aptitude-robot (1.2.11-1) unstable; urgency=low
 
