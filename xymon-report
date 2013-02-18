@@ -66,10 +66,11 @@ if [ -f /etc/default/xymon-client ]; then
 fi
 
 for server in $HOBBITSERVERS $XYMONSERVERS; do
-    $BB $server "status+36h $CLIENTHOSTNAME.$COLUMN $COLOR `date`
+    $BB $server "@" << EOF
+status+36h $CLIENTHOSTNAME.$COLUMN $COLOR `date`
 
 ${MSG}
-"
+EOF
 done
 
 exit 0
