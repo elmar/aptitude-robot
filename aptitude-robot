@@ -122,7 +122,7 @@ sub command {
 
         $pkg_action{$pkg} = $action;
     }
-    my @cmd = ( 'aptitude', '-y' );
+    my @cmd = ( 'aptitude' );
     push(@cmd, @{$self->pass_through_options()}) if $self->pass_through_options();
     push(@cmd, $self->options(), 'full-upgrade', '~U !~ahold' );
     for my $pkg (sort keys %pkg_action) {

@@ -56,7 +56,7 @@ export DEBIAN_PRIORITY
 # but leaves most regular output to be collected in the log file
 /usr/bin/aptitude -q update && touch /var/lib/apt/update_success
 
-/usr/sbin/aptitude-robot -q \
+/usr/sbin/aptitude-robot -y -q \
     -o DPkg::Options::=--force-confdef \
     -o DPkg::Options::=--force-confold </dev/null
 

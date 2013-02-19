@@ -27,8 +27,8 @@ $aptitude_command = Aptitude::Robot::Command->new(
 );
 is( ref $aptitude_command, 'Aptitude::Robot::Command',
     'generate new object');
-is_deeply( [ $aptitude_command->command() ], ['aptitude', '-y', 'full-upgrade' ,'~U !~ahold'],
-    'empty config dir should result in `aptitude -y full-upgrade ~U !~ahold`' );
+is_deeply( [ $aptitude_command->command() ], ['aptitude', 'full-upgrade' ,'~U !~ahold'],
+    'empty config dir should result in `aptitude full-upgrade ~U !~ahold`' );
 is( $aptitude_command->error_msg(), '', 'no error reported' );
 
 done_testing();

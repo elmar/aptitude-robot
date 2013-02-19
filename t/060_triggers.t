@@ -29,7 +29,7 @@ ok(
 );
 is(
     $out,
-    "'aptitude' '-y' 'full-upgrade' '~U !~ahold'\n",
+    "'aptitude' 'full-upgrade' '~U !~ahold'\n",
     'should only show full-upgrade ~U !~ahold with empty trigger dirs',
 );
 
@@ -46,7 +46,7 @@ ok(
 is(
     $out,
     "$config_dir/triggers.pre/10_foo\n"
-    . "'aptitude' '-y' 'full-upgrade' '~U !~ahold'\n"
+    . "'aptitude' 'full-upgrade' '~U !~ahold'\n"
     . "$config_dir/triggers.post/10_bar\n",
     'should only show trigger commands',
 );

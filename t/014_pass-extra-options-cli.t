@@ -27,7 +27,7 @@ ok(
     'simulate switch'
 );
 
-is( $out, "'aptitude' '-y' '--foobar' 'full-upgrade' '~U !~ahold'\n",
+is( $out, "'aptitude' '--foobar' 'full-upgrade' '~U !~ahold'\n",
     'command line should pass through arbitrary extra options');
 
 done_testing();
