@@ -1,2 +1,2 @@
 version=3
-http://githubredir.debian.net/github/elmar/aptitude-robot/ ([^-]*).tar.gz
+https://github.com/elmar/aptitude-robot/tags .*/([\d\.]*)\.(?:tgz|tar\.(?:gz|bz2|xz)|zip)

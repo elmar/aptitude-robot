@@ -10,6 +10,8 @@ aptitude-robot (1.2.12-1) unstable; urgency=low
 
   [ Axel Beckert ]
   * xymon-report: Support for Xymon >= 4.3.0 and multiple Xymon servers.
+  * Update watch file to exclude package release tags. Use github.com
+    directly instead of githubredir.debian.net.
 
   [ Elmar S. Heeb ]
   * use stdin for xymon/hobbit message (allows larger messages)
