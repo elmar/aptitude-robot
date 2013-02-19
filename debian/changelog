@@ -1,3 +1,11 @@
+aptitude-robot (1.2.13-1) unstable; urgency=low
+
+  * no -y option on direct invocation of aptitude-robot
+    use aptitude-robot-session for all-automatic runs
+  * do not support abbreviation of command line options
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Tue, 19 Feb 2013 12:57:04 +0100
+
 aptitude-robot (1.2.12-1) unstable; urgency=low
 
   [ Axel Beckert ]
