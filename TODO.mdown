@@ -25,3 +25,11 @@
   cruft around)
 
 * Option --help for aptitude-robot-session
+
+* add an action with semantics "install but do not upgrade"
+  this could (should?) be an action directly supported by
+  aptitude on the command line between install(+) and keep(:)
+  can be implemented by a search pattern (for a hypothetical
+  package "foobar"):
+  aptitude install foobar+ '~i foobar:'
+  maybe define '%' as an additional action to do just that
