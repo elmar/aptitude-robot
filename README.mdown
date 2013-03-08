@@ -68,11 +68,15 @@ the packages you intend to install.
 
 ### Options
 
-In the file `/etc/aptitude-robot/options` you can specify additional options
-for aptitude.  List one option per line.  Typical options might be:
+The directory `/etc/aptitude-robot/options.d/` may contain files in
+which you can specify additional command-line options for aptitude.
+List one option per line.  Typical options might be:
 
     --without-recommends
     --add-user-tag-to "aptitude-robot,?action(install)"
+    -o 'Aptitude::ProblemResolver::Remove-Level=maximum'
+
+The files in this directory must adhere to `run-parts(8)` conventions.
 
 ### Triggers
 

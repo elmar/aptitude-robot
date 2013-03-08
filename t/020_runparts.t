@@ -16,14 +16,14 @@ my $aptitude_command;
 $aptitude_command = Aptitude::Robot::Command->new(
     config_dir => "$testdatadir/empty-config"
 );
-is_deeply( [ $aptitude_command->pkglist_files() ], [],
+is_deeply( [ $aptitude_command->run_parts_files('pkglist.d') ], [],
     'empty config dir should result in empty file list' );
 
 $aptitude_command = Aptitude::Robot::Command->new(
     config_dir => "$testdatadir/single-file"
 );
 is_deeply(
-    [ $aptitude_command->pkglist_files() ],
+    [ $aptitude_command->run_parts_files('pkglist.d') ],
     [ "$testdatadir/single-file/pkglist.d/10_foo" ],
     'single file case',
 );
@@ -32,7 +32,7 @@ $aptitude_command = Aptitude::Robot::Command->new(
     config_dir => "$testdatadir/multiple-files"
 );
 is_deeply(
-    [ $aptitude_command->pkglist_files() ],
+    [ $aptitude_command->run_parts_files('pkglist.d') ],
     [
         "$testdatadir/multiple-files/pkglist.d/10_foo",
         "$testdatadir/multiple-files/pkglist.d/20_bar",

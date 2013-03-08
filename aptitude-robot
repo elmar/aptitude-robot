@@ -111,7 +111,7 @@ sub command {
     return () if $self->error_msg();
 
     my %pkg_action = ();
-    for my $line ($self->pkglist_lines()) {
+    for my $line ($self->run_parts_lines('pkglist.d')) {
         my ($action, $pkg) = split(/\s+/, $line, 2);
 
         # ignore extra ':' and '=' entries on force-install
@@ -135,28 +135,26 @@ sub options {
     my $self = shift;
     return () if $self->error_msg();
 
-    my $options_file = $self->config_dir() . '/options';
-    return () unless -f $options_file;
-
     return
-        _split_parameters(
-            _clean_comments_and_whitespace(
-                read_file($options_file)));
+        _split_parameters($self->run_parts_lines('options.d'));
 }
 
-sub pkglist_files {
-    my $self = shift;
+sub run_parts_files {
+    my ($self, $parts_dir) = @_;
     return () if $self->error_msg();
 
-    my $cmd = '/bin/run-parts --list ' . $self->config_dir() . '/pkglist.d';
+    my $full_path = $self->config_dir() . "/$parts_dir";
+    return () unless -d $full_path;
+
+    my $cmd = "/bin/run-parts --list $full_path";
     return split("\n", `$cmd`);
 }
 
-sub pkglist_lines {
-    my $self = shift;
+sub run_parts_lines {
+    my ($self, $parts_dir) = @_;
     return () if $self->error_msg();
 
-    my @files = $self->pkglist_files();
+    my @files = $self->run_parts_files($parts_dir);
     my @lines = ();
     for my $file (@files) {
         push(@lines, read_file($file));

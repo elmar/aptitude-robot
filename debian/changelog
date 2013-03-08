@@ -1,3 +1,14 @@
+aptitude-robot (1.2.14-1) UNRELEASED; urgency=low
+
+  * Switch from the single file /etc/aptitude-robot/options to a run-parts
+    based directory at /etc/aptitude-robot/options.d/.
+  * Ship /etc/aptitude-robot/options.d/10-remove-level-maximum containing
+    "-o 'Aptitude::ProblemResolver::Remove-Level=maximum'" as a safe-guard
+    against accidentially removing too many packages when resolving
+    conflicts automatically.
+
+ -- Axel Beckert <abe@debian.org>  Fri, 08 Mar 2013 18:09:17 +0100
+
 aptitude-robot (1.2.13-2) unstable; urgency=low
 
   [ Axel Beckert ]
