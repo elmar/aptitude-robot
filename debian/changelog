@@ -1,3 +1,9 @@
+aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
+
+  * remove unwanted quoting in option.d example file
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 24 May 2013 17:01:50 +0200
+
 aptitude-robot (1.2.15-1) unstable; urgency=low
 
   * provide explicit newlines for default answers to dpkg
