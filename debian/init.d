@@ -38,7 +38,7 @@ case "$1" in
     [ "$RUN_ON_BOOT" = "no" ] && exit 0
     sleep 5  # wait for network to fully come up (Required-Start: $network seems not to be enough)
     [ "$VERBOSE" != no ] && log_daemon_msg "Running $DESC " "$NAME"
-    if fuser /var/lib/dpkg/lock > /dev/null 2> /dev/null ; then
+    if fuser -s /var/lib/dpkg/lock ; then
         if [ "$VERBOSE" != no ]; then
             log_progress_msg "INFO: aptitude-robot init.d preventing recursive call while updating"
             log_end_msg 0
