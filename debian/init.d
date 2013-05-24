@@ -52,7 +52,7 @@ case "$1" in
     esac
   ;;
   stop|restart|force-reload)
-    [ "$VERBOSE" != no ] && log_daemon_msg "Stop/restart/force-reload $DESC (does nothing)" "$NAME"
+    [ "$VERBOSE" != no ] && log_daemon_msg "$1 $DESC (does nothing)" "$NAME"
   ;;
   *)
     echo "Usage: $SCRIPTNAME start" >&2
