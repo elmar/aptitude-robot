@@ -1,3 +1,12 @@
+aptitude-robot (1.2.15-1) unstable; urgency=low
+
+  * provide explicit newlines for default answers to dpkg
+    in aptitude-robot-session instead of taking input from /dev/null
+
+  * bump version to 1,2.15
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 24 May 2013 16:03:14 +0200
+
 aptitude-robot (1.2.14-1) unstable; urgency=low
 
   [ Axel Beckert ]

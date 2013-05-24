@@ -61,9 +61,13 @@ export DEBIAN_PRIORITY
 # but leaves most regular output to be collected in the log file
 /usr/bin/aptitude -q update && touch /var/lib/apt/update_success
 
+# we need to provide a default answer with a simple newline (yes '')
+# for the cases which are not covered by --force-confdef,confold
+# e.g. first installs with config files already present
+nice yes '' | \
 /usr/sbin/aptitude-robot -y -q "$@" \
     -o DPkg::Options::=--force-confdef \
-    -o DPkg::Options::=--force-confold </dev/null
+    -o DPkg::Options::=--force-confold
 
 if [ -n "$POST_SESSION_HOOK" ]; then
     $POST_SESSION_HOOK
