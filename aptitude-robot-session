@@ -5,6 +5,11 @@ if [ ! -x /usr/sbin/aptitude-robot ]; then
     exit   # aptitude-robot has been deinstalled but not purged
 fi
 
+if fuser -s /var/lib/dpkg/lock ; then
+    echo 'another package manager is running. Exiting.' 1>&2
+    exit 1
+fi
+
 if [ -n "$LOG_SESSION" ] ; then
     # the session log is made unique with a PID ending
     # so as to not overwrite an old log of a crashed aptitude-robot process
