@@ -1,8 +1,12 @@
 aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
 
+  [ Elmar S. Heeb ]
   * remove unwanted quoting in option.d example file
 
- -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 24 May 2013 17:01:50 +0200
+  [ Bart Martens ]
+  * updated debian/watch file
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 27 May 2013 08:52:58 +0200
 
 aptitude-robot (1.2.15-1) unstable; urgency=low
 

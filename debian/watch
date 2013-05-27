@@ -1,2 +1,4 @@
 version=3
-https://github.com/elmar/aptitude-robot/tags .*/([\d\.]*)\.(?:tgz|tar\.(?:gz|bz2|xz)|zip)
+https://github.com/elmar/aptitude-robot/tags \
+.*/archive/(?:upstream/)?(?:v||version-|release-|X|R|r)(\d\S*)\.tar\.gz
+# Bart Martens <bartm@debian.org>  Sat, 25 May 2013 09:38:46 +0000
