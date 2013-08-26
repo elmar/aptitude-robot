@@ -2,6 +2,7 @@ aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
 
   [ Elmar S. Heeb ]
   * remove unwanted quoting in option.d example file
+  * use Mouse explicitly and not Any::Moose (Closes: #720670)
 
   [ Axel Beckert ]
   * updated debian/watch file based on Bart Marten's suggestion

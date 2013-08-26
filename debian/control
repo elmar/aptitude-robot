@@ -6,7 +6,7 @@ Uploaders: Axel Beckert <abe@debian.org>
 Build-Depends: autotools-dev,
                debhelper (>= 7.0.50~),
                dh-autoreconf,
-               libany-moose-perl,
+               libmouse-perl,
                libfile-slurp-perl,
                libipc-run-perl,
                perl,
@@ -19,7 +19,7 @@ Vcs-Browser: https://github.com/elmar/aptitude-robot
 Package: aptitude-robot
 Architecture: all
 Depends: aptitude,
-         libany-moose-perl,
+         libmouse-perl,
          libfile-slurp-perl,
          perl,
          perl-doc,

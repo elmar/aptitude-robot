@@ -69,7 +69,7 @@ sub _run_triggers {
 
 BEGIN{
 package Aptitude::Robot::Command;
-use Any::Moose;
+use Mouse;
 use File::Slurp;
 
 has( 'config_dir' => (
@@ -183,7 +183,7 @@ sub _split_parameters {
     return @parameters;
 }
 
-no Any::Moose;
+no Mouse;
 
 1;
 }
