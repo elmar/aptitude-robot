@@ -1,4 +1,4 @@
-aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
+aptitude-robot (1.2.16-1) unstable; urgency=low
 
   [ Elmar S. Heeb ]
   * remove unwanted quoting in option.d example file
@@ -7,6 +7,8 @@ aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
   [ Axel Beckert ]
   * updated debian/watch file based on Bart Marten's suggestion
   * Fix typo in previous changelog entry
+
+  * bump version to 1.2.16
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 27 May 2013 08:52:58 +0200
 
