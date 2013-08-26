@@ -69,29 +69,25 @@ sub _run_triggers {
 
 BEGIN{
 package Aptitude::Robot::Command;
-use Mouse;
+use Moo;
 use File::Slurp;
 
 has( 'config_dir' => (
-        isa      => 'Str',
         is       => 'ro',
         required => 1,
     )
 );
 has( 'pass_through_options' => (
-        isa      => 'ArrayRef[Str]',
         is       => 'ro',
         required => 0,
     )
 );
 has( 'force_install' => (
-        isa      => 'Bool',
         is       => 'rw',
         default  => 0,
     )
 );
 has( 'error_msg'  => (
-        isa      => 'Str',
         is       => 'ro',
         init_arg => undef,
         default  => sub {
@@ -183,7 +179,7 @@ sub _split_parameters {
     return @parameters;
 }
 
-no Mouse;
+no Moo;
 
 1;
 }

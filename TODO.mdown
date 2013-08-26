@@ -36,8 +36,6 @@
 
 * Use Run::Parts instead of calling run-parts directly.
 
-* Use Moo (or maybe MooX::late) instead of Mouse.
-
 * Work with
   [resolver hints](http://people.debian.org/~abe/aptitude/en/ch02s03s05.html)
   instead of modifying penalty values of the resolver.
