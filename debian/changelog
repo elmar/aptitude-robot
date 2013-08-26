@@ -1,7 +1,12 @@
 aptitude-robot (1.3-1) UNRELEASED; urgency=low
 
+  [ Elmar S. Heeb ]
   * new standards version 3.9.4
   * use Moo instead of Mouse perl library
+
+  [ Axel Beckert ]
+  * Use Run::Parts instead of calling run-parts directly
+    + Add according (build-) dependencies.
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 26 Aug 2013 15:05:12 +0200
 

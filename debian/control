@@ -9,6 +9,7 @@ Build-Depends: autotools-dev,
                libmoo-perl,
                libfile-slurp-perl,
                libipc-run-perl,
+               librun-parts-perl,
                perl,
                perl-doc
 Standards-Version: 3.9.4
@@ -21,6 +22,7 @@ Architecture: all
 Depends: aptitude,
          libmoo-perl,
          libfile-slurp-perl,
+         librun-parts-perl,
          perl,
          perl-doc,
          psmisc,

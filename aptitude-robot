@@ -6,6 +6,7 @@ use 5.010;
 use English qw( -no_match_vars );
 use Carp;
 use autodie;
+use Run::Parts;
 
 main() unless caller(0);
 
@@ -58,11 +59,13 @@ sub _run_triggers {
     return unless @_;
     my ($triggers, $show_cmdline) = @_;
 
-    my @runparts = qw( /bin/run-parts );
-    push(@runparts, '--test') if $show_cmdline;
     if ( -d $triggers ) {
-        system(@runparts, $triggers) == 0
-            or die "could not execute trigger scripts in $triggers: $OS_ERROR\n";
+        my $rp = Run::Parts->new($triggers);
+        if ($show_cmdline) {
+            say $rp->test;
+        } else {
+            $rp->run;
+        }
     }
     return;
 }
@@ -142,8 +145,9 @@ sub run_parts_files {
     my $full_path = $self->config_dir() . "/$parts_dir";
     return () unless -d $full_path;
 
-    my $cmd = "/bin/run-parts --list $full_path";
-    return split("\n", `$cmd`);
+    my $rp = Run::Parts->new($full_path);
+    my @file_list = $rp->list;
+    return @file_list;
 }
 
 sub run_parts_lines {

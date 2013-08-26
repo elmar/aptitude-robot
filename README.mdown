@@ -83,7 +83,7 @@ The files in this directory must adhere to `run-parts(8)` conventions.
 The directories `/etc/aptitude-robot/triggers.pre` and
 `/etc/aptitude-robot/triggers.post` may contain scripts that will be run by
 aptitude-robot before and after aptitude, respectively.  They are run by
-`run-parts(8)`.
+`run-parts(8)` via `Run::Parts`.
 
 By default there are no trigger scripts.  Be careful placing scripts in these
 directories as they are always run whether or not aptitude performs some
@@ -185,7 +185,7 @@ debian-goodies.
 You can build `aptitude-robot` from the GIT repository as follows:
 
     sudo aptitude -y install autoconf autotools-dev build-essential devscripts git
-    sudo aptitude -y install libmouse-perl libfile-slurp-perl perl-doc
+    sudo aptitude -y install libmouse-perl libfile-slurp-perl librun-parts-perl perl-doc
     git clone https://github.com/elmar/aptitude-robot.git
     cd aptitude-robot
     autoreconf --force --install
