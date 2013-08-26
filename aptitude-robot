@@ -138,7 +138,7 @@ sub options {
         _split_parameters($self->run_parts_lines('options.d'));
 }
 
-sub run_parts_files {
+sub run_parts_lines {
     my ($self, $parts_dir) = @_;
     return () if $self->error_msg();
 
@@ -146,20 +146,7 @@ sub run_parts_files {
     return () unless -d $full_path;
 
     my $rp = Run::Parts->new($full_path);
-    my @file_list = $rp->list;
-    return @file_list;
-}
-
-sub run_parts_lines {
-    my ($self, $parts_dir) = @_;
-    return () if $self->error_msg();
-
-    my @files = $self->run_parts_files($parts_dir);
-    my @lines = ();
-    for my $file (@files) {
-        push(@lines, read_file($file));
-    }
-    return _clean_comments_and_whitespace( @lines );
+    return _clean_comments_and_whitespace( $rp->concat );
 }
 
 sub _clean_comments_and_whitespace {
