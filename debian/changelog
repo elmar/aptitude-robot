@@ -6,7 +6,8 @@ aptitude-robot (1.3-1) UNRELEASED; urgency=low
 
   [ Axel Beckert ]
   * Use Run::Parts instead of calling run-parts directly
-    + Add according (build-) dependencies.
+    + Add (build-) dependencies on librun-parts-perl
+    + Remove (build-) dependencies on libfile-slurp-perl
     + Remove t/020_runparts.t, no more needed.
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 26 Aug 2013 15:05:12 +0200

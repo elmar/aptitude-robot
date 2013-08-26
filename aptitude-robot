@@ -73,7 +73,6 @@ sub _run_triggers {
 BEGIN{
 package Aptitude::Robot::Command;
 use Moo;
-use File::Slurp;
 
 has( 'config_dir' => (
         is       => 'ro',
