@@ -5,6 +5,7 @@ aptitude-robot (1.2.16-1) UNRELEASED; urgency=low
 
   [ Axel Beckert ]
   * updated debian/watch file based on Bart Marten's suggestion
+  * Fix typo in previous changelog entry
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Mon, 27 May 2013 08:52:58 +0200
 
@@ -13,7 +14,7 @@ aptitude-robot (1.2.15-1) unstable; urgency=low
   * provide explicit newlines for default answers to dpkg
     in aptitude-robot-session instead of taking input from /dev/null
 
-  * bump version to 1,2.15
+  * bump version to 1.2.15
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Fri, 24 May 2013 16:03:14 +0200
 
