@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo '----- 90-cleanup: package cache and config file cleanup'
+
+apt-get clean
+
+# Purge all packages that have been removed.  In a managed environment we do
+# not want to carry around obsolete config files.
+#
+aptitude -y -q purge '~c'
+
+dpkg --clear-avail

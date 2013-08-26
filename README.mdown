@@ -91,6 +91,10 @@ action.  For scripts that should only run upon installation, removal, or
 upgrade of a specific package the relevant preinst, postinst, etc. scripts of
 the package would be the right place.
 
+In `/etc/aptitude-robot/triggers.post/90-cleanup.example` you can find an
+example of the trigger script that cleans up after
+upgrading/installing/removing.  Remove the `.example` suffix to enable it.
+
 ### Cron and Init Defaults
 
 In `/etc/default/aptitude-robot` you can control the execution of
