@@ -3,6 +3,7 @@ aptitude-robot (1.3-1) UNRELEASED; urgency=low
   [ Elmar S. Heeb ]
   * new standards version 3.9.4
   * use Moo instead of Mouse perl library
+  * added systemd support to Debian packaging
 
   [ Axel Beckert ]
   * Use Run::Parts instead of calling run-parts directly

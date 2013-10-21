@@ -1,0 +1,7 @@
+[Unit]
+Description=aptitude robot package updater
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/aptitude-robot-session
