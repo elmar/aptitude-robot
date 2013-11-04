@@ -152,7 +152,7 @@ sub _clean_comments_and_whitespace {
     my (@lines) = @_;
 
     for my $line (@lines) {
-        $line =~ s{\# .+ \Z}{}xms; # remove comments
+        $line =~ s{\# .* \Z}{}xms; # remove comments
         $line =~ s{\A \s+}{}xms; # remove leading space
         $line =~ s{\s+ \Z}{}xms; # remove trailing space
     }

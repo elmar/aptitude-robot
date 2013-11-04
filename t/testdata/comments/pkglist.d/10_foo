@@ -1,4 +1,6 @@
 # the hash make is the comment character
+#
+# keep the single hash mark on a line as an edge case
 
 + foo # trailing comments are supported
 - bar
