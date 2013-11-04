@@ -86,7 +86,7 @@ has( 'pass_through_options' => (
 );
 has( 'force_install' => (
         is       => 'rw',
-        default  => 0,
+        default  => sub { return 0; },
     )
 );
 has( 'error_msg'  => (
