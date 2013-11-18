@@ -1,0 +1,7 @@
+# aptitude-robot - package choice management
+
+description	"aptitude-robot: package choice management"
+
+start on static-network-up
+task
+exec aptitude-robot-session
