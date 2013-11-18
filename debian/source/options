@@ -1,0 +1,4 @@
+extend-diff-ignore=(^|/)Makefile\.in$
+extend-diff-ignore=(^|/)aclocal\.m4$
+extend-diff-ignore=(^|/)build-aux/.*
+extend-diff-ignore=(^|/)configure$
