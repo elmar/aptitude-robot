@@ -29,9 +29,3 @@
   package "foobar"):
   aptitude install foobar+ '~i foobar:'
   maybe define '%' as an additional action to do just that
-
-* Use Run::Parts instead of calling run-parts directly.
-
-* Work with
-  [resolver hints](http://people.debian.org/~abe/aptitude/en/ch02s03s05.html)
-  instead of modifying penalty values of the resolver.
