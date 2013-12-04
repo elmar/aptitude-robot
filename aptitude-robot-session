@@ -54,7 +54,7 @@ MAX_LOGFILES_SIZE_BLOCKS=$(($MAX_LOGFILES_SIZE_BLOCKS + 0))  # force number
 # to have provided the necessary config options beforehand
 DEBIAN_FRONTEND=noninteractive
 export DEBIAN_FRONTEND
-DEBIAN_PRIORITY=low
+DEBIAN_PRIORITY=critical
 export DEBIAN_PRIORITY
 
 # -q (for --quiet) suppresses percentage reporting for downloads
