@@ -76,6 +76,11 @@ List one option per line.  Typical options might be:
     --add-user-tag-to "aptitude-robot,?action(install)"
     -o 'Aptitude::ProblemResolver::Remove-Level=maximum'
 
+See
+[Configuring the interactive dependency resolver](http://aptitude.alioth.debian.org/doc/en/ch02s03s05.html)
+for documentation about influencing automatic conflict resolution with
+aptitude.
+
 The files in this directory must adhere to `run-parts(8)` conventions.
 
 ### Triggers

@@ -1,7 +1,7 @@
 # Tell aptitude's resolver that we prefer updating, installing or
 # keeping packages over removing them.
 #
-# See http://people.debian.org/~abe/aptitude/en/ch02s03s05.html#secDependencyResolutionHints
+# See http://aptitude.alioth.debian.org/doc/en/ch02s03s05.html#secDependencyResolutionHints
 
 -o Aptitude::ProblemResolver::Remove-Level=maximum
 -o Aptitude::ProblemResolver::Hints::=reject !~M :UNINST
