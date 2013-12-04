@@ -1,4 +1,4 @@
-aptitude-robot (1.3.3) UNRELEASED; urgency=low
+aptitude-robot (1.3.3-1) unstable; urgency=low
 
   [ Axel Beckert ]
   * Add some autotools-generated files to diff-ignore to support building
@@ -6,8 +6,9 @@ aptitude-robot (1.3.3) UNRELEASED; urgency=low
 
   [ Elmar S. Heeb ]
   * DEBIAN_PRIORITY for automatic runs should be critical, not low
+  * new version 1.3.3
 
- -- Elmar S. Heeb <elmar@heebs.ch>  Wed, 04 Dec 2013 16:10:14 +0100
+ -- Elmar S. Heeb <elmar@heebs.ch>  Wed, 04 Dec 2013 16:14:56 +0100
 
 aptitude-robot (1.3.2-1) unstable; urgency=low
 
