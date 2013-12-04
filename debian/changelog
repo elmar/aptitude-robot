@@ -2,6 +2,7 @@ aptitude-robot (1.3.4-1) UNRELEASED; urgency=low
 
   * Use resolver hints to make unexpected removals even more unlikely
     during automatic conflict resolution.
+  * Suggest needrestart and mention it in the README
 
  -- Axel Beckert <abe@debian.org>  Wed, 04 Dec 2013 18:37:08 +0100
 

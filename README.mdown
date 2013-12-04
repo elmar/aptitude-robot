@@ -177,10 +177,12 @@ If you are just interested in automatic upgrades you should look into
 [cron-apt](http://packages.debian.org/cron-apt), or
 [apticron](http://packages.debian.org/apticron).
 
-After the upgrade you may need to restart some processes.  Look into
-`checkrestart` in the
-[debian-goodies](http://packages.debian.org/sid/debian-goodies) package.  An
-example for a post-trigger script would be
+After the upgrade you may need to restart some processes. See the
+[needrestart](http://packages.debian.org/sid/needrestart) package for
+a way to automatically restart affected services. You can also look
+into `checkrestart` in the
+[debian-goodies](http://packages.debian.org/sid/debian-goodies)
+package.  Another example for a post-trigger script would be
 [restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services).
 See also the [wishlist bug #676509](http://bugs.debian.org/676509) of
 debian-goodies.
