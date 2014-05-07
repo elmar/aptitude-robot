@@ -1,7 +1,7 @@
 #!/bin/sh
 
 REPORT_MAIL=false
-REPORT_FILE=`mktemp aptitude-run-mailreport.XXXXXXXXXX`
+REPORT_FILE=$(mktemp aptitude-run-mailreport.XXXXXXXXXX)
 REPORT_RCPT=root
 
 cat >> $REPORT_FILE << EOF
@@ -12,7 +12,7 @@ EOF
 #
 # check for remaining upgrades
 #
-UPGRADES_FILE=`mktemp aptitude-upgrades.XXXXXXXXX`
+UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
 aptitude search '~U !~ahold' > $UPGRADES_FILE
 if [ -s $UPGRADES_FILE ]; then
     REPORT_MAIL=true

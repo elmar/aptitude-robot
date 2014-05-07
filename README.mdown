@@ -246,7 +246,7 @@ You can build `aptitude-robot` from the GIT repository as follows:
     autoreconf --force --install
     ./configure
     make dist
-    mv *.tar.gz ../`echo *.tar.gz | sed -e 's/robot-/robot_/' -e 's/\.tar/.orig.tar/'`
+    mv *.tar.gz ../$(echo *.tar.gz | sed -e 's/robot-/robot_/' -e 's/\.tar/.orig.tar/')
     make distclean
     debuild -uc -us
     debclean

@@ -9,7 +9,7 @@ autoreconf --force --install
 make
 make check
 make distcheck
-mv *.tar.gz ../`echo *.tar.gz | sed -e 's/robot-/robot_/' -e 's/\.tar/.orig.tar/'`
+mv *.tar.gz ../$(echo *.tar.gz | sed -e 's/robot-/robot_/' -e 's/\.tar/.orig.tar/')
 
 make distclean
 debuild "$@"

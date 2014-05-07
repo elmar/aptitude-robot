@@ -12,14 +12,14 @@ Aptitude-Robot Report
 #
 # check for remaining upgrades
 #
-UPGRADES_FILE=`mktemp aptitude-upgrades.XXXXXXXXX`
+UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
 aptitude search '~U !~ahold' > $UPGRADES_FILE
 if [ -s $UPGRADES_FILE ]; then
     COLOR=red
     MSG="${MSG}
 Remaining Upgrades:
 
-`cat $UPGRADES_FILE`
+$(cat $UPGRADES_FILE)
 
 "
 fi
@@ -38,7 +38,7 @@ if [ -f $LOGFILE ]; then
     fi
 
     MSG="${MSG}
-`cat $LOGFILE`
+$(cat $LOGFILE)
 
 "
 else
@@ -67,7 +67,7 @@ fi
 
 for server in $HOBBITSERVERS $XYMONSERVERS; do
     $BB $server "@" << EOF
-status+36h $CLIENTHOSTNAME.$COLUMN $COLOR `date`
+status+36h $CLIENTHOSTNAME.$COLUMN $COLOR $(date)
 
 ${MSG}
 EOF
