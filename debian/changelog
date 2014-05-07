@@ -1,4 +1,4 @@
-aptitude-robot (1.3.4-1) UNRELEASED; urgency=low
+aptitude-robot (1.3.4-1) unstable; urgency=low
 
   [ Axel Beckert ]
   * Use resolver hints to make unexpected removals even more unlikely
@@ -7,8 +7,9 @@ aptitude-robot (1.3.4-1) UNRELEASED; urgency=low
 
   [ Elmar S. Heeb ]
   * use $(...) notation instead of backticks
+  * new version 1.3.4
 
- -- Axel Beckert <abe@debian.org>  Wed, 04 Dec 2013 18:37:08 +0100
+ -- Elmar S. Heeb <elmar@heebs.ch>  Wed, 07 May 2014 14:48:06 +0200
 
 aptitude-robot (1.3.3-1) unstable; urgency=low
 
