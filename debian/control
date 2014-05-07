@@ -26,7 +26,8 @@ Depends: aptitude,
          perl-doc,
          psmisc,
          ${misc:Depends}
-Suggests: needrestart
+Suggests: needrestart,
+          apt-listbugs
 Enhances: aptitude
 Description: Automate package choice management
  Framework to use aptitude for automated package management including

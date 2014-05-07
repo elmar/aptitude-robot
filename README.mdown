@@ -187,6 +187,43 @@ package.  Another example for a post-trigger script would be
 See also the [wishlist bug #676509](http://bugs.debian.org/676509) of
 debian-goodies.
 
+To prevent automatically upgrading packages to versions which are
+known to be severly broken, you can use
+[apt-listbugs](http://packages.debian.org/apt-listbugs). If
+apt-listbugs finds release-critical bugs it will prevent
+aptitude-robot from updating _any_ package. Example:
+
+    The following packages will be upgraded:
+      chromium chromium-browser chromium-inspector icedove iceowl-extension
+      libmysqlclient-dev libmysqlclient18 mysql-client mysql-client-5.5
+      mysql-common openjdk-7-jre openjdk-7-jre-headless openjdk-7-jre-lib
+      openjdk-7-jre-zero
+    14 packages upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+    Need to get 0 B/123 MB of archives. After unpacking 2,011 kB will be used.
+    Writing extended state information...
+    grave bugs of chromium (34.0.1847.116-1~deb7u1 -> 34.0.1847.132-1~deb7u1)
+     #745794 - chromium: Missing build dep[…] (Fixed: chromium-browser/34.0.1847.132-1)
+    grave bugs of icedove (24.4.0-1~deb7u1 -> 24.5.0-1~deb7u1)
+     #743748 - Folders are not listed, blank folder pane
+    Summary:
+     icedove(1 bug), chromium(1 bug)
+    **********************************************************************
+    ****** Exiting with an error in order to stop the installation. ******
+    **********************************************************************
+    E: Sub-process /usr/sbin/apt-listbugs apt || exit 10 returned an error code (10)
+    E: Failure running script /usr/sbin/apt-listbugs apt || exit 10
+    A package failed to install.  Trying to recover:
+    Reading package lists...
+    Building dependency tree...
+    Reading state information...
+    Reading extended state information...
+    Initializing package states...
+    aptitude exited with value 255
+    aptitude-robot ended at 2014-05-07 03:37:17+02:00
+
+Please be aware that you need to _manually_ upgrade the remaining
+packages in this case.
+
 ## Building from Source
 
 You can build `aptitude-robot` from the GIT repository as follows:
