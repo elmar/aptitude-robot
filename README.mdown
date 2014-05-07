@@ -172,26 +172,40 @@ During the initial deployment you would run `aptitude-robot` with the
 
 ## Related Packages
 
+### Just automatic upgrades or notifications
+
 If you are just interested in automatic upgrades you should look into
 [unattended-upgrades](http://packages.debian.org/unattended-upgrades),
 [cron-apt](http://packages.debian.org/cron-apt), or
 [apticron](http://packages.debian.org/apticron).
 
+### Automatically restarting services
+
 After the upgrade you may need to restart some processes. See the
 [needrestart](http://packages.debian.org/sid/needrestart) package for
-a way to automatically restart affected services. You can also look
-into `checkrestart` in the
+a way to automatically restart affected services.
+
+You can also look into `checkrestart` in the
 [debian-goodies](http://packages.debian.org/sid/debian-goodies)
-package.  Another example for a post-trigger script would be
+package.
+
+Another example for a post-trigger script would be
 [restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services).
 See also the [wishlist bug #676509](http://bugs.debian.org/676509) of
 debian-goodies.
+
+### Checking for severe bugs before installing updates
 
 To prevent automatically upgrading packages to versions which are
 known to be severly broken, you can use
 [apt-listbugs](http://packages.debian.org/apt-listbugs). If
 apt-listbugs finds release-critical bugs it will prevent
-aptitude-robot from updating _any_ package. Example:
+aptitude-robot from updating _any_ package.
+
+Please be aware that you need to _manually_ upgrade the remaining
+packages in this case.
+
+Example:
 
     The following packages will be upgraded:
       chromium chromium-browser chromium-inspector icedove iceowl-extension
@@ -220,9 +234,6 @@ aptitude-robot from updating _any_ package. Example:
     Initializing package states...
     aptitude exited with value 255
     aptitude-robot ended at 2014-05-07 03:37:17+02:00
-
-Please be aware that you need to _manually_ upgrade the remaining
-packages in this case.
 
 ## Building from Source
 
