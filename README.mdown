@@ -239,8 +239,8 @@ Example:
 
 You can build `aptitude-robot` from the GIT repository as follows:
 
-    sudo aptitude -y install autoconf autotools-dev build-essential devscripts git
-    sudo aptitude -y install libmouse-perl librun-parts-perl perl-doc
+    sudo apt-get -y install autoconf autotools-dev build-essential devscripts git
+    sudo apt-get -y install libmouse-perl librun-parts-perl perl-doc
     git clone https://github.com/elmar/aptitude-robot.git
     cd aptitude-robot
     autoreconf --force --install
