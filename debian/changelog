@@ -1,3 +1,9 @@
+aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
+
+  * use explicit path for perl
+
+ -- Elmar S. Heeb <elmar@heebs.ch>  Sat, 31 May 2014 15:15:40 +0200
+
 aptitude-robot (1.3.4-1) unstable; urgency=low
 
   [ Axel Beckert ]
