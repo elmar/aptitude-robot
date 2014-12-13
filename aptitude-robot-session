@@ -67,7 +67,8 @@ export DEBIAN_PRIORITY
 nice yes '' | \
 /usr/sbin/aptitude-robot -y -q "$@" \
     -o DPkg::Options::=--force-confdef \
-    -o DPkg::Options::=--force-confold
+    -o DPkg::Options::=--force-confold \
+    < /dev/null
 
 if [ -n "$POST_SESSION_HOOK" ]; then
     $POST_SESSION_HOOK
