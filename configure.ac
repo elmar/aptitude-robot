@@ -4,7 +4,7 @@ AC_INIT(
     [1.3.5],
     [elmar@heebs.ch],
     [aptitude-robot],
-    [https://github.com/elmar/aptitude-robot.git]
+    [https://github.com/elmar/aptitude-robot]
 )
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
