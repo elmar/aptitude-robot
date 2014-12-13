@@ -5,6 +5,7 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
 
   [ Axel Beckert ]
   * Fix project URL in configure.ac
+  * Declare compliance with Policy 3.9.6 (no further changes needed)
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Sat, 31 May 2014 15:15:40 +0200
 

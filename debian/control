@@ -12,7 +12,7 @@ Build-Depends: autotools-dev,
                librun-parts-perl,
                perl,
                perl-doc
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: https://github.com/elmar/aptitude-robot
 Vcs-Git: git://github.com/elmar/aptitude-robot.git
 Vcs-Browser: https://github.com/elmar/aptitude-robot
