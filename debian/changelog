@@ -1,7 +1,8 @@
 aptitude-robot (1.3.4.1-1) UNRELEASED; urgency=medium
 
   * Fix hanging aptitude-robot-session processes with zombie dpkg children
-    by reintroducing "< /dev/null".
+    by reintroducing "< /dev/null" and dropping "yes '' |" again. The main
+    use case where the latter was necessary seems gone. (Closes: #773061)
 
  -- Axel Beckert <abe@debian.org>  Sat, 13 Dec 2014 20:48:10 +0100
 
