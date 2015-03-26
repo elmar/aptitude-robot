@@ -41,6 +41,11 @@ file size limit in blocks for the session log.  This prevents endless loops if
 a package installation continues to ask the same question for which no terminal
 is available to provide an answer.
 
+But be aware that this limit also affects _all_ daemons started or
+restarted during the aptitude-robot-session run, including e.g. the
+OpenSSH daemon which again will propagate the limit to its remote
+login sessions. Use with care.
+
 =item POST_SESSION_HOOK
 
 a command that is run at the end of a successful aptitude-robot-session.  E.g.,
