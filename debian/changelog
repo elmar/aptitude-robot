@@ -11,6 +11,7 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
     reason why the latter was necessary is gone. (See #773061, #773215)
   * Add warning to aptitude-robot-session.pod about implications of using
     file size limits.
+  * xymon-report: red alert if aptitude's exit code is not zero
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Sat, 31 May 2014 15:15:40 +0200
 
