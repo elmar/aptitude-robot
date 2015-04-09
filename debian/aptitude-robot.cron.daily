@@ -20,4 +20,8 @@ run_if_executable () {
 }
 
 run_if_executable /usr/share/aptitude-robot/random-delay $MAX_RANDOM_DELAY_SECONDS
-run_if_executable /usr/sbin/aptitude-robot-session
+if [ "$SUPPRESS_CRON_MAILS" = yes ]; then
+    run_if_executable /usr/sbin/aptitude-robot-session || true
+else
+    run_if_executable /usr/sbin/aptitude-robot-session
+fi

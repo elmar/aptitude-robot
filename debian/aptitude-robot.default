@@ -28,6 +28,18 @@ MAX_LOGFILES_SIZE_BLOCKS=1000000
 #SESSION_REPORT_COMMAND=/usr/share/aptitude-robot/xymon-report
 SESSION_REPORT_COMMAND=
 
+# (optional) Don't pass through exit code to cron job
+#
+# Helpful if you want to silence mails by cron about
+# aptitude-robot-session not having exited with return code 0.
+#
+# Be sure to enable some kind of reporting with other methods if you
+# use this. This is usually done via the SESSION_REPORT_COMMAND above.
+#
+# Set to "yes" if you don't want mails by cron if
+# aptitude-robot-session exited with exit code not equal zero.
+SUPPRESS_CRON_MAILS=no
+
 # command to run at the end of aptitude-robot-session
 #POST_SESSION_HOOK="apt-get clean"
 POST_SESSION_HOOK=
