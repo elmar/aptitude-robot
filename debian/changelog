@@ -20,6 +20,8 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
     cron mails if exit code is not equal zero.
   * Link changelog.gz to changelog.Debian.gz as the latter is also the
     upstream changelog. (Fixes lintian warning no-upstream-changelog.)
+  * aptitude-robot-session: Abort if APT was not able to update from all
+    APT repositories.
 
  -- Elmar S. Heeb <elmar@heebs.ch>  Sat, 31 May 2014 15:15:40 +0200
 
