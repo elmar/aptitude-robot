@@ -23,6 +23,10 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
   * aptitude-robot-session: Abort if APT was not able to update from all
     APT repositories.
 
+  [ Dimitri John Ledkov ]
+  * Make upstart job to be long running, for integration with startpar
+    bridge.
+
  -- Elmar S. Heeb <elmar@heebs.ch>  Sat, 31 May 2014 15:15:40 +0200
 
 aptitude-robot (1.3.4-1) unstable; urgency=low
