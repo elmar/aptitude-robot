@@ -88,7 +88,7 @@ The files in this directory must adhere to `run-parts(8)` conventions.
 The directories `/etc/aptitude-robot/triggers.pre` and
 `/etc/aptitude-robot/triggers.post` may contain scripts that will be run by
 aptitude-robot before and after aptitude, respectively.  They are run by
-`run-parts(8)` via `Run::Parts`.
+`run-parts(8)` via [`Run::Parts`](https://metacpan.org/pod/Run::Parts).
 
 By default there are no trigger scripts.  Be careful placing scripts in these
 directories as they are always run whether or not aptitude performs some
@@ -193,7 +193,7 @@ restart some of their running programs.
 If you're just interested in a list of programs which should be
 restarted with automatically doing so, have a look `checkrestart` from
 the [debian-goodies](http://packages.debian.org/sid/debian-goodies)
-package. There exists also a post-trigger script named
+package. There exists also a post-install trigger script named
 [restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services)
 which parses the output of `checkrestart` to automatically restart
 services. See also the
