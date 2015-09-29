@@ -179,19 +179,25 @@ If you are just interested in automatic upgrades you should look into
 [cron-apt](http://packages.debian.org/cron-apt), or
 [apticron](http://packages.debian.org/apticron).
 
-### Automatically restarting services
+### Restarting services as needed
 
 After the upgrade you may need to restart some processes. See the
-[needrestart](http://packages.debian.org/sid/needrestart) package for
-a way to automatically restart affected services.
+[needrestart](http://packages.debian.org/stable/needrestart) package
+for a way to automatically restart affected services.
 
-You can also look into `checkrestart` in the
-[debian-goodies](http://packages.debian.org/sid/debian-goodies)
-package.
+If you also have desktop users, you may be also interested in the
+[needrestart-session](http://packages.debian.org/sid/needrestart-session)
+package which informs logged in desktop users about the necessity to
+restart some of their running programs.
 
-Another example for a post-trigger script would be
-[restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services).
-See also the [wishlist bug #676509](http://bugs.debian.org/676509) of
+If you're just interested in a list of programs which should be
+restarted with automatically doing so, have a look `checkrestart` from
+the [debian-goodies](http://packages.debian.org/sid/debian-goodies)
+package. There exists also a post-trigger script named
+[restart-services](https://github.com/tpo/debian-goodies/blob/master/restart-services)
+which parses the output of `checkrestart` to automatically restart
+services. See also the
+[wishlist bug #676509](https://bugs.debian.org/676509) of
 debian-goodies.
 
 ### Checking for severe bugs before installing updates

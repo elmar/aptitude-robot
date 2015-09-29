@@ -27,6 +27,7 @@ Depends: aptitude,
          psmisc,
          ${misc:Depends}
 Suggests: needrestart,
+          needrestart-session,
           apt-listbugs
 Enhances: aptitude
 Description: Automate package choice management
