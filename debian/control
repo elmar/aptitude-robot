@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Elmar S. Heeb <elmar@heebs.ch>
 Uploaders: Axel Beckert <abe@debian.org>
 Build-Depends: autotools-dev,
-               debhelper (>= 7.0.50~),
+               debhelper (>= 9~),
                dh-autoreconf,
                dh-systemd (>= 1.5),
                libmoo-perl,
