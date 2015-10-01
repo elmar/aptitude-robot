@@ -5,28 +5,30 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
 
   [ Axel Beckert ]
   * Fix project URL in configure.ac
-  * Declare compliance with Policy 3.9.6 (no further changes needed)
-  * Fix hanging aptitude-robot-session processes with zombie dpkg children
-    by reintroducing "< /dev/null" and dropping "yes '' |" again. The main
-    reason why the latter was necessary is gone. (See #773061, #773215)
-  * Add warning to aptitude-robot-session.pod about implications of using
-    file size limits.
+  * aptitude-robot-session:
+    + Fix hanging aptitude-robot-session processes with zombie dpkg
+      children by reintroducing "< /dev/null" and dropping "yes '' |"
+      again. The main reason why the latter was necessary is gone. (See
+      #773061, #773215)
+    + Abort if APT was not able to update from all APT repositories.
+  * aptitude-robot-session.pod:
+    + Add warning to aptitude-robot-session.pod about implications of
+      using file size limits.
+    + Remove executable bit, unneeded.
   * xymon-report:
     + yellow alert if aptitude couldn't fulfil all requests
     + red alert if aptitude's exit code is not zero
     + Catch cases where mktemp fails. Could cause endless running
       xymon-report process before.
-  * aptitude-robot-session.pod: Remove executable bit, unneeded.
   * Rename debian/aptitude-robot.* to debian/* for consistency.
   * debian/{cron.daily,default}: New configuration variable to suppress
     cron mails if exit code is not equal zero.
   * Link changelog.gz to changelog.Debian.gz as the latter is also the
     upstream changelog. (Fixes lintian warning no-upstream-changelog.)
-  * aptitude-robot-session: Abort if APT was not able to update from all
-    APT repositories.
   * Bump debhelper compatibility to 9 as recommended.
     + Update versioned build-dependency on debhelper accordingly.
   * Suggest needrestart-session and mention it in the README.
+  * Declare compliance with Policy 3.9.6 (no further changes needed)
 
   [ Dimitri John Ledkov ]
   * Make upstart job to be long running, for integration with startpar
