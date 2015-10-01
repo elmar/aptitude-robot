@@ -4,6 +4,12 @@ REPORT_MAIL=false
 REPORT_FILE=$(mktemp aptitude-run-mailreport.XXXXXXXXXX)
 REPORT_RCPT=root
 
+if [ -z "$REPORT_FILE" ]; then
+    echo "ERROR: $0: Couldn't create temporary file in `pwd` using mktemp. Aborting." | \
+        mail -s "aptitude-robot report on $(hostname) (ERROR)" $REPORT_RCPT
+    exit 1
+fi
+
 cat >> $REPORT_FILE << EOF
 Aptitude-Robot Report
 =====================
@@ -13,39 +19,46 @@ EOF
 # check for remaining upgrades
 #
 UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
-aptitude search '~U !~ahold' > $UPGRADES_FILE
-if [ -s $UPGRADES_FILE ]; then
-    REPORT_MAIL=true
-    cat >> $REPORT_FILE << EOF
+if [ -z "$UPGRADES_FILE" ]; then
+    COLOR=red
+    MSG="${MSG}ERROR: $(basename $0): Can't check for remaining upgrades:
+Couldn't create temporary file in `pwd` using mktemp.
+"
+else
+    aptitude search '~U !~ahold' > "$UPGRADES_FILE"
+    if [ -s "$UPGRADES_FILE" ]; then
+        REPORT_MAIL=true
+        cat >> "$REPORT_FILE" << EOF
 
 Remaining Upgrades
 ------------------
 Some upgrades need to be looked into manually
 
 EOF
-    cat $UPGRADES_FILE >> $REPORT_FILE
+        cat "$UPGRADES_FILE" >> "$REPORT_FILE"
+    fi
+    rm "$UPGRADES_FILE"
 fi
-rm $UPGRADES_FILE
 
 #
 # check for errors in log file
 #
-LOGFILE=$1
-if [ -f $LOGFILE ]; then
-    if egrep -q -i '\bError\b|\bErr|\bE:' $LOGFILE ; then
+LOGFILE="$1"
+if [ -f "$LOGFILE" ]; then
+    if egrep -q -i '\bError\b|\bErr|\bE:' "$LOGFILE" ; then
         REPORT_MAIL=true
-        cat >> $REPORT_FILE << EOF
+        cat >> "$REPORT_FILE" << EOF
 
 Log File Errors
 ---------------
 Please investigate the errors mentioned in the log file
 
 EOF
-    cat $LOGFILE >> $REPORT_FILE
+    cat "$LOGFILE" >> "$REPORT_FILE"
     fi
 else
     REPORT_MAIL=true
-    cat >> $REPORT_FILE << EOF
+    cat >> "$REPORT_FILE" << EOF
 
 Missing Log File
 ----------------
@@ -54,6 +67,6 @@ EOF
 fi
 
 if [ $REPORT_MAIL = true ]; then
-    mail -s "aptitude-robot report on $(hostname)" $REPORT_RCPT < $REPORT_FILE
+    mail -s "aptitude-robot report on $(hostname)" $REPORT_RCPT < "$REPORT_FILE"
 fi
-rm $REPORT_FILE
+rm "$REPORT_FILE"

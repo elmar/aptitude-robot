@@ -19,28 +19,28 @@ if [ -z "$UPGRADES_FILE" ]; then
 Couldn't create temporary file in `pwd` using mktemp.
 "
 else
-    aptitude search '~U !~ahold' > $UPGRADES_FILE
-    if [ -s $UPGRADES_FILE ]; then
+    aptitude search '~U !~ahold' > "$UPGRADES_FILE"
+    if [ -s "$UPGRADES_FILE" ]; then
         COLOR=red
         MSG="${MSG}
 Remaining Upgrades:
 
-$(cat $UPGRADES_FILE)
+$(cat "$UPGRADES_FILE")
 
 "
     fi
-    rm $UPGRADES_FILE
+    rm "$UPGRADES_FILE"
 fi
 
 #
 # check for errors in log file
 #
-LOGFILE=$1
-if [ -f $LOGFILE ]; then
-    if egrep -q -i '\bWarn|\bW:|^The following packages have unmet dependencies' $LOGFILE >/dev/null 2>/dev/null ; then
+LOGFILE="$1"
+if [ -f "$LOGFILE" ]; then
+    if egrep -q -i '\bWarn|\bW:|^The following packages have unmet dependencies' "$LOGFILE" >/dev/null 2>/dev/null ; then
         COLOR=yellow
     fi
-    if egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' $LOGFILE  >/dev/null 2>/dev/null; then
+    if egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' "$LOGFILE"  >/dev/null 2>/dev/null; then
         COLOR=red
     fi
 
