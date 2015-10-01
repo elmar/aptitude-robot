@@ -10,6 +10,9 @@ if [ -z "$REPORT_FILE" ]; then
     exit 1
 fi
 
+# TODO: The following contains code very similar to
+# xymon-report. Should be factored out.
+
 cat >> $REPORT_FILE << EOF
 Aptitude-Robot Report
 =====================

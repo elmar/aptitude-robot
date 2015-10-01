@@ -9,6 +9,9 @@ Aptitude-Robot Report
 
 "
 
+# TODO: The following contains code very similar to
+# mail-log-on-error. Should be factored out.
+
 #
 # check for remaining upgrades
 #
