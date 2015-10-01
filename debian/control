@@ -28,7 +28,9 @@ Depends: aptitude,
          ${misc:Depends}
 Suggests: needrestart,
           needrestart-session,
-          apt-listbugs
+          apt-listbugs,
+          heirloom-mailx | bsd-mailx | mailx,
+          xymon-client | hobbit-client
 Enhances: aptitude
 Description: Automate package choice management
  Framework to use aptitude for automated package management including

@@ -29,7 +29,8 @@ aptitude-robot (1.3.5-1) UNRELEASED; urgency=medium
     upstream changelog. (Fixes lintian warning no-upstream-changelog.)
   * Bump debhelper compatibility to 9 as recommended.
     + Update versioned build-dependency on debhelper accordingly.
-  * Suggest needrestart-session and mention it in the README.
+  * Suggest needrestart-session, mailx and xymon-client and mention them
+    in the README, too.
   * Declare compliance with Policy 3.9.6 (no further changes needed)
 
   [ Dimitri John Ledkov ]

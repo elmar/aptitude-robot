@@ -241,6 +241,13 @@ Example:
     aptitude exited with value 255
     aptitude-robot ended at 2014-05-07 03:37:17+02:00
 
+### Monitoring and Reporting
+
+In `/usr/share/aptitude-robot/` there are two reporting scripts which
+can report `aptitude-robot-session`'s result either to a
+[Xymon](http://www.xymon.com/) (formerly called Hobbit) monitoring
+server (`xymon-report`) or by e-mail (`mail-log-on-error`).
+
 ## Building from Source
 
 You can build `aptitude-robot` from the GIT repository as follows:
