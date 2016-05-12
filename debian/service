@@ -1,5 +1,5 @@
 [Unit]
-Description=aptitude robot package updater
+Description=aptitude robot package management
 After=network.target
 Documentation=https://github.com/elmar/aptitude-robot#readme
 
