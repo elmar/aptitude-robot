@@ -1,0 +1,97 @@
+# -*- sh -*-
+#
+# This file is no shell script but to be sourced by other shell
+# scripts as a library of common helper functions, etc.
+
+WARN='\bWarn|\bW:|^The following packages have unmet dependencies'
+ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
+REPORT_LOG_DROP=''
+REPORT_LOG_IGNORE=''
+
+MSG="
+Aptitude-Robot Report
+=====================
+
+"
+
+if [ -f /etc/default/aptitude-robot ]; then
+    . /etc/default/aptitude-robot
+fi
+
+#
+# check for remaining upgrades
+#
+remaining_upgrades() {
+    UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
+    if [ -z "$UPGRADES_FILE" ]; then
+        echo "ERROR: $(basename $0): Can't check for remaining upgrades:
+Couldn't create temporary file in `pwd` using mktemp.
+"
+    else
+        aptitude search '~U !~ahold' > "$UPGRADES_FILE"
+        if [ -s "$UPGRADES_FILE" ]; then
+            echo "Remaining Upgrades:
+
+$(cat "$UPGRADES_FILE")
+
+"
+        fi
+        rm "$UPGRADES_FILE"
+    fi
+}
+
+#
+# check if we need to filter stuff
+#
+cat_or_egrep_v() {
+    if [ -n "$1" ]; then
+	egrep -v "$1"
+    else
+	cat
+    fi
+}
+
+#
+# mangle filters from egrep syntax to sed syntax, probably incomplete
+#
+egrep_to_sed() {
+    printf '%s' "$1" | sed -e 's/[()|%]/\\&/g'
+}
+
+#
+# check for errors in log file
+#
+errors_in_logfile() {
+    LOGFILE="$1"
+    if [ -f "$LOGFILE" ]; then
+        if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$ERROR" >/dev/null 2>/dev/null; then
+            echo errors
+            return 2;
+        fi
+        if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$WARN" >/dev/null 2>/dev/null; then
+            echo warnings
+            return 1
+        fi
+    else
+        echo notfound
+        return 3
+    fi
+    return 0
+}
+
+#
+# print log file, but filtered
+#
+print_logfile() {
+    cat "$1" | cat_or_egrep_v "$REPORT_LOG_DROP"
+}
+
+print_logfile_for_xymon() {
+    print_logfile "$1" | \
+        sed -e "s%$(egrep_to_sed "$WARN")%\&yellow &%gi;s%$(egrep_to_sed "$ERROR")%\&red &%gi" | \
+        if [ -n "$REPORT_LOG_IGNORE" ]; then
+            sed -e "s%&\(yellow\|red\) \(.*\($(egrep_to_sed "$REPORT_LOG_IGNORE")\)\)%\&clear \2%g";
+        else
+            cat
+        fi
+}

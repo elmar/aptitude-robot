@@ -2,85 +2,41 @@
 
 COLUMN=upd
 COLOR=green
-WARN='\bWarn|\bW:|^The following packages have unmet dependencies'
-ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
-REPORT_LOG_DROP=''
-REPORT_LOG_IGNORE=''
 
-MSG="
-Aptitude-Robot Report
-=====================
-
-"
-
-if [ -f /etc/default/aptitude-robot ]; then
-    . /etc/default/aptitude-robot
+REPORTING_HELPERS="$(dirname $0)/reporting-helpers"
+if [ -f "$REPORTING_HELPERS" ]; then
+    . "$REPORTING_HELPERS"
+else
+    echo "E: $REPORTING_HELPERS helpers not present, bailing out." 1>&2
+    exit 1;
 fi
-
-# TODO: The following contains code very similar to
-# mail-log-on-error. Should be factored out.
 
 #
 # check for remaining upgrades
 #
-UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
-if [ -z "$UPGRADES_FILE" ]; then
+REMAINING_UPGRADES="$(remaining_upgrades)"
+if [ -n "$REMAINING_UPGRADES" ]; then
     COLOR=red
-    MSG="${MSG}ERROR: $(basename $0): Can't check for remaining upgrades:
-Couldn't create temporary file in `pwd` using mktemp.
-"
-else
-    aptitude search '~U !~ahold' > "$UPGRADES_FILE"
-    if [ -s "$UPGRADES_FILE" ]; then
-        COLOR=red
-        MSG="${MSG}
-Remaining Upgrades:
-
-$(cat "$UPGRADES_FILE")
-
-"
-    fi
-    rm "$UPGRADES_FILE"
+    MSG="${MSG}${REMAINING_UPGRADES}"
 fi
-
-#
-# check if we need to filter stuff
-#
-cat_or_egrep_v() {
-    if [ -n "$1" ]; then
-	egrep -v "$1"
-    else
-	cat
-    fi
-}
-
-#
-# mangle filters from egrep syntax to sed syntax, probably incomplete
-#
-egrep_to_sed() {
-    printf '%s' "$1" | sed -e 's/[()|%]/\\&/g'
-}
 
 #
 # check for errors in log file
 #
-LOGFILE="$1"
-if [ -f "$LOGFILE" ]; then
-    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$WARN" >/dev/null 2>/dev/null; then
-        COLOR=yellow
-    fi
-    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$ERROR" >/dev/null 2>/dev/null; then
-        COLOR=red
-    fi
-
+ERRORS_IN_LOGFILE=$(errors_in_logfile "$1")
+if [ "$ERRORS_IN_LOGFILE" = "warnings" ]; then
+    COLOR=yellow
     MSG="${MSG}
-$(cat "$LOGFILE" | \
-  cat_or_egrep_v "$REPORT_LOG_DROP" | \
-  sed -e "s%$(egrep_to_sed "$WARN")%\&yellow &%gi;s%$(egrep_to_sed "$ERROR")%\&red &%gi" | \
-  sed -e "s%&\(yellow\|red\) \(.*\($(egrep_to_sed "$REPORT_LOG_IGNORE")\)\)%\&clear \2%g" )
+$(print_logfile_for_xymon "$1")
 
 "
-else
+elif [ "$ERRORS_IN_LOGFILE" = "errors" ]; then
+    COLOR=red
+    MSG="${MSG}
+$(print_logfile_for_xymon "$1")
+
+"
+elif [ "$ERRORS_IN_LOGFILE" = "notfound" ]; then
     COLOR=red
     MSG="${MSG}
 

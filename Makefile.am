@@ -7,6 +7,7 @@ dist_sbin_SCRIPTS    += aptitude-robot-session
 dist_pkgdata_SCRIPTS = random-delay
 dist_pkgdata_SCRIPTS += mail-log-on-error
 dist_pkgdata_SCRIPTS += xymon-report
+dist_pkgdata_DATA    = reporting-helpers
 man_MANS             = aptitude-robot.8 aptitude-robot-session.8
 
 pkgconfdir             = $(sysconfdir)/aptitude-robot

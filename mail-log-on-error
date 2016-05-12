@@ -3,12 +3,13 @@
 REPORT_MAIL=false
 REPORT_FILE=$(mktemp aptitude-run-mailreport.XXXXXXXXXX)
 REPORT_RCPT=root
-ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
-REPORT_LOG_DROP=''
-REPORT_LOG_IGNORE=''
 
-if [ -f /etc/default/aptitude-robot ]; then
-    . /etc/default/aptitude-robot
+REPORTING_HELPERS="$(dirname $0)/reporting-helpers"
+if [ -f "$REPORTING_HELPERS" ]; then
+    . "$REPORTING_HELPERS"
+else
+    echo "E: $REPORTING_HELPERS helpers not present, bailing out." 1>&2
+    exit 1;
 fi
 
 if [ -z "$REPORT_FILE" ]; then
@@ -16,9 +17,6 @@ if [ -z "$REPORT_FILE" ]; then
         mail -s "aptitude-robot report on $(hostname) (ERROR)" $REPORT_RCPT
     exit 1
 fi
-
-# TODO: The following contains code very similar to
-# xymon-report. Should be factored out.
 
 cat >> $REPORT_FILE << EOF
 Aptitude-Robot Report
@@ -28,45 +26,17 @@ EOF
 #
 # check for remaining upgrades
 #
-UPGRADES_FILE=$(mktemp aptitude-upgrades.XXXXXXXXX)
-if [ -z "$UPGRADES_FILE" ]; then
+REMAINING_UPGRADES="$(remaining_upgrades)"
+if [ -n "$REMAINING_UPGRADES" ]; then
     COLOR=red
-    MSG="${MSG}ERROR: $(basename $0): Can't check for remaining upgrades:
-Couldn't create temporary file in `pwd` using mktemp.
-"
-else
-    aptitude search '~U !~ahold' > "$UPGRADES_FILE"
-    if [ -s "$UPGRADES_FILE" ]; then
-        REPORT_MAIL=true
-        cat >> "$REPORT_FILE" << EOF
-
-Remaining Upgrades
-------------------
-Some upgrades need to be looked into manually
-
-EOF
-        cat "$UPGRADES_FILE" >> "$REPORT_FILE"
-    fi
-    rm "$UPGRADES_FILE"
+    MSG="${MSG}${REMAINING_UPGRADES}"
 fi
-
-#
-# check if we need to filter stuff
-#
-cat_or_egrep_v() {
-    if [ -n "$1" ]; then
-	egrep -v "$1"
-    else
-	cat
-    fi
-}
 
 #
 # check for errors in log file
 #
-LOGFILE="$1"
-if [ -f "$LOGFILE" ]; then
-    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$ERROR" >/dev/null 2>/dev/null; then
+ERRORS_IN_LOGFILE=$(errors_in_logfile "$1")
+if [ "$ERRORS_IN_LOGFILE" = "errors" ]; then
         REPORT_MAIL=true
         cat >> "$REPORT_FILE" << EOF
 
@@ -75,19 +45,18 @@ Log File Errors
 Please investigate the errors mentioned in the log file
 
 EOF
-        cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_DROP" "$LOGFILE" >> "$REPORT_FILE"
-    fi
-else
+        print_logfile "$1" >> "$REPORT_FILE"
+elif [ "$ERRORS_IN_LOGFILE" = "notfound" ]; then
     REPORT_MAIL=true
     cat >> "$REPORT_FILE" << EOF
 
 Missing Log File
 ----------------
-aptitude-robot produces no log file.  Please investigate.
+aptitude-robot produced no log file.  Please investigate.
 EOF
 fi
 
-if [ $REPORT_MAIL = true ]; then
-    mail -s "aptitude-robot report on $(hostname)" $REPORT_RCPT < "$REPORT_FILE"
+if [ "$REPORT_MAIL" = true ]; then
+    mail -s "aptitude-robot report on $(hostname)" "$REPORT_RCPT" < "$REPORT_FILE"
 fi
 rm "$REPORT_FILE"

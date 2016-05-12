@@ -3,6 +3,8 @@ aptitude-robot (1.5-1) UNRELEASED; urgency=medium
   * Version 1.5 (new backwards-compatible features)
     + Add support for filtering log files in reports.
     + Add coloured icons for warning/error/ignored lines in xymon-report.
+    + Factor out common code in "xymon-report" and "mail-log-on-error"
+      into "reporting-helpers. Fixes GH#2.
     + Rename COPYING to LICENSE as it's more common outside the GNU world.
     + Mention Semantic Versioning in README.
   * Switch Vcs-Git header from git:// to https://.
