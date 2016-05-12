@@ -3,7 +3,8 @@ Upstream-Name: aptitude-robot
 Source: https://github.com/elmar/aptitude-robot
 
 Files: *
-Copyright: 2012 Elmar S. Heeb <elmar@heebs.ch>
+Copyright: 2012-2014 Elmar S. Heeb <elmar@heebs.ch>
+           2012-2016 Axel Beckert <abe@debian.org>
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
