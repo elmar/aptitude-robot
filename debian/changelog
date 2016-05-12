@@ -4,6 +4,7 @@ aptitude-robot (1.5-1) UNRELEASED; urgency=medium
     + Add support for filtering log files in xymon-report.
   * Switch Vcs-Git header from git:// to https://.
   * Declare compliance with Debian Policy 3.9.8. (No changes needed.)
+  * Add Documentation key to debian/service. (Suggested by Lintian.)
 
  -- Axel Beckert <abe@debian.org>  Tue, 10 May 2016 17:04:21 +0200
 

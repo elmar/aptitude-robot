@@ -1,6 +1,7 @@
 [Unit]
 Description=aptitude robot package updater
 After=network.target
+Documentation=https://github.com/elmar/aptitude-robot#readme
 
 [Service]
 Type=oneshot
