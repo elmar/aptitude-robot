@@ -281,6 +281,13 @@ This will generate a Debian package that you can install with dpkg:
 
     sudo dpkg -i *.deb
 
+## Version Numbers
+
+aptitude-robot tries to follow
+[Semantic Versioning](http://semver.org/), but usually omits the
+patch/micro version if is a zero, i.e. version "1.5" is equivalent to
+"1.5.0".
+
 ## Thanks
 
 aptitude-robot was created as a more general version of a local maintenance
