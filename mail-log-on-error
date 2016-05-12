@@ -3,8 +3,13 @@
 REPORT_MAIL=false
 REPORT_FILE=$(mktemp aptitude-run-mailreport.XXXXXXXXXX)
 REPORT_RCPT=root
+ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
 REPORT_LOG_DROP=''
 REPORT_LOG_IGNORE=''
+
+if [ -f /etc/default/aptitude-robot ]; then
+    . /etc/default/aptitude-robot
+fi
 
 if [ -z "$REPORT_FILE" ]; then
     echo "ERROR: $0: Couldn't create temporary file in `pwd` using mktemp. Aborting." | \
@@ -46,11 +51,22 @@ EOF
 fi
 
 #
+# check if we need to filter stuff
+#
+cat_or_egrep_v() {
+    if [ -n "$1" ]; then
+	egrep -v "$1"
+    else
+	cat
+    fi
+}
+
+#
 # check for errors in log file
 #
 LOGFILE="$1"
 if [ -f "$LOGFILE" ]; then
-    if egrep -v "$REPORT_LOG_IGNORE" "$LOGFILE" | egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' >/dev/null 2>/dev/null; then
+    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$ERROR" >/dev/null 2>/dev/null; then
         REPORT_MAIL=true
         cat >> "$REPORT_FILE" << EOF
 
@@ -59,7 +75,7 @@ Log File Errors
 Please investigate the errors mentioned in the log file
 
 EOF
-    egrep -v "$REPORT_LOG_DROP" "$LOGFILE" >> "$REPORT_FILE"
+        cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_DROP" "$LOGFILE" >> "$REPORT_FILE"
     fi
 else
     REPORT_MAIL=true

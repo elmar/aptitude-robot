@@ -2,6 +2,8 @@
 
 COLUMN=upd
 COLOR=green
+WARN='\bWarn|\bW:|^The following packages have unmet dependencies'
+ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
 REPORT_LOG_DROP=''
 REPORT_LOG_IGNORE=''
 
@@ -42,19 +44,30 @@ $(cat "$UPGRADES_FILE")
 fi
 
 #
+# check if we need to filter stuff
+#
+cat_or_egrep_v() {
+    if [ -n "$1" ]; then
+	egrep -v "$1"
+    else
+	cat
+    fi
+}
+
+#
 # check for errors in log file
 #
 LOGFILE="$1"
 if [ -f "$LOGFILE" ]; then
-    if egrep -v "$REPORT_LOG_IGNORE" "$LOGFILE" | egrep -q -i '\bWarn|\bW:|^The following packages have unmet dependencies' >/dev/null 2>/dev/null; then
+    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$WARN" >/dev/null 2>/dev/null; then
         COLOR=yellow
     fi
-    if egrep -v "$REPORT_LOG_IGNORE" "$LOGFILE" | egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' >/dev/null 2>/dev/null; then
+    if cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_IGNORE" | egrep -q -i "$ERROR" >/dev/null 2>/dev/null; then
         COLOR=red
     fi
 
     MSG="${MSG}
-$(egrep -v "$REPORT_LOG_DROP" "$LOGFILE")
+$(cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_DROP")
 
 "
 else
