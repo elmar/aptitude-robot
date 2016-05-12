@@ -2,12 +2,18 @@
 
 COLUMN=upd
 COLOR=green
+REPORT_LOG_DROP=''
+REPORT_LOG_IGNORE=''
 
 MSG="
 Aptitude-Robot Report
 =====================
 
 "
+
+if [ -f /etc/default/aptitude-robot ]; then
+    . /etc/default/aptitude-robot
+fi
 
 # TODO: The following contains code very similar to
 # mail-log-on-error. Should be factored out.
@@ -40,15 +46,15 @@ fi
 #
 LOGFILE="$1"
 if [ -f "$LOGFILE" ]; then
-    if egrep -q -i '\bWarn|\bW:|^The following packages have unmet dependencies' "$LOGFILE" >/dev/null 2>/dev/null ; then
+    if egrep -v "$REPORT_LOG_IGNORE" "$LOGFILE" | egrep -q -i '\bWarn|\bW:|^The following packages have unmet dependencies' >/dev/null 2>/dev/null; then
         COLOR=yellow
     fi
-    if egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' "$LOGFILE"  >/dev/null 2>/dev/null; then
+    if egrep -v "$REPORT_LOG_IGNORE" "$LOGFILE" | egrep -q -i '\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]' >/dev/null 2>/dev/null; then
         COLOR=red
     fi
 
     MSG="${MSG}
-$(cat "$LOGFILE")
+$(egrep -v "$REPORT_LOG_DROP" "$LOGFILE")
 
 "
 else

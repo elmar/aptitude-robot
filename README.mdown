@@ -248,6 +248,17 @@ can report `aptitude-robot-session`'s result either to a
 [Xymon](http://www.xymon.com/) (formerly called Hobbit) monitoring
 server (`xymon-report`) or by e-mail (`mail-log-on-error`).
 
+If you need to, you can configure in `/etc/default/aptitude-robot`
+what goes into the report and what not:
+
+    # (optional) exclude some rather verbose output from the reporting
+    REPORT_LOG_DROP='is (currently )?not installed, so it will not be|is already installed at the requested version|cannot be marked/unmarked as automatically installed'
+    # (optional) Don't treat some specific warnings or errors as such
+    REPORT_LOG_IGNORE='uses weak digest algorithm'
+
+The values are used as pattern parameter to `egrep -v` on the log file
+and default to the empty string.
+
 ## Building from Source
 
 You can build `aptitude-robot` from the GIT repository as follows:
