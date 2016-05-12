@@ -1,8 +1,8 @@
 aptitude-robot (1.5-1) UNRELEASED; urgency=medium
 
   * Version 1.5 (new backwards-compatible features)
-
-  * Add support for filtering log files in xymon-report.
+    + Add support for filtering log files in xymon-report.
+  * Switch Vcs-Git header from git:// to https://.
 
  -- Axel Beckert <abe@debian.org>  Tue, 10 May 2016 17:04:21 +0200
 
