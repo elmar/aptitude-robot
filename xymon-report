@@ -55,6 +55,13 @@ cat_or_egrep_v() {
 }
 
 #
+# mangle filters from egrep syntax to sed syntax, probably incomplete
+#
+egrep_to_sed() {
+    printf '%s' "$1" | sed -e 's/[()|%]/\\&/g'
+}
+
+#
 # check for errors in log file
 #
 LOGFILE="$1"
@@ -67,7 +74,10 @@ if [ -f "$LOGFILE" ]; then
     fi
 
     MSG="${MSG}
-$(cat "$LOGFILE" | cat_or_egrep_v "$REPORT_LOG_DROP")
+$(cat "$LOGFILE" | \
+  cat_or_egrep_v "$REPORT_LOG_DROP" | \
+  sed -e "s%$(egrep_to_sed "$WARN")%\&yellow &%gi;s%$(egrep_to_sed "$ERROR")%\&red &%gi" | \
+  sed -e "s%&\(yellow\|red\) \(.*\($(egrep_to_sed "$REPORT_LOG_IGNORE")\)\)%\&clear \2%g" )
 
 "
 else
