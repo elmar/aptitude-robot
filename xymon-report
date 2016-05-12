@@ -24,23 +24,22 @@ fi
 # check for errors in log file
 #
 ERRORS_IN_LOGFILE=$(errors_in_logfile "$1")
-if [ "$ERRORS_IN_LOGFILE" = "warnings" ]; then
-    COLOR=yellow
-    MSG="${MSG}
-$(print_logfile_for_xymon "$1")
-
-"
-elif [ "$ERRORS_IN_LOGFILE" = "errors" ]; then
-    COLOR=red
-    MSG="${MSG}
-$(print_logfile_for_xymon "$1")
-
-"
-elif [ "$ERRORS_IN_LOGFILE" = "notfound" ]; then
+if [ "$ERRORS_IN_LOGFILE" = "notfound" ]; then
     COLOR=red
     MSG="${MSG}
 
 log file missing -- please investigate
+
+"
+else
+    if [ "$ERRORS_IN_LOGFILE" = "warnings" ]; then
+        COLOR=yellow
+    elif [ "$ERRORS_IN_LOGFILE" = "errors" ]; then
+        COLOR=red
+    fi
+
+    MSG="${MSG}
+$(print_logfile_for_xymon "$1")
 
 "
 fi
