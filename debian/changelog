@@ -8,6 +8,7 @@ aptitude-robot (1.5-1) UNRELEASED; urgency=medium
   * Add Documentation key to debian/service. (Suggested by Lintian.)
   * Update Description key in debian/service to say "package management"
     instead of just "package updater".
+  * Fix inconsistency in debian/copyright: License is GPL-3+.
 
  -- Axel Beckert <abe@debian.org>  Tue, 10 May 2016 17:04:21 +0200
 
