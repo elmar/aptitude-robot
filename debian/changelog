@@ -2,7 +2,7 @@ aptitude-robot (1.5-1) UNRELEASED; urgency=medium
 
   * Version 1.5 (new backwards-compatible features)
     + Add support for filtering log files in xymon-report.
-    + Add symlink from LICENSE to COPYING as suggested by "flint".
+    + Rename COPYING to LICENSE as it's more common outside the GNU world.
     + Mention Semantic Versioning in README.
   * Switch Vcs-Git header from git:// to https://.
   * Declare compliance with Debian Policy 3.9.8. (No changes needed.)
