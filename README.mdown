@@ -285,8 +285,8 @@ This will generate a Debian package that you can install with dpkg:
 
 aptitude-robot tries to follow
 [Semantic Versioning](http://semver.org/), but usually omits the
-patch/micro version if is a zero, i.e. version "1.5" is equivalent to
-"1.5.0".
+patch/micro version if it is a zero, i.e. version "1.5" is equivalent
+to "1.5.0".
 
 ## Thanks
 
