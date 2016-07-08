@@ -170,7 +170,7 @@ them installed on initial deployment you can specify both actions, as follows:
 During the initial deployment you would run `aptitude-robot` with the
 `--force-install` option to ignore the keep action.
 
-## Related Packages
+## Related Packages or Projects
 
 ### Just automatic upgrades or notifications
 
@@ -258,6 +258,12 @@ what goes into the report and what not:
 
 The values are used as pattern parameter to `egrep -v` on the log file
 and default to the empty string.
+
+### Package Installation and Removal Using Configuration Management
+
+Keeping installed packages on multipel hosts in sync can also be done with configuration management tools.
+
+If you like Ansible, checkout the Ansible roles [`debops.apt_install`](https://github.com/debops/ansible-apt_install) and [`ypid.packages`](https://github.com/ypid/ansible-packages).
 
 ## Building from Source
 
