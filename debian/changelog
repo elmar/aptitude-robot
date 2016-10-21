@@ -8,6 +8,8 @@ aptitude-robot (1.5.1-1) UNRELEASED; urgency=medium
   * Downgrade perl-doc from Depends to Recommends as it's only needed for
     the --help and --usage options and will display the source code
     (including the POD) instead if perl-doc is not installed.
+  * Add a (versioned) dependency on lsb-base for using the
+    /lib/lsb/init-functions in the init script.
 
  -- Axel Beckert <axel@ethz.ch>  Fri, 21 Oct 2016 13:12:11 +0200
 
