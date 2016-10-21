@@ -5,8 +5,11 @@ aptitude-robot (1.5.1-1) UNRELEASED; urgency=medium
       clean" should come after "aptitude purge", because aptitude will
       rebuild apt's binary cache for that and "apt-get clean" removes the
       binary cache.
+  * Downgrade perl-doc from Depends to Recommends as it's only needed for
+    the --help and --usage options and will display the source code
+    (including the POD) instead if perl-doc is not installed.
 
- -- Axel Beckert <beckert@phys.ethz.ch>  Fri, 21 Oct 2016 13:12:11 +0200
+ -- Axel Beckert <axel@ethz.ch>  Fri, 21 Oct 2016 13:12:11 +0200
 
 aptitude-robot (1.5-1) unstable; urgency=low
 

@@ -23,9 +23,9 @@ Depends: aptitude,
          libmoo-perl,
          librun-parts-perl,
          perl,
-         perl-doc,
          psmisc,
          ${misc:Depends}
+Recommends: perl-doc
 Suggests: needrestart,
           needrestart-session,
           apt-listbugs,
