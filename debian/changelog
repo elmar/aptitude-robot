@@ -1,3 +1,13 @@
+aptitude-robot (1.5.1-1) UNRELEASED; urgency=medium
+
+  * Version 1.5.1 (only bug fixes)
+    + Reorder commands in triggers.post/90-cleanup.example: "apt-get
+      clean" should come after "aptitude purge", because aptitude will
+      rebuild apt's binary cache for that and "apt-get clean" removes the
+      binary cache.
+
+ -- Axel Beckert <beckert@phys.ethz.ch>  Fri, 21 Oct 2016 13:12:11 +0200
+
 aptitude-robot (1.5-1) unstable; urgency=low
 
   * Version 1.5 (new backwards-compatible features)
