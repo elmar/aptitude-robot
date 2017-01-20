@@ -10,6 +10,10 @@ aptitude-robot (1.5.1-1) UNRELEASED; urgency=medium
     (including the POD) instead if perl-doc is not installed.
   * Add a (versioned) dependency on lsb-base for using the
     /lib/lsb/init-functions in the init script.
+  * Bump debhelper compatibility to 10.
+    + Update versioned debhelper build-dependency accordingly.
+    + Remove explicit dependency on dh-autoreconf.
+    + Remove explicit "--with autoreconf" from debian/rules.
 
  -- Axel Beckert <axel@ethz.ch>  Fri, 21 Oct 2016 13:12:11 +0200
 
