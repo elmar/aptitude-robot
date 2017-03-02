@@ -297,7 +297,7 @@ to discussions.
 
 - Axel Beckert <abe@debian.org> (co-maintainer of aptitude-robot, last maintainer of dphys-admin)
 - Neil Franklin <neil@franklin.ch.remove> (original author of dphys-admin)
-- Gürkan Sengün <sengun@phys.ethz.ch>
+- Gürkan Myczko <myczko@phys.ethz.ch>
 - Claude Becker <becker@phys.ethz.ch>
 - Tomas Pospisek <tpo@sourcepole.ch>
 - Daniel Hartwig <mandyke@gmail.com>
