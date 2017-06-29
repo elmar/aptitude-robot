@@ -1,7 +1,7 @@
 #!/bin/sh
 
 REPORT_MAIL=false
-REPORT_FILE=$(mktemp aptitude-run-mailreport.XXXXXXXXXX)
+REPORT_FILE=$(mktemp --tmpdir aptitude-run-mailreport.XXXXXXXXXX)
 REPORT_RCPT=root
 
 REPORTING_HELPERS="$(dirname $0)/reporting-helpers"
@@ -13,7 +13,7 @@ else
 fi
 
 if [ -z "$REPORT_FILE" ]; then
-    echo "ERROR: $0: Couldn't create temporary file in `pwd` using mktemp. Aborting." | \
+    echo "ERROR: $0: Couldn't create temporary file $REPORT_FILE using mktemp. Aborting." | \
         mail -s "aptitude-robot report on $(hostname) (ERROR)" $REPORT_RCPT
     exit 1
 fi
