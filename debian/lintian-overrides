@@ -1,2 +1,5 @@
+# aptitude-robot's stop target is a no-op and hence also needs no dependencies
 aptitude-robot: init.d-script-missing-dependency-on-remote_fs etc/init.d/aptitude-robot: required-stop
+aptitude-robot: init.d-script-missing-dependency-on-local_fs etc/init.d/aptitude-robot: required-stop
+# aptitude-robot is a one-shot task and hence doesn't need a status target
 aptitude-robot: init.d-script-does-not-implement-optional-option etc/init.d/aptitude-robot status
