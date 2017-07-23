@@ -3,3 +3,13 @@ aptitude-robot: init.d-script-missing-dependency-on-remote_fs etc/init.d/aptitud
 aptitude-robot: init.d-script-missing-dependency-on-local_fs etc/init.d/aptitude-robot: required-stop
 # aptitude-robot is a one-shot task and hence doesn't need a status target
 aptitude-robot: init.d-script-does-not-implement-optional-option etc/init.d/aptitude-robot status
+
+# aptitude-robot should also be installable and usable on older, but
+# still supported releases of Debian and Ubuntu, i.e. this override
+# and the upstart configuration file may be removed earliest when
+# Ubuntu 14.04 LTS "Trusty", the last Ubuntu LTS release with Upstart
+# by default, goes EoL in April 2019. Debian 8 Jessie also supports
+# Upstart as alternative, non-default init system and its LTS variant
+# goes EoL approximately in June 2020. So it might be useful to keep
+# the override and file until then.
+aptitude-robot: package-installs-deprecated-upstart-configuration etc/init/aptitude-robot.conf
