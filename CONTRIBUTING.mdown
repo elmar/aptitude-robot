@@ -16,7 +16,7 @@ Axel's in the ` /usr/share/keyrings/debian-keyring.gpg` file.
 Reporting Bugs
 --------------
 
-Please report bugs in aptitude-robot either to Debian's Bug Tracking
+Please report bugs in aptitude-robot either to [Debian's Bug Tracking
 System](https://bugs.debian.org/cgi-bin/pkgreport.cgi?src=aptitude-robot)
 by using Debian's
 [reportbug](https://packages.debian.org/stable/reportbug) utility or
@@ -32,4 +32,4 @@ Contributing Patches
 
 Patches can be submitted as
 [pull request on GitHub](https://github.com/elmar/aptitude-robot/pulls)
-or by e-mail, prefably generated with `git format-patch`.
+or by e-mail, preferably generated with `git format-patch`.
