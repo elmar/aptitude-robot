@@ -9,6 +9,7 @@ aptitude-robot (1.5.2-1) UNRELEASED; urgency=medium
   * Add lintian override for init.d-script-missing-dependency-on-local_fs,
     too.
   * Actually remove explicit dependency on dh-autoreconf. Thanks Lintian!
+  * Remove explicit dependency on autotools-dev, too.
 
  -- Axel Beckert <abe@debian.org>  Thu, 29 Jun 2017 11:47:46 +0200
 
