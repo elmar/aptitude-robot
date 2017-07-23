@@ -1,6 +1,6 @@
-aptitude-robot (1.5.2-1) UNRELEASED; urgency=medium
+aptitude-robot (1.5.2-1) unstable; urgency=medium
 
-  * Version 1.5.2 (only bug fixed)
+  * Version 1.5.2 (only bug fixes and documentation updates)
     + Use mktemp only with --tmpdir so that temporary files are not
       created in the current directory (which might be read-only). (GH #6)
     + Change contact address for bug reports from Elmar's e-mail address
@@ -16,7 +16,7 @@ aptitude-robot (1.5.2-1) UNRELEASED; urgency=medium
     that the override and the upstart file may be removed after Ubuntu
     14.04 LTS is no more supported.
 
- -- Axel Beckert <abe@debian.org>  Thu, 29 Jun 2017 11:47:46 +0200
+ -- Axel Beckert <abe@debian.org>  Sun, 23 Jul 2017 22:04:23 +0200
 
 aptitude-robot (1.5.1-1) unstable; urgency=medium
 
