@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 10~),
                librun-parts-perl,
                perl,
                perl-doc
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: https://github.com/elmar/aptitude-robot
 Vcs-Git: https://github.com/elmar/aptitude-robot.git
 Vcs-Browser: https://github.com/elmar/aptitude-robot
