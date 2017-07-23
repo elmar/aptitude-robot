@@ -24,6 +24,7 @@ dist_triggerspost_SCRIPTS = etc/aptitude-robot/triggers.post/90-cleanup.example
 CLEANFILES = $(man_MANS)
 EXTRA_DIST = README.mdown TODO.mdown build-all t
 EXTRA_DIST += aptitude-robot-session.pod LICENSE
+EXTRA_DIST += CONTRIBUTING.mdown
 
 aptitude-robot.8: aptitude-robot
 	pod2man -s 8 -c 'User Commands' -r "$(VERSION)" $< $@
