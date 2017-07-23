@@ -1,0 +1,35 @@
+Contributing to Aptitude-Robot and Reporting Bugs
+=================================================
+
+Contact
+-------
+
+* Elmar S. Heeb <elmar@heebs.ch>, PGP: 71B8F031E648BCD95EAC18FA47712171F2ED62FB
+* Axel Beckert <abe@debian.org>, PGP: 2517B724C5F6CA9953296E612FF9CD59612616B5
+
+You can find both keys on common keyservers like
+e.g. `keys.gnupg.net`. You can also find both keys in Debian's
+[debian-keyring](https://packages.debian.org/debian-keyring) package,
+Elmar's in the `/usr/share/keyrings/debian-maintainers.gpg` file and
+Axel's in the ` /usr/share/keyrings/debian-keyring.gpg` file.
+
+Reporting Bugs
+--------------
+
+Please report bugs in aptitude-robot either to Debian's Bug Tracking
+System](https://bugs.debian.org/cgi-bin/pkgreport.cgi?src=aptitude-robot)
+by using Debian's
+[reportbug](https://packages.debian.org/stable/reportbug) utility or
+via
+[via the GitHub Issue tracker](https://github.com/elmar/aptitude-robot/issues).
+
+In case you want to report a security issue in aptitude-robot or if
+you neither run Debian nor have a GitHub account, please contact us by
+e-mail. Security issues are preferably reported PGP-encrypted.
+
+Contributing Patches
+--------------------
+
+Patches can be submitted as
+[pull request on GitHub](https://github.com/elmar/aptitude-robot/pulls)
+or by e-mail, prefably generated with `git format-patch`.

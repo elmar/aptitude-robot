@@ -5,6 +5,7 @@ aptitude-robot (1.5.2-1) UNRELEASED; urgency=medium
       created in the current directory (which might be read-only). (GH #6)
     + Change contact address for bug reports from Elmar's e-mail address
       to https://github.com/elmar/aptitude-robot/issues
+    + Add a CONTRIBUTING.mdown file as recommended by flint.
   * Add lintian override for init.d-script-missing-dependency-on-local_fs,
     too.
 
