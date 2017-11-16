@@ -53,6 +53,11 @@ use it for apt-get clean.
 
 =back
 
+=head1 EXIT STATUS
+
+aptitude-robot-session exits with 0 on success, 1 if dpkg is locked, 2 if apt
+failed to fetch some APT repositories.
+
 =head1 BUGS
 
 The non-interactive nature of aptitude-robot-session may trigger the condition
