@@ -2,8 +2,9 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
 
   * Version 1.5.3 (TODO: SUMMARY)
     + [ Alex Myczko ] Document exit status of aptitude-robot-session.
-  * Drop build-dependency on transitional package dh-systemd. (Actually no
-    more needed since debhelper compat level 10.)
+  * Drop more things no more needed explicitly since dh compat level 10:
+    + build-dependency on transitional package dh-systemd
+    + "--with systemd" in debian/rules.
   * Declare compliance with Debian Policy 4.1.1.
     + Switch Priority from extra to optional.
     + Change debian/copyright DEP5 format URL to HTTPS.
