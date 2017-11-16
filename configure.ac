@@ -1,7 +1,7 @@
 AC_PREREQ([2.67])dnl require version in Debian squeeze (or higher)
 AC_INIT(
     [Aptitude Robot],
-    [1.5.2],
+    [1.5.3],
     [https://github.com/elmar/aptitude-robot/issues],
     [aptitude-robot],
     [https://github.com/elmar/aptitude-robot]

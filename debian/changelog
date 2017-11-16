@@ -1,3 +1,10 @@
+aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
+
+  * Version 1.5.3 (TODO: SUMMARY)
+    + [ Alex Myczko ] Document exit status of aptitude-robot-session.
+
+ -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
+
 aptitude-robot (1.5.2-1) unstable; urgency=medium
 
   * Version 1.5.2 (only bug fixes and documentation updates)
