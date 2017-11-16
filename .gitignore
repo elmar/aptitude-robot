@@ -1,5 +1,12 @@
+# Editor backup/temporary  files
 *~
+.#*
 .*.sw?
+
+# GNU Autotools
+/.build/
+/Makefile.in
+/_build/
 /aclocal.m4
 /autom4te.cache
 /build-aux/install-sh
@@ -7,19 +14,30 @@
 /config.log
 /config.status
 /configure
-/Makefile.in
-blib/
-.build/
-_build/
-cover_db/
-inc/
-Build
-Build.bat
-.last_cover_stats
+MANIFEST.bak
 Makefile
 Makefile.old
-MANIFEST.bak
+inc/
+
+# Perl build artefacts
+.last_cover_stats
+Build
+Build.bat
 META.yml
 MYMETA.yml
+blib/
+cover_db/
 nytprof.out
 pm_to_blib
+
+# Generated man pages
+*.8
+
+# Debian build artefacts
+/debian/*.debhelper
+/debian/*.substvars
+/debian/.debhelper/
+/debian/aptitude-robot/
+/debian/autoreconf.*
+/debian/debhelper-build-stamp
+/debian/files
