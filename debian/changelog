@@ -12,6 +12,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * Set "Rules-Requires-Root: no".
   * debian/copyright: Change gnu.org URL to HTTPS.
   * Merge remaining dh overrides by passing "--no-start" to "dh $@".
+  * Drop Suggests on no more existing transitional package heirloom-mailx.
 
  -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
 

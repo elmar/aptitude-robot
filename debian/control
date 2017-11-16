@@ -28,7 +28,7 @@ Recommends: perl-doc
 Suggests: needrestart,
           needrestart-session,
           apt-listbugs,
-          heirloom-mailx | bsd-mailx | mailx,
+          bsd-mailx | mailx,
           xymon-client | hobbit-client
 Enhances: aptitude
 Description: Automate package choice management
