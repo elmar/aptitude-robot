@@ -1,7 +1,7 @@
 aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
 
   * Version 1.5.3 (TODO: SUMMARY)
-    + [ Alex Myczko ] Document exit status of aptitude-robot-session.
+    + Document exit status of aptitude-robot-session. Thanks Alex Myczko!
     + Revamp .gitignore: Add sections headers and Debian build artefacts.
   * Drop more things no more needed explicitly since dh compat level 10:
     + build-dependency on transitional package dh-systemd
