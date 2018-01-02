@@ -6,7 +6,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * Drop more things no more needed explicitly since dh compat level 10:
     + build-dependency on transitional package dh-systemd
     + "--with systemd" in debian/rules.
-  * Declare compliance with Debian Policy 4.1.2.
+  * Declare compliance with Debian Policy 4.1.3.
     + Switch Priority from extra to optional.
     + Change debian/copyright DEP5 format URL to HTTPS.
   * Set "Rules-Requires-Root: no".
