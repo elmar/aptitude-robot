@@ -3,6 +3,8 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * Version 1.5.3 (TODO: SUMMARY)
     + Document exit status of aptitude-robot-session. Thanks Alex Myczko!
     + Revamp .gitignore: Add sections headers and Debian build artefacts.
+    + reporting-helpers: Don't report the mentioning of packages like
+      libgpg-error-dev as an error.
   * Drop more things no more needed explicitly since dh compat level 10:
     + build-dependency on transitional package dh-systemd
     + "--with systemd" in debian/rules.

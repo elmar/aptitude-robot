@@ -4,7 +4,7 @@
 # scripts as a library of common helper functions, etc.
 
 WARN='\bWarn|\bW:|^The following packages have unmet dependencies'
-ERROR='\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
+ERROR='(^|[^-])\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
 REPORT_LOG_DROP=''
 REPORT_LOG_IGNORE=''
 
