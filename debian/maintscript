@@ -1,0 +1,1 @@
+rm_conffile /etc/init/aptitude-robot.conf 1.5.3-1

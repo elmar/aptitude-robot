@@ -15,6 +15,11 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * debian/copyright: Change gnu.org URL to HTTPS.
   * Merge remaining dh overrides by passing "--no-start" to "dh $@".
   * Drop Suggests on no more existing transitional package heirloom-mailx.
+  * Bump debhelper compatibility level to 12.
+    + Build-depend on "debhelper-compat (= 12)" to replace debian/compat.
+    + Drop support for upstart by removing debian/upstart.
+    + Remove according conffile with rm_conffile in debian/maintscript.
+    + Drop according lintian override and comments.
 
  -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
 

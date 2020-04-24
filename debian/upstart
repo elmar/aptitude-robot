@@ -1,6 +1,0 @@
-# aptitude-robot - package choice management
-
-description	"aptitude-robot: package choice management"
-
-start on static-network-up
-pre-start exec aptitude-robot-session
