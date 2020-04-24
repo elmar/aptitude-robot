@@ -20,6 +20,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
     + Drop support for upstart by removing debian/upstart.
     + Remove according conffile with rm_conffile in debian/maintscript.
     + Drop according lintian override and comments.
+  * Update lintian overrides wrt. to lintian tag renamings.
 
  -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
 
