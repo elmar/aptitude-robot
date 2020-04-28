@@ -8,8 +8,10 @@ use Test::More;
 use File::Basename;
 my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
 my $testdatadir = "$topdir/t/testdata";
+my @arcmd       = $ENV{AUTOPKGTEST_TMP} ?
+    qw(/usr/sbin/aptitude-robot) :
+    (qw(perl), "$topdir/aptitude-robot");
 
-ok( system('perl', "$topdir/aptitude-robot", '--help') == 0,
-    'option --help should be allowed' );
+ok( system(@arcmd, '--help') == 0, 'option --help should be allowed' );
 
 done_testing();

@@ -5,6 +5,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
     + Revamp .gitignore: Add sections headers and Debian build artefacts.
     + reporting-helpers: Don't report the mentioning of packages like
       libgpg-error-dev as an error.
+    + Test suite adapted to be able to also test an installed script.
   * Drop more things no more needed explicitly since dh compat level 10:
     + build-dep. on transitional package dh-systemd (Closes: #958580)
     + "--with systemd" in debian/rules.
@@ -21,6 +22,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
     + Remove according conffile with rm_conffile in debian/maintscript.
     + Drop according lintian override and comments.
   * Update lintian overrides wrt. to lintian tag renamings.
+  * Make package autopkgtestable (DEP8).
 
  -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
 

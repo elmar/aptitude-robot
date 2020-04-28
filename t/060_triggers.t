@@ -8,6 +8,9 @@ use Test::More;
 use File::Basename;
 my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
 my $testdatadir = "$topdir/t/testdata";
+my $arcmd       = $ENV{AUTOPKGTEST_TMP} ?
+    '/usr/sbin/aptitude-robot' :
+    "$topdir/aptitude-robot";
 
 use IPC::Run qw( run );
 
@@ -19,7 +22,7 @@ my $config_dir;
 
 $config_dir = "$testdatadir/triggers-empty";
 $cmd = [
-    "$topdir/aptitude-robot",
+    $arcmd,
     "--config-dir=$config_dir",
     '--show-cmdline',
 ];

@@ -1,0 +1,2 @@
+Test-Command: prove -v t
+Depends: @, perl

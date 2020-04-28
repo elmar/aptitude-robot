@@ -8,8 +8,11 @@ use Test::More;
 use File::Basename;
 my $topdir      = $ENV{TOPDIR} || (dirname($0) . '/..');
 my $testdatadir = "$topdir/t/testdata";
+my $arcmd       = $ENV{AUTOPKGTEST_TMP} ?
+    '/usr/sbin/aptitude-robot' :
+    "$topdir/aptitude-robot";
 
-require_ok( "$topdir/aptitude-robot" );
+require_ok( $arcmd );
 
 my $aptitude_command;
 
