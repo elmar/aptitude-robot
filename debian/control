@@ -23,7 +23,8 @@ Depends: aptitude,
          lsb-base (>= 3.0-6),
          perl,
          psmisc,
-         ${misc:Depends}
+         ${misc:Depends},
+         ${perl:Depends}
 Recommends: perl-doc
 Suggests: needrestart,
           needrestart-session,

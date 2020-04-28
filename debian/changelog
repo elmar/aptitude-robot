@@ -25,6 +25,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * Make package autopkgtestable (DEP8).
   * Declare so far used git tag format in debian/gbp.conf.
   * Update years in debian/copyright.
+  * Add ${perl:Depends} to Depends.
 
  -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
 
