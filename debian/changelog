@@ -1,6 +1,6 @@
-aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
+aptitude-robot (1.5.3-1) unstable; urgency=medium
 
-  * Version 1.5.3 (TODO: SUMMARY)
+  * Version 1.5.3 (minor bug + documentation fixes; drops upstart support)
     + Document exit status of aptitude-robot-session. Thanks Alex Myczko!
     + Revamp .gitignore: Add sections headers and Debian build artefacts.
     + reporting-helpers: Don't report the mentioning of packages like
@@ -27,7 +27,7 @@ aptitude-robot (1.5.3-1) UNRELEASED; urgency=medium
   * Update years in debian/copyright.
   * Add ${perl:Depends} to Depends.
 
- -- Axel Beckert <abe@debian.org>  Thu, 16 Nov 2017 18:48:45 +0100
+ -- Axel Beckert <abe@debian.org>  Tue, 28 Apr 2020 22:11:40 +0200
 
 aptitude-robot (1.5.2-1) unstable; urgency=medium
 
