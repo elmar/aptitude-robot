@@ -203,7 +203,7 @@ debian-goodies.
 ### Checking for severe bugs before installing updates
 
 To prevent automatically upgrading packages to versions which are
-known to be severly broken, you can use
+known to be severely broken, you can use
 [apt-listbugs](http://packages.debian.org/apt-listbugs). If
 apt-listbugs finds release-critical bugs it will prevent
 aptitude-robot from updating _any_ package.
