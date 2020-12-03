@@ -9,6 +9,7 @@ aptitude-robot (1.5.4-1) UNRELEASED; urgency=medium
   * Drop lintian override for no more emitted
     init.d-script-missing-dependency-on-remote_fs.
   * Bump debian/watch version from 3 to 4. Thanks Lintian!
+  * Declare compliance with Debian Policy 4.5.1. (No changes needed.)
 
  -- Axel Beckert <abe@debian.org>  Fri, 31 Jul 2020 09:05:11 +0200
 
