@@ -3,8 +3,12 @@
 # This file is no shell script but to be sourced by other shell
 # scripts as a library of common helper functions, etc.
 
+# These variables can be overriden, but this should be used with care
 WARN='\bWarn|\bW:|^The following packages have unmet dependencies'
-ERROR='(^|[^-])\bError\b|\bErr:|\bE:|^aptitude exited with value [^0]'
+ERROR='(^|[^-/])(\bError\b|\bErr:|\bE:|aptitude exited with value [^0])'
+ERROR_FALSE_POSITIVE='\b[Nn]o *[Ee]rror\b'
+
+# These variables are meant to be optionally set by the administrator.
 REPORT_LOG_DROP=''
 REPORT_LOG_IGNORE=''
 
@@ -45,9 +49,9 @@ $(cat "$UPGRADES_FILE")
 #
 cat_or_egrep_v() {
     if [ -n "$1" ]; then
-	egrep -v "$1"
+	egrep -v "$1|$ERROR_FALSE_POSITIVE"
     else
-	cat
+	egrep -v "$ERROR_FALSE_POSITIVE"
     fi
 }
 
@@ -88,7 +92,8 @@ print_logfile() {
 
 print_logfile_for_xymon() {
     print_logfile "$1" | \
-        sed -e "s%$(egrep_to_sed "$WARN")%\&yellow &%gi;s%$(egrep_to_sed "$ERROR")%\&red &%gi" | \
+        sed -e "s%$(egrep_to_sed "$WARN")%\&yellow &%gi;s%$(egrep_to_sed "$ERROR")%\1\&red \2%gi" | \
+        sed -e "s%\&\(yellow\|red\) \(.*\($(egrep_to_sed "$ERROR_FALSE_POSITIVE")\)\)%\2%g" | \
         if [ -n "$REPORT_LOG_IGNORE" ]; then
             sed -e "s%&\(yellow\|red\) \(.*\($(egrep_to_sed "$REPORT_LOG_IGNORE")\)\)%\&clear \2%g";
         else

@@ -1,3 +1,12 @@
+aptitude-robot (1.5.4-1) UNRELEASED; urgency=medium
+
+  * Don't report errors on GRUB's "Installation finished. No error
+    reported." message, similar messages or messages where "error" is part
+    of a file path, like …/Debconf/Element/Noninteractive/Error.pm.
+    (Closes: #913538)
+
+ -- Axel Beckert <abe@debian.org>  Fri, 31 Jul 2020 09:05:11 +0200
+
 aptitude-robot (1.5.3-1) unstable; urgency=medium
 
   * Version 1.5.3 (minor bug + documentation fixes; drops upstart support)
