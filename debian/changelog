@@ -1,6 +1,6 @@
-aptitude-robot (1.5.4-1) UNRELEASED; urgency=medium
+aptitude-robot (1.5.4-1) unstable; urgency=medium
 
-  * Version 1.5.4 (minor bug + documentation fixes
+  * Version 1.5.4 (minor bug + documentation fixes)
     + Don't report errors on GRUB's "Installation finished. No error
       reported." message, similar messages or messages where "error" is
       part of a file path, like …/Debconf/Element/Noninteractive/Error.pm.
@@ -13,7 +13,7 @@ aptitude-robot (1.5.4-1) UNRELEASED; urgency=medium
   * Bump debhelper-compat to 13.
   * Drop alternative suggested package hobbit-client. Gone for 9 years.
 
- -- Axel Beckert <abe@debian.org>  Fri, 31 Jul 2020 09:05:11 +0200
+ -- Axel Beckert <abe@debian.org>  Sat, 05 Dec 2020 08:22:04 +0100
 
 aptitude-robot (1.5.3-1) unstable; urgency=medium
 
