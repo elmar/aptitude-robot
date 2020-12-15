@@ -1,3 +1,10 @@
+aptitude-robot (1.5.4-2) UNRELEASED; urgency=medium
+
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Sat, 12 Dec 2020 22:39:13 -0000
+
 aptitude-robot (1.5.4-1) unstable; urgency=medium
 
   * Version 1.5.4 (minor bug + documentation fixes)
