@@ -1,0 +1,2 @@
+# The upstream and debian git repository and even their git branch is the same.
+aptitude-robot source: upstream-metadata-file-is-missing
