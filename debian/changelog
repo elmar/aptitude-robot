@@ -1,7 +1,7 @@
 aptitude-robot (1.5.4-2) UNRELEASED; urgency=medium
 
   * Add lintian-override for upstream-metadata-file-is-missing since the
-    upstream and debian git repository and even their git branch is the
+    upstream and Debian git repository and even their git branch is the
     same.
   * Declare compliance with Debian Policy 4.6.0. (No changes necessary.)
 
