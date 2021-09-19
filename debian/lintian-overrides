@@ -3,3 +3,6 @@ aptitude-robot: init.d-script-missing-dependency-on-local_fs etc/init.d/aptitude
 
 # aptitude-robot is a one-shot task and hence doesn't need a status target
 aptitude-robot: init.d-script-does-not-implement-status-option etc/init.d/aptitude-robot
+
+# Known false positive, see https://bugs.debian.org/973759
+aptitude-robot: debian-changelog-file-is-a-symlink usr/share/doc/aptitude-robot/changelog.gz
