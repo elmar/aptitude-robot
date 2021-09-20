@@ -1,10 +1,15 @@
 aptitude-robot (1.5.4-2) UNRELEASED; urgency=medium
 
+  [ Axel Beckert ]
   * Add lintian-override for upstream-metadata-file-is-missing as well as
     debian-changelog-file-is-a-symlink since the upstream and Debian git
     repository and even their git branch is the same as well are upstream
     and Debian changelogs.
   * Declare compliance with Debian Policy 4.6.0. (No changes necessary.)
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + aptitude-robot: Drop versioned constraint on lsb-base in Depends.
 
  -- Axel Beckert <abe@debian.org>  Sun, 19 Sep 2021 15:17:20 +0200
 

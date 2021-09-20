@@ -20,7 +20,7 @@ Architecture: all
 Depends: aptitude,
          libmoo-perl,
          librun-parts-perl,
-         lsb-base (>= 3.0-6),
+         lsb-base,
          perl,
          psmisc,
          ${misc:Depends},
