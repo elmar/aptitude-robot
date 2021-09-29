@@ -5,7 +5,7 @@ Maintainer: Elmar S. Heeb <elmar@heebs.ch>
 Uploaders: Axel Beckert <abe@debian.org>
 Build-Depends: debhelper-compat (= 13),
                libmoo-perl,
-               libipc-run-perl,
+               libipc-run-perl <!nocheck>,
                librun-parts-perl,
                libtest-deep-perl <!nocheck>,
                libtest-warnings-perl <!nocheck>,
