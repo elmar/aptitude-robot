@@ -112,6 +112,12 @@ sub command {
     for my $line ($self->run_parts_lines('pkglist.d')) {
         my ($action, $pkg) = split(/\s+/, $line, 2);
 
+        unless (defined($pkg) && $pkg ne '') {
+            warn "Missing package name in line '$line' somewhere under ".
+                $self->config_dir() . "/pkglist.d/. Ignoring this line.\n";
+            next;
+        }
+
         # ignore extra ':' and '=' entries on force-install
         next if
             $self->force_install()        and

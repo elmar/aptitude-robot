@@ -1,5 +1,9 @@
-aptitude-robot (1.5.4-2) UNRELEASED; urgency=medium
+aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
 
+  * Version 1.5.5 (minor bug fix release)
+    + Don't error out with a meaningless message if a pkglist.d entry
+      misses a package name. Print a warning and skip that line instead.
+      (Fixes GH-13.)
   * Add lintian-override for upstream-metadata-file-is-missing as well as
     debian-changelog-file-is-a-symlink since the upstream and Debian git
     repository and even their git branch is the same as well are upstream
