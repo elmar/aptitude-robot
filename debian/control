@@ -7,6 +7,8 @@ Build-Depends: debhelper-compat (= 13),
                libmoo-perl,
                libipc-run-perl,
                librun-parts-perl,
+               libtest-deep-perl <!nocheck>,
+               libtest-warnings-perl <!nocheck>,
                perl,
                perl-doc
 Standards-Version: 4.6.0
