@@ -13,7 +13,7 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
   * Declare compliance with Debian Policy 4.6.0. (No changes necessary.)
   * Use profile <!nocheck> for build-dependencies only needed for tests.
   * Update debian/watch wrt. to changed Github paths, also simplify it.
-  * Fix debian/logrotate and add missing ".log". (GH #12)
+  * Fix debian/logrotate and add missing ".log" to filename. (GH #12)
 
  -- Axel Beckert <abe@debian.org>  Sun, 19 Sep 2021 15:17:20 +0200
 
