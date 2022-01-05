@@ -1,5 +1,6 @@
 aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
 
+  [ Axel Beckert ]
   * Version 1.5.5 (minor bug fix release)
     + Don't error out with a meaningless message if a pkglist.d entry
       misses a package name. Print a warning and skip that line instead.
@@ -14,6 +15,10 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
   * Use profile <!nocheck> for build-dependencies only needed for tests.
   * Update debian/watch wrt. to changed Github paths, also simplify it.
   * Fix debian/logrotate and add missing ".log" to filename. (GH #12)
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + aptitude-robot: Drop versioned constraint on lsb-base in Depends.
 
  -- Axel Beckert <abe@debian.org>  Sun, 19 Sep 2021 15:17:20 +0200
 
