@@ -26,7 +26,7 @@ $cmd = [
 ];
 ok(
     not(run( $cmd, \$in, \$out, \$err )),
-    'should complain about non-existant config dir'
+    'should complain about non-existent config dir'
 );
 
 $cmd = [
