@@ -17,6 +17,8 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
   * Fix debian/logrotate and add missing ".log" to filename. (GH #12)
   * Add lintian overrides for uses-dpkg-database-directly. This is just
     locking via /var/lib/dpkg/lock, not accessing the database itself.
+  * Add lintian override for bash-term-in-posix-shell wrt. $RANDOM: This
+    is guarded and fixed via /dev/urandom if $RANDOM is empty.
 
   [ Debian Janitor ]
   * Drop versioned constraint on lsb-base in Depends referring to a
