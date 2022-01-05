@@ -14,3 +14,6 @@ aptitude-robot: uses-dpkg-database-directly usr/sbin/aptitude-robot-session
 # This is guarded and fixed via /dev/urandom if $RANDOM is empty.
 aptitude-robot: bash-term-in-posix-shell '$RANDOM' [usr/share/aptitude-robot/random-delay:10]
 aptitude-robot: bash-term-in-posix-shell '$RANDOM' [usr/share/aptitude-robot/random-delay:14]
+
+# This is supported by dash and mksh
+aptitude-robot: bash-term-in-posix-shell '& ulimit' [usr/sbin/aptitude-robot-session:50]

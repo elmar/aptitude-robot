@@ -19,6 +19,8 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
     locking via /var/lib/dpkg/lock, not accessing the database itself.
   * Add lintian override for bash-term-in-posix-shell wrt. $RANDOM: This
     is guarded and fixed via /dev/urandom if $RANDOM is empty.
+  * Add lintian override for bash-term-in-posix-shell wrt. ulimit: This is
+    supported in dash as well as in mksh.
 
   [ Debian Janitor ]
   * Drop versioned constraint on lsb-base in Depends referring to a
