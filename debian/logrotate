@@ -1,4 +1,4 @@
-/var/log/aptitude-robot {
+/var/log/aptitude-robot.log {
   rotate 6
   monthly
   compress
