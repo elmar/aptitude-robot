@@ -17,8 +17,8 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
   * Fix debian/logrotate and add missing ".log" to filename. (GH #12)
 
   [ Debian Janitor ]
-  * Drop versioned constraint on lsb-base in Depends refering to a version
-    from 2005. (GH #14)
+  * Drop versioned constraint on lsb-base in Depends referring to a
+    version from 2005. (GH #14)
 
   [ Edward Betts ]
   * Correct spelling mistakes. (GH #11)
