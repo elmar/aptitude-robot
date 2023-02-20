@@ -22,6 +22,7 @@ aptitude-robot (1.5.5-1) UNRELEASED; urgency=medium
   * Add lintian override for bash-term-in-posix-shell wrt. ulimit: This is
     supported in dash as well as in mksh.
   * Prefer sysvinit-utils (>= 3.05-4~) over lsb-base. Thanks Lintian!
+  * Bracketize lintian overrides.
 
   [ Debian Janitor ]
   * Drop versioned constraint on lsb-base in Depends referring to a

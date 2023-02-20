@@ -1,15 +1,15 @@
 # aptitude-robot's stop target is a no-op and hence also needs no dependencies
-aptitude-robot: init.d-script-missing-dependency-on-local_fs etc/init.d/aptitude-robot: required-stop
+aptitude-robot: init.d-script-missing-dependency-on-local_fs required-stop [etc/init.d/aptitude-robot]
 
 # aptitude-robot is a one-shot task and hence doesn't need a status target
-aptitude-robot: init.d-script-does-not-implement-status-option etc/init.d/aptitude-robot
+aptitude-robot: init.d-script-does-not-implement-status-option [etc/init.d/aptitude-robot]
 
 # Known false positive, see https://bugs.debian.org/973759
-aptitude-robot: debian-changelog-file-is-a-symlink usr/share/doc/aptitude-robot/changelog.gz
+aptitude-robot: debian-changelog-file-is-a-symlink [usr/share/doc/aptitude-robot/changelog.gz]
 
 # This is just locking, not accessing the database
-aptitude-robot: uses-dpkg-database-directly etc/init.d/aptitude-robot
-aptitude-robot: uses-dpkg-database-directly usr/sbin/aptitude-robot-session
+aptitude-robot: uses-dpkg-database-directly [etc/init.d/aptitude-robot]
+aptitude-robot: uses-dpkg-database-directly [usr/sbin/aptitude-robot-session]
 
 # This is guarded and fixed via /dev/urandom if $RANDOM is empty.
 aptitude-robot: bash-term-in-posix-shell '$RANDOM' [usr/share/aptitude-robot/random-delay:10]
