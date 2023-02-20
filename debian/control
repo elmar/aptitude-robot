@@ -22,7 +22,7 @@ Architecture: all
 Depends: aptitude,
          libmoo-perl,
          librun-parts-perl,
-         lsb-base,
+         sysvinit-utils (>= 3.05-4~) | lsb-base,
          perl,
          psmisc,
          ${misc:Depends},
